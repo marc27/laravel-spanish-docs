@@ -23,7 +23,7 @@ El framework Laravel tiene algunos requisitos del sistema. Todos estos requisito
 
 Sin embargo, si no estás utilizando Homestead, deberás asegurarte de que tu servidor cumpla con los siguientes requisitos:
 
-- PHP >= 7.2.0
+- PHP >= 7.1.3
 - BCMath PHP Extension
 - Ctype PHP Extension
 - JSON PHP Extension
