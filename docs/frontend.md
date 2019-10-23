@@ -24,10 +24,12 @@ Una vez que se haya instalado el paquete `laravel/ui`, puedes instalar la estruc
 
 ```terminal
 // Generando estructura básica...
+php artisan ui bootstrap
 php artisan ui vue
 php artisan ui react
 
 // Generando estructura del login y registro...
+php artisan ui bootstrap --auth
 php artisan ui vue --auth
 php artisan ui react --auth
 ```
