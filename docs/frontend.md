@@ -145,7 +145,7 @@ Este único comando removerá la estructuración de Vue y la reemplazará con la
 <a name="adding-presets"></a>
 ### Agregando Presets
 
-Los ajustes prestablecidos son "macroable", lo que le permite agregar métodos adicionales a la clase `UiCommand` en tiempo de ejecución. Por ejemplo, el siguiente código agrega un método `nextjs` a la clase `UiCommand` . Por lo general debe declarar macros prestablecidos en un [proveedor de servicios](/providers.html):
+Los ajustes prestablecidos son "macroable", lo que te permite agregar métodos adicionales a la clase `UiCommand` en tiempo de ejecución. Por ejemplo, el siguiente código agrega un método `nextjs` a la clase `UiCommand` . Por lo general debes declarar macros prestablecidos en un [proveedor de servicios](/providers.html):
 
 ```php
 use Laravel\Ui\UiCommand;
@@ -155,7 +155,7 @@ UiCommand::macro('nextjs', function (UiCommand $command) {
 });
 ```
 
-Luego, puede llamar al nuevo preset a través del comando `ui`:
+Luego, puedes llamar al nuevo preset a través del comando `ui`:
 
 ```terminal
 php artisan ui nextjs
