@@ -44,8 +44,8 @@ Una vez que la prueba ha sido generada, puedes definir métodos de pruebas como 
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
