@@ -13,7 +13,7 @@
 <a name="introduction"></a>
 ## Introducción
 
-Muchas aplicaciones web requieren que los usuarios verifiquen sus correos electrónicos usando la aplicación. En lugar de forzarte a volver a implementar esto en cada aplicación, Laravel proporciona métodos convenientes para enviar y verificar solicitudes de verificación de correos electrónicos. 
+Muchas aplicaciones web requieren que los usuarios verifiquen sus correos electrónicos usando la aplicación. En lugar de forzarte a volver a implementar esto en cada aplicación, Laravel proporciona métodos convenientes para enviar y verificar solicitudes de verificación de correos electrónicos.
 
 ### Preparación del modelo
 
@@ -24,9 +24,9 @@ Para comenzar, verifica que tu modelo `App\User` implementa la interfaz `Illumin
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -70,7 +70,15 @@ Route::get('profile', function () {
 <a name="verification-views"></a>
 ## Vistas
 
-Laravel generará todas las vistas de verificación de correo electrónico necesarias cuando el comando `make:auth` sea ejecutado. Esta vista es colocada en `resources/views/auth/verify.blade.php`. Eres libre de personalizar esta vista según sea necesario para tu aplicación.
+Para generar todas las vistas necesarias para la verificación de correo electrónico, puedes usar el paquete `laravel/ui` de Composer:
+
+```php
+composer require laravel/ui --dev
+
+php artisan ui vue --auth
+```
+
+La vista de verificación de correo electrónico es colocada en `resources/views/auth/verify.blade.php`. Eres libre de personalizar esta vista según sea necesario para tu aplicación.
 
 <a name="after-verifying-emails"></a>
 ## Luego de verificar correos electrónicos
