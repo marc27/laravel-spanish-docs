@@ -10,7 +10,7 @@
 <a name="creating-views"></a>
 ## Creando vistas
 
-::: tip TIP 
+::: tip TIP
 Para buscar más información sobre ¿Cómo escribir plantillas de Blade? Revisa la [documentación de Blade](/blade.html) completa para comenzar.
 :::
 
@@ -179,8 +179,8 @@ Ahora que hemos registrado el Composer, el método `ProfileComposer@compose` ser
 
 namespace App\Http\View\Composers;
 
-use Illuminate\View\View;
 use App\Repositories\UserRepository;
+use Illuminate\View\View;
 
 class ProfileComposer
 {
