@@ -26,7 +26,7 @@
 
 ## Cambios de bajo impacto
 - [Devolviendo respuestas "Deny"](#deny_responses)
-- [El Método `validationData` de FormRequest ](#validation_data_method)
+- [El Método `validationData` de FormRequest](#validation_data_method)
 
 
 <a name="upgrade-6.0"></a>
@@ -78,21 +78,24 @@ La firma del constructor de la clase `Illuminate\Auth\Access\Response` ha cambia
 */
 public function __construct($allowed, $message = '', $code = null)
 ```
+
 <a name="deny_responses"></a>
 #### Devolviendo respuestas "Deny" 
 
 **Probabilidad de impacto: Bajo**
 
-En versiones anteriores de Laravel, no era necesario devolver el valor del método `deny`  de tus métodos de política ya que una excepción se lanzaba de forma automática. Sin enmargo, de acuerdo a la documentación de Laravel, se debe ahora retornar el valor del método `deny` desde tus políticas.
+En versiones anteriores de Laravel, no era necesario devolver el valor del método `deny` de tus métodos de política ya que una excepción se lanzaba de forma automática. Sin embargo, de acuerdo a la documentación de Laravel, se debe ahora retornar el valor del método `deny` desde tus políticas:
 
-    public function update(User $user, Post $post)
-    {
-        if (! $user->role->isEditor()) {
-            return $this->deny("Debes ser Editor para editar este post.")
-        }
-
-        return $user->id === $post->user_id;
+```php
+public function update(User $user, Post $post)
+{
+    if (! $user->role->isEditor()) {
+        return $this->deny("Debes ser Editor para editar este post.")
     }
+
+    return $user->id === $post->user_id;
+}
+```
 
 <a name="auth-access-gate-contract"></a>
 
@@ -125,7 +128,6 @@ Si planeas usar [Laravel Vapor](https://vapor.laravel.com), debes actualizar tod
 **Probabilidad de impacto: Medio**
 
 El cliente por defecto de Redis ha cambiado de `predis` a `phpredis`. Para seguir usando `predis`, asegúrate que la opción de configuración `redis.client` está establecida como `predis` en tu archivo de configuración `config/database.php`.
-
 
 ### Base de datos
 
@@ -374,9 +376,7 @@ En versiones previas de Laravel, pasar parámetros de arreglos asociativos al he
 
 **Probabilidad de impacto: Bajo**
 
-El Método `validationData` de FormRequest ha sido cambiado de `protected a `public`. Si estás sobreescribiendo este método en tu implementación, debes cambiar la visibilidad a `public`.
-
-
+El Método `validationData` de FormRequest ha sido cambiado de `protected` a `public`. Si estás sobrescribiendo este método en tu implementación, debes cambiar la visibilidad a `public`.
 
 <a name="miscellaneous"></a>
 ### Misceláneos
