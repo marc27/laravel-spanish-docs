@@ -62,8 +62,8 @@ Luego, vamos a observar un simple controlador que maneja estas rutas. Dejaremos 
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -323,7 +323,7 @@ public function authorize()
 }
 ```
 
-::: tip TIP 
+::: tip TIP
 Puedes declarar el tipo de cualquier dependencia que necesites dentro de la firma del método `authorize`. Se resolverán automáticamente a través de Laravel [contenedor de servicio](/container.html).
 :::
 
@@ -376,8 +376,8 @@ Si no quieres usar el método `messages` en la solicitud, puedes crear una insta
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -662,6 +662,7 @@ Debajo hay una lista con todas las reglas de validación disponibles y su funci�
 [Not Regex](#rule-not-regex)
 [Nullable](#rule-nullable)
 [Numeric](#rule-numeric)
+[Password](#rule-password)
 [Present](#rule-present)
 [Regular Expression](#rule-regex)
 [Required](#rule-required)
@@ -775,7 +776,7 @@ El campo bajo validación debe ser igual a la fecha dada. Las fechas serán pasa
 <a name="rule-date-format"></a>
 #### date_format:_format_
 
-El campo bajo validación debe coincidir con el _format_ dado. Deberías usar `date` **o** `date_format` al momento de validar un campo, no ambos.
+El campo bajo validación debe coincidir con el _format_ dado. Deberías usar `date` **o** `date_format` al momento de validar un campo, no ambos. Esta regla de validación es compatible con todos los formatos compatibles con la clase [DateTime](https://www.php.net/manual/es/class.datetime.php) de PHP.
 
 <a name="rule-different"></a>
 #### different:_field_
@@ -834,7 +835,21 @@ Al momento de trabajar con arreglos, el campo bajo validación no debe tener nin
 <a name="rule-email"></a>
 #### email
 
-El campo bajo validación debe estar formateado como una dirección de correo electrónico.
+El campo bajo validación debe estar formateado como una dirección de correo electrónico. Esta validación hace uso del paquete [egulias/email-validator](https://github.com/egulias/EmailValidator) para validar la dirección de correo electrónico. Por defecto, el validador `RFCValidation` es aplicado, pero también puedes aplicar otros estilos de valicación:
+
+```php
+'email' => 'email:rfc,dns'
+```
+
+El ejemplo de arriba aplicará las validaciones `RFCValidation` y `DNSCheckValidation`. Aquí está una lista de los estilos de validacion que puedes aplicar:
+
+- `rfc`: `RFCValidation`
+- `strict`: `NoRFCWarningsValidation`
+- `dns`: `DNSCheckValidation`
+- `spoof`: `SpoofCheckValidation`
+- `filter`: `FilterEmailValidation`
+
+El validador `filter`, que hace uso de la función `filter_var` de PHP, se entrega con Laravel y es un comportamiento anterior a Laravel 5.8. Los validadores `dns` y `spoof` requieren la extensión `intl` de PHP.
 
 <a name="rule-ends-with"></a>
 #### ends_with:_foo_,_bar_,...
@@ -1035,6 +1050,15 @@ El campo bajo validación puede ser `null`. Esto es particularmente útil al mom
 
 El campo bajo validación debe ser numérico.
 
+<a name="rule-password"></a>
+#### password
+
+El campo bajo validación debe coincidir con la contraseña del usuario autenticado. Puedes especificar una protección de autenticación utilizando el primer parámetro de la regla:
+
+```php
+'password' => 'password:api'
+```
+
 <a name="rule-present"></a>
 #### present
 
@@ -1223,7 +1247,7 @@ $v = Validator::make($data, [
 
 En el ejemplo anterior, el campo `email` solamente será validado si está presente en el arreglo `$data`.
 
-::: tip TIP 
+::: tip TIP
 Si estás intentando validar un campo que siempre deba estar presente pero puede estar vacío, revisa [esta nota sobre campos opcionales](#a-note-on-optional-fields)
 :::
 
