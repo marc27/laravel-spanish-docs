@@ -47,6 +47,36 @@ Todas las colecciones de Eloquent extienden el objeto de [colección de Laravel]
 
 Adicionalmente, la clase `Illuminate\Database\Eloquent\Collection` proporciona una serie de métodos para ayudarte a administrar tus colecciones de modelos. La mayoría de los métodos retornan instancias de `Illuminate\Database\Eloquent\Collection`; sin embargo, algunos métodos retornan una instancia base `Illuminate\Support\Collection`.
 
+<style>
+    #collection-method-list > p {
+        column-count: 1; -moz-column-count: 1; -webkit-column-count: 1;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    #collection-method-list a {
+        display: block;
+    }
+</style>
+
+<div id="collection-method-list" markdown="1">
+
+[contains](#method-contains)
+[diff](#method-diff)
+[except](#method-except)
+[find](#method-find)
+[fresh](#method-fresh)
+[intersect](#method-intersect)
+[load](#method-load)
+[loadMissing](#method-loadMissing)
+[modelKeys](#method-modelKeys)
+[makeVisible](#method-makeVisible)
+[makeHidden](#method-makeHidden)
+[only](#method-only)
+[unique](#method-unique)
+
+</div>
+
+<a name="method-contains"></a>
 #### `contains($key, $operator = null, $value = null)`
 
 El método `contains` puede ser usado para determinar si una instancia de modelo dada es contenida por la colección. Este método acepta una clave primaria o una instancia de modelo:
