@@ -369,6 +369,18 @@ En versiones previas de Laravel, pasar parámetros de arreglos asociativos al he
  echo route('profile', ['status' => 'active']);    
 ```
 
+La función helper `action` y el método `URL::action` también fueron afectados por este cambio:
+
+```php
+Route::get('/profile/{id}', 'ProfileController@show');
+
+// Laravel 5.8: http://example.com/profile/1
+echo action('ProfileController@show', ['profile' => 1]);
+
+// Laravel 6.0: http://example.com/profile?profile=1
+echo action('ProfileController@show', ['profile' => 1]);
+```
+
 ### Validación 
 
 <a name="validation_data_method"></a>
