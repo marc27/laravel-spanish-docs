@@ -81,7 +81,6 @@ Por el resto de esta documentación, discutiremos cada método disponible en la 
     }
 </style>
 
-<div id="collection-method-list" markdown="1">
 [all](#method-all)
 [average](#method-average)
 [avg](#method-avg)
@@ -198,7 +197,6 @@ Por el resto de esta documentación, discutiremos cada método disponible en la 
 [whereNotInStrict](#method-wherenotinstrict)
 [wrap](#method-wrap)
 [zip](#method-zip)
-</div>
 
 <a name="method-listing"></a>
 
