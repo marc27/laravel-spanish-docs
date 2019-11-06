@@ -80,8 +80,8 @@ Hay dos formás principales de trabajar con datos de sesión en Laravel: el help
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
