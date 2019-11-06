@@ -43,9 +43,9 @@ Puedes definir todas tus tareas programadas en el método `schedule` de la clase
 
 namespace App\Console;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -129,12 +129,12 @@ Método  | Descripción
 `->daily();`  |  Ejecuta la tarea cada día a la medianoche
 `->dailyAt('13:00');`  |  Ejecuta la tarea cada día a las 13:00
 `->twiceDaily(1, 13);`  |  Ejecuta la tarea cada día a las 1:00 y a las 13:00
-`->weekly();`  |  Ejecuta la tarea cada semana
+`->weekly();`  |  Ejecuta la tarea cada domingo a las 00:00
 `->weeklyOn(1, '8:00');`  |  Ejecuta a tarea cada semana los lunes a las 8:00
-`->monthly();`  |  Ejecuta la tarea cada mes
+`->monthly();`  |  Ejecuta la tarea el primer día de cada mes a las 00:00
 `->monthlyOn(4, '15:00');`  |  Ejecuta la tarea el 4 de cada mes a las 15:00
-`->quarterly();` |  Ejecuta la tarea cada trimestre
-`->yearly();`  |  Ejecuta la tarea cada año
+`->quarterly();` |  Ejecuta la tarea el primer día de cada trimestre a las 00:00
+`->yearly();`  |  Ejecuta la tarea el primer día de cada año a las 00:00
 `->timezone('America/New_York');` | Establece la zona horaria
 
 Estos métodos pueden ser combinados con restricciones adicionales para crear programaciones más ajustadas que sólo se ejecutan en determinados días de la semana. Por ejemplo, para programar un comando para que sea ejecutado los lunes:
