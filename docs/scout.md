@@ -54,8 +54,8 @@ Finalmente, agrega el trait `Laravel\Scout\Searchable` al modelo en el que te gu
 
 namespace App;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -98,8 +98,8 @@ Cada modelo Eloquent es sincronizado con un "índice" de búsqueda dado, el cual
 
 namespace App;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -127,8 +127,8 @@ De forma predeterminada, la forma `toArray` completa de un modelo dado será per
 
 namespace App;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -160,8 +160,8 @@ Por defecto, Scout usará la clave primaria del modelo como su ID única, almace
 
 namespace App;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class User extends Model
 {
@@ -441,7 +441,7 @@ abstract public function delete($models);
 abstract public function search(Builder $builder);
 abstract public function paginate(Builder $builder, $perPage, $page);
 abstract public function mapIds($results);
-abstract public function map($results, $model);
+abstract public function map(Builder $builder, $results, $model);
 abstract public function getTotalCount($results);
 abstract public function flush($model);
 ```
@@ -484,9 +484,9 @@ Si deseas definir un método constructor personalizado, puedes usar el método `
 
 namespace App\Providers;
 
-use Laravel\Scout\Builder;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\Builder;
 
 class ScoutMacroServiceProvider extends ServiceProvider
 {
