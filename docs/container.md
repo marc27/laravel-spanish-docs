@@ -66,7 +66,7 @@ class UserController extends Controller
 }
 ```
 
-En este ejemplo, `UserController` necesita retornar usuarios desde una fuente de datos. Así que, **inyectaremos** un servicio que es capaz de retornar los usuarios. En este conexto, nuestro `UserRepository` probablemente usa [Eloquent](/eloquent.html) para retornar la información de los usuarios desde la base de datos. Sin embargo, dado que el repositorio es inyectado, somos capaces de cambiarlo fácilmente con otra implementación. También somos capaces de "simular" o crear una implementación de ejemplo de `UserRepository` al probar nuestra aplicación.
+En este ejemplo, `UserController` necesita retornar usuarios desde una fuente de datos. Así que, **inyectaremos** un servicio que es capaz de retornar los usuarios. En este contexto, nuestro `UserRepository` probablemente usa [Eloquent](/eloquent.html) para retornar la información de los usuarios desde la base de datos. Sin embargo, dado que el repositorio es inyectado, somos capaces de cambiarlo fácilmente con otra implementación. También somos capaces de "simular" o crear una implementación de ejemplo de `UserRepository` al probar nuestra aplicación.
 
 Un conocimiento profundo del contenedor de servicios de Laravel es esencial para construir aplicaciones grandes y poderosas así como también contribuir al núcleo de Laravel.
 
