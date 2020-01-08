@@ -33,6 +33,10 @@ Sin embargo, si no estás utilizando Homestead, deberás asegurarte de que tu se
 - Extensión Tokenizer de PHP 
 - Extensión XML de PHP
 
+::: danger Nota
+La instalación de Laravel en un subdirectorio no está soportada.
+:::
+
 <a name="installing-laravel"></a>
 ### Instalar Laravel
 
