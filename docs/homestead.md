@@ -543,7 +543,7 @@ Minio es un servidor de almacenamiento de objetos de código libre con una API c
 minio: true
 ```
 
-Por defecto, Minio está disponible en el puerto 9600. Puedes acceder al panel de control de Minio visitando `http://homestead:9600/`. La clave de acceso por defecto es `homestead`, mientras que la clave secreta por defecto es `secretkey`. Al acceder a Minio, siempre debes usar la región `us-east-1`.
+Por defecto, Minio está disponible en el puerto 9600. Puedes acceder al panel de control de Minio visitando `http://localhost:9600/`. La clave de acceso por defecto es `homestead`, mientras que la clave secreta por defecto es `secretkey`. Al acceder a Minio, siempre debes usar la región `us-east-1`.
 
 Para usar Minio necesitarás ajustar la configuración de disco S3 en tu archivo `config/filesystems.php` Necesitarás añadir la opción `use_path_style_endpoint` a la configuración del disco, así como cambiar la clave `url` a `endpoint`:
 
