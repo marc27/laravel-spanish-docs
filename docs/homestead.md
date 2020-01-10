@@ -54,6 +54,7 @@ Si estás utilizando Windows, puede que necesites habilitar la virtualización p
 
 - Ubuntu 18.04
 - Git
+- PHP 7.4
 - PHP 7.3
 - PHP 7.2
 - PHP 7.1
