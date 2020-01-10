@@ -7,6 +7,7 @@
     - [Instalar Laravel](#installing-laravel)
     - [Configuración](#configuration)
 - [Configuración del servidor web](#web-server-configuration)
+    - [Configuración del directorio](#directory-configuration)
     - [URLs amigables](#pretty-urls)
 
 <a name="installation"></a>
@@ -116,6 +117,11 @@ También puede que quieras configurar algunos componentes adicionales de Laravel
 
 <a name="web-server-configuration"></a>
 ## Configuración del servidor web
+
+<a name="directory-configuration"></a>
+### Configuración del directorio
+
+Laravel debe ser siempre servido desde la raiz del "directorio web" configurado en tu servidor web. No debes intentar servir una aplicación de Laravel desde un subdirectorio del "directorio web". Intentar hacer eso podría exponer archivos sensibles que se encuentran dentro de tu aplicación.
 
 <a name="pretty-urls"></a>
 ### URLs amigables
