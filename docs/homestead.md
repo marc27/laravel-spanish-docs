@@ -660,6 +660,7 @@ php70
 php71
 php72
 php73
+php74
 ```
 
 <a name="web-servers"></a>
