@@ -565,7 +565,7 @@ Por último, asegúrate de que tu archivo `.env` tenga las siguientes opciones:
 AWS_ACCESS_KEY_ID=homestead
 AWS_SECRET_ACCESS_KEY=secretkey
 AWS_DEFAULT_REGION=us-east-1
-AWS_URL=http://homestead:9600
+AWS_URL=http://localhost:9600
 ```
 
 Para proveer buckets, agrega una directiva `buckets` a tu archivo de configuración Homestead:
