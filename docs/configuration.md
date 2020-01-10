@@ -163,7 +163,7 @@ También puedes proporcionar las opciones `message` y `retry` al comando `down`.
 php artisan down --message="Upgrading Database" --retry=60
 ```
 
-Incluso en modo de mantenimiento, se les puede permitir acceder a la aplicación a direcciones IP  o redes específicas usando la opción `allow` del comando:
+Incluso en modo de mantenimiento, se les puede permitir acceder a la aplicación a direcciones IP o redes específicas usando la opción `allow` del comando:
 
 ```php
 php artisan down --allow=127.0.0.1 --allow=192.168.0.0/16
