@@ -100,37 +100,13 @@ valet use php
 
 Puedes actualizar tu instalación de Valet ejecutando el comando `composer global update` desde la terminal. Después de actualizar, es una buena práctica ejecutar el comando `valet install` para que valet pueda hacer actualizaciones adicionales en sus archivos de configuración en caso de ser necesario.
 
-#### Actualizar a Valet 2.0
-
-Valet 2.0 cambió de utilizar el servidor web Caddy a Nginx, por lo que antes de hacer esta actualización deberás ejecutar los siguientes comandos para detener y desinstalar el daemon existente de Caddy.
-
-```php
-valet stop
-valet uninstall
-```
-
-Después, deberás actualizar tu versión de Valet a la más reciente. Dependiendo de cómo se hizo la instalación de Valet, puedes hacerlo por medio de Git o de Composer. Si tu instalación fue por medio de Composer, deberás ejecutar el siguiente comando para actualizar a su versión más reciente.
-
-```php
-composer global require laravel/valet
-```
-
-Una vez que se haya descargado el código fuente de Valet, deberás ejecutar el comando `install`:
-
-```php
-valet install
-valet restart
-```
-
-Después de actualizar, será necesario volver a indicar los directorios de tus sitios con los comandos `park` o `link` según sea el caso.
-
 <a name="serving-sites"></a>
 ## Activar sitios
 
 Una vez que Valet haya sido instalado, estarás listo para activar sitios. Valet proporciona dos comandos para ayudarte a activar sitios de Laravel: `park` y `link`.
 
 <a name="the-park-command"></a>
-**El comando `park`**
+#### El comando `park`
 
 -  Crea un nuevo directorio en tu Mac ejecutando algo como lo siguiente en la terminal `mkdir ~/Sites`. Después, `cd ~/Sites` y ejecuta `valet park`. Este comando va a registrar tu directorio actual como una ruta en la que Valet deberá buscar los sitios.
 - Después, crea un nuevo sitio de laravel dentro de este directorio: `laravel new blog`.
@@ -139,7 +115,7 @@ Una vez que Valet haya sido instalado, estarás listo para activar sitios. Valet
 **Y eso es todo**. Ahora, cada proyecto de Laravel que crees dentro de tu directorio ~/Sites será visible desde el navegador utilizando la convención `http://folder-name.test`.
 
 <a name="the-link-command"></a>
-**El comando `link`**
+#### El comando `link`
 
 El comando `link` también puede ser utilizado para enlazar sitios de Laravel. Este comando es útil si deseas configurar un solo sitio en un directorio y no todos los sitios dentro de él.
 
@@ -153,7 +129,7 @@ Puedes utilizar `valet link` para configurar el mismo proyecto para multiples (s
 :::
 
 <a name="securing-sites"></a>
-**Asegurar sitios con TLS**
+#### Asegurar sitios con TLS
 
 Por defecto, Valet mostrará los sitios a través de HTTP plano. Sin embargo, si deseas que esté encriptado con TLS para ser utilizado con HTTP/2, el comando `secure` está disponible. Por ejemplo, si tu sitio está funcionando con Valet en el dominio `laravel.test`, podrás ejecutar el siguiente comando para asegurarlo:
 
