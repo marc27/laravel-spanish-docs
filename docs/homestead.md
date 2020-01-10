@@ -632,7 +632,7 @@ Recuerda, Vagrant es inherentemente inseguro y estarás comparitendo tu máquina
 <a name="multiple-php-versions"></a>
 ### Múltiples versiones de PHP
 
-Homestead 6 introduce soporte para múltiples versiones de PHP en una misma máquina virtual. Puedes especificar qué versión de PHP deseas utilizar para un sitio en particular desde tu archivo `Homestead.yaml`. Las versiones disponibles de PHP son "5.6", "7.0", "7.1", "7.2" y "7.3" (por defecto):
+Homestead 6 introduce soporte para múltiples versiones de PHP en una misma máquina virtual. Puedes especificar qué versión de PHP deseas utilizar para un sitio en particular desde tu archivo `Homestead.yaml`. Las versiones disponibles de PHP son "5.6", "7.0", "7.1", "7.2", "7.3" y "7.4" (por defecto):
 
 ```php
 sites:
@@ -649,6 +649,7 @@ php7.0 artisan list
 php7.1 artisan list
 php7.2 artisan list
 php7.3 artisan list
+php7.4 artisan list
 ```
 
 También puedes actualizar la versión por defecto de la línea de comandos ejecutando los siguientes comandos dentro de tu maquina virtual de Homestead:
