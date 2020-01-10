@@ -709,7 +709,7 @@ $ xphp path/to/script
 
 #### Auto iniciando Xdebug
 
-Al depurar pruebas funcionales que realizan solicitudes al servidor web, es más fácil iniciar automáticamente la depuración en lugar de modificar las pruebas para pasar a través de un encabezado personalizado o una cookie para activar la depuración. Para forzar el inicio de Xdebug, modifique `/etc/php/7.#/Fpm/conf.d/20-xdebug.ini` dentro de su caja Vagrant y agregue la siguiente configuración:
+Al depurar pruebas funcionales que realizan solicitudes al servidor web, es más fácil iniciar automáticamente la depuración en lugar de modificar las pruebas para pasar a través de un encabezado personalizado o una cookie para activar la depuración. Para forzar el inicio de Xdebug, modifique `/etc/php/7.x/Fpm/conf.d/20-xdebug.ini` dentro de su caja Vagrant y agregue la siguiente configuración:
 
 ```php
 ; If Homestead.yml contains a different subnet for the ip address, this address may be different...
