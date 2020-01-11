@@ -15,6 +15,7 @@
 - [Drivers de Valet personalizados](#custom-valet-drivers)
     - [Drivers locales](#local-drivers)
 - [Otros comandos de Valet](#other-valet-commands)
+- [Archivos y directorios de Valet](#valet-directories-and-files)
 
 <a name="introduction"></a>
 ## Introducción
@@ -66,7 +67,7 @@ Tanto Valet como Homestead son buenas elecciones para configurar tu entorno de d
 **Valet requiere de macOS y [Homebrew](https://brew.sh). Antes de comenzar, asegurate de que ningún otro programa como Apache o Nginx esté utilizando el puerto 80 de tu computadora.**
 
 - Instala o actualiza [Homebrew](https://brew.sh/) a su última versión con `brew update`.
-- Instala PHP 7.3 usando Homebrew con `brew install homebrew/php/php`.
+- Instala PHP 7.4 usando Homebrew con `brew install homebrew/php/php`.
 - Instala [Composer](https://getcomposer.org).
 - Instala Valet por medio de Composer con `composer global require laravel/valet`. Asegúrate de que el directorio `~/.composer/vendor/bin` se encuentre en el "PATH" de tu sistema.
 - Ejecuta el comando `valet install`. Esto va a configurar e instalar Valet y DnsMasq y va a registrar el daemon de Valet para que se inicie junto con el sistema operativo.
@@ -94,6 +95,14 @@ valet use php@7.2
 
 valet use php
 ```
+
+::: danger Nota
+Valet sólo ejecuta una versión de PHP a la vez, incluso si tienes múltiples versiones de PHP instaladas.
+:::
+
+#### Resetear tu instalación
+
+Si estás teniendo problemas para que tu instalación de Valet funcione apropiadamente, ejecutar el comando `composer global update` seguido de `valet install` reseteará tu instalación y puede solucionar una variedad de problemas. En algunas ocasiones podría ser necesario un "reinicio forzado" ejecutando `valet uninstall --force` seguido de `valet install`.
 
 <a name="upgrading"></a>
 ### Actualización
@@ -291,4 +300,27 @@ Comando               | Descripción
 `valet start`         | Iniciar el daemon de Valet.
 `valet stop`          | Detener el daemon de Valet.
 `valet trust`         | Agrega archivos sudoers para Brew y Valet para permitir que los comandos de Valet se ejecuten sin solicitar contraseñas.
-`valet uninstall`     | Desinstalar el daemon de Valet.
+`valet uninstall`     | Desinstalar Valet: muestra instrucciones para la desinstalación manual; o pasa el parametro `--force` para eliminar Valet directamente.
+
+<a name="valet-directories-and-files"></a>
+## Archivos y directorios de Valet
+
+Puedes encontrar útil la siguiente información sobre directorios y archivos al momento de solucionar problemas en tu entorno de Valet:
+
+Archivo / Ruta | Descripción
+-------------- | -----------
+`~/.config/valet/` | Contiene toda la configuración de Valet. Es recomendable tener un respaldo de este directorio.
+`~/.config/valet/dnsmasq.d/` | Contiene la configuración de DNSMasq.
+`~/.config/valet/Drivers/` | Contiene drivers personalizados de Valet.
+`~/.config/valet/Extensions/` | Contiene extensiones y comandos personalizados de Valet.
+`~/.config/valet/Nginx/` | Contiene toda las configuraciones de Nginx generadas por Valet. Estos archivos son compilados de nuevo al ejecutar los comandos `install`, `secure` y `tld`.
+`~/.config/valet/Sites/` | Contiene todos los enlaces símbolicos de proyectos enlazados.
+`~/.config/valet/config.json` | Archivo de configuración principal de Valet.
+`~/.config/valet/valet.sock` | Socket PHP-FPM uusado por la configuración de Nginx de Valet. Esto sólo existirá si PHP se está ejecutando de forma apropiada.
+`~/.config/valet/Log/fpm-php.www.log` | Registo de usuario para errores de PHP.
+`~/.config/valet/Log/nginx-error.log` | Registro de usuario para errores de Nginx.
+`/usr/local/var/log/php-fpm.log` | Registro de sistema para errores de PHP-FPM.
+`/usr/local/var/log/nginx` | Contiene registros de acceso y error de Nginx.
+`/usr/local/etc/php/X.X/conf.d` | Contiene archivos `*.ini` para varias configuraciones de PHP.
+`/usr/local/etc/php/X.X/php-fpm.d/valet-fpm.conf` | Archivo de configuración de PHP-FPM.
+`~/.composer/vendor/laravel/valet/cli/stubs/secure.valet.conf` | Configuración por defecto de Nginx usada para construir certificados de sitios.
