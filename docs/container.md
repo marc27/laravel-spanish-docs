@@ -206,20 +206,11 @@ $this->app->bind('ReportAggregator', function ($app) {
 <a name="extending-bindings"></a>
 ### Extendiendo enlaces
 
-El método `extend` te permite modificar servicios resueltos. Por ejemplo, cuando un servicio es resuelto, puedes ejecutar código adicional para decorar o configurar el servicio. El método `extend` acepta un Closure, que debe retornar el servicio modificado, como único argumento:
-
-```php
-$this->app->extend(Service::class, function ($service) {
-    return new DecoratedService($service);
-});
-```
-
-La closure pasada al método `extend` también recibe la instancia del contenedor; por lo tanto, si necesitas la instancia del contenedor en tu función extendedora, simplemente agregala como segundo argumento:
+El método `extend` te permite modificar servicios resueltos. Por ejemplo, cuando un servicio es resuelto, puedes ejecutar código adicional para decorar o configurar el servicio. El método `extend` acepta un Closure, que debe retornar el servicio modificado, como único argumento. La Closure recibe el servicio siendo resuelto y la instancia del contenedor:
 
 ```php
 $this->app->extend(Service::class, function ($service, $app) {
-    $dependency = $app->make(SomeDependency::class);
-    return new DecoratedService($service, $dependency);
+    return new DecoratedService($service);
 });
 ```
 
