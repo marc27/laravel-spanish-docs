@@ -49,7 +49,7 @@ use Riak\Connection;
 class RiakServiceProvider extends ServiceProvider
 {
     /**
-    * Register bindings in the container.
+    * Register any application services.
     *
     * @return void
     */
