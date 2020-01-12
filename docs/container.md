@@ -214,6 +214,15 @@ $this->app->extend(Service::class, function ($service) {
 });
 ```
 
+La closure pasada al método `extend` también recibe la instancia del contenedor; por lo tanto, si necesitas la instancia del contenedor en tu función extendedora, simplemente agregala como segundo argumento:
+
+```php
+$this->app->extend(Service::class, function ($service, $app) {
+    $dependency = $app->make(SomeDependency::class);
+    return new DecoratedService($service, $dependency);
+});
+```
+
 <a name="resolving"></a>
 ## Resolviendo
 
