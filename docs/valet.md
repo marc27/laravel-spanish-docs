@@ -155,11 +155,27 @@ valet unsecure laravel
 <a name="sharing-sites"></a>
 ## Compartir sitios
 
-Valet incluso tiene un comando para compartir tus sitios locales con el mundo, sin necesidad de instalar software adicional. Solo necesitas tener instalado Valet:
+Valet incluso tiene un comando para compartir tus sitios locales con el mundo, proporcionando una forma fácil de probrar tus sitios en dispositivos móviles o compatirlo con miembros de tu equipo y clientes. Una vez que Valet está instalado no es necesario software adicional.
+
+### Compartir sitios mediante Ngrok
 
 Para compartir un sitio, deberás dirigirte hacia el directorio del sitio desde la terminal y ejecutar el comando `valet share`. Una URL accesible de manera pública será copiada a tu portapapeles y estará lista para que la pegues directamente en tu navegador.
 
 Para detener la ejecución de `share` en tu sitio, presiona `Control + C` para cancelar el proceso.
+
+::: danger TIP
+Puedes pasar parametros adicionales al comando share, como `valet share --region=eu`. Para más información, consulta la [documentación de ngrok](https://ngrok.com/docs).
+:::
+
+### Compartir sitios en tu red local
+
+Por defecto, Valet restringe el tráfico entrante a la interfaz `127.0.0.1`. De esta forma tu equipo de desarrollo no está expuesta a riesgos de seguridad en Internet.
+
+Si deseas permitir que otros dispositivos en tu red local accedan a los sitios de Valet en tu equipo mediante la IP del computador (por ejemplo: `192.168.1.10/app-name.test`), necesitarás editar manualmente el archivo de configuración de Nginx apropiado para dicho sitio para remover la restricción en la directiva `listen` eliminando el prefijo `127.0.0.1:` en la directa para los puertos 80 y 443.
+
+Si no has ejecutado `valet secure` en el proyecto, puedes abrir el acceso de la red para todos los sitios sin HTTPS ejecutando el archivo `/usr/local/etc/nginx/valet/valet.conf`. Sin embargo, si estás sirviendo el sitio del proyecto mediante HTTPS (has ejecutado `valet secure` para el sitio) entonces deberás editar el archivo `~/.config/valet/Nginx/app-name.test`.
+
+Una vez que has actualizado la configuración de Nginx, ejecuta el comando `valet restar` para aplicar los cambios en la configuración.
 
 <a name="site-specific-environment-variables"></a>
 ## Variables de entorno específicas del sitio
