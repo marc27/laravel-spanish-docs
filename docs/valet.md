@@ -155,7 +155,7 @@ valet unsecure laravel
 <a name="sharing-sites"></a>
 ## Compartir sitios
 
-Valet incluso tiene un comando para compartir tus sitios locales con el mundo, proporcionando una forma fácil de probrar tus sitios en dispositivos móviles o compatirlo con miembros de tu equipo y clientes. Una vez que Valet está instalado no es necesario software adicional.
+Valet incluso tiene un comando para compartir tus sitios locales con el mundo, proporcionando una forma fácil de probar tus sitios en dispositivos móviles o compatirlo con miembros de tu equipo y clientes. Una vez que Valet está instalado no es necesario software adicional.
 
 ### Compartir sitios mediante Ngrok
 
@@ -169,13 +169,13 @@ Puedes pasar parametros adicionales al comando share, como `valet share --region
 
 ### Compartir sitios en tu red local
 
-Por defecto, Valet restringe el tráfico entrante a la interfaz `127.0.0.1`. De esta forma tu equipo de desarrollo no está expuesta a riesgos de seguridad en Internet.
+Por defecto, Valet restringe el tráfico entrante a la interfaz `127.0.0.1`. De esta forma tu equipo de desarrollo no está expuesto a riesgos de seguridad en Internet.
 
 Si deseas permitir que otros dispositivos en tu red local accedan a los sitios de Valet en tu equipo mediante la IP del computador (por ejemplo: `192.168.1.10/app-name.test`), necesitarás editar manualmente el archivo de configuración de Nginx apropiado para dicho sitio para remover la restricción en la directiva `listen` eliminando el prefijo `127.0.0.1:` en la directa para los puertos 80 y 443.
 
 Si no has ejecutado `valet secure` en el proyecto, puedes abrir el acceso de la red para todos los sitios sin HTTPS ejecutando el archivo `/usr/local/etc/nginx/valet/valet.conf`. Sin embargo, si estás sirviendo el sitio del proyecto mediante HTTPS (has ejecutado `valet secure` para el sitio) entonces deberás editar el archivo `~/.config/valet/Nginx/app-name.test`.
 
-Una vez que has actualizado la configuración de Nginx, ejecuta el comando `valet restar` para aplicar los cambios en la configuración.
+Una vez que has actualizado la configuración de Nginx, ejecuta el comando `valet restart` para aplicar los cambios en la configuración.
 
 <a name="site-specific-environment-variables"></a>
 ## Variables de entorno específicas del sitio
@@ -332,7 +332,7 @@ Archivo / Ruta | Descripción
 `~/.config/valet/Nginx/` | Contiene toda las configuraciones de Nginx generadas por Valet. Estos archivos son compilados de nuevo al ejecutar los comandos `install`, `secure` y `tld`.
 `~/.config/valet/Sites/` | Contiene todos los enlaces símbolicos de proyectos enlazados.
 `~/.config/valet/config.json` | Archivo de configuración principal de Valet.
-`~/.config/valet/valet.sock` | Socket PHP-FPM uusado por la configuración de Nginx de Valet. Esto sólo existirá si PHP se está ejecutando de forma apropiada.
+`~/.config/valet/valet.sock` | Socket PHP-FPM usado por la configuración de Nginx de Valet. Esto sólo existirá si PHP se está ejecutando de forma apropiada.
 `~/.config/valet/Log/fpm-php.www.log` | Registo de usuario para errores de PHP.
 `~/.config/valet/Log/nginx-error.log` | Registro de usuario para errores de Nginx.
 `/usr/local/var/log/php-fpm.log` | Registro de sistema para errores de PHP-FPM.
