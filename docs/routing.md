@@ -431,7 +431,7 @@ public function boot()
     parent::boot();
 
     Route::bind('user', function ($value) {
-        return App\User::where('name', $value)->first() ?? abort(404);
+        return App\User::where('name', $value)->firstOrFail();
     });
 }
 ```
@@ -447,7 +447,7 @@ Como alternativa, puedes sobreescribir el método `resolveRouteBinding` en tu mo
 */
 public function resolveRouteBinding($value)
 {
-    return $this->where('name', $value)->first() ?? abort(404);
+    return $this->where('name', $value)->firstOrFail();
 }
 ```
 
@@ -481,10 +481,30 @@ Route::middleware('auth:api', 'throttle:60,1')->group(function () {
 
 #### Limite de rango dinámico
 
-Puedes especificar un máximo de peticiones dinámicas basado en un atribto del modelo `User` autenticado. Por ejemplo, si tu modelo `User` contiene un atributo `rate_limit`, puedes pasar el nombre del atributo al middleware `throttle` de modo que sea usado para calcular el conteo máximo de peticiones:
+Puedes especificar un máximo de peticiones dinámicas basado en un atributo del modelo `User` autenticado. Por ejemplo, si tu modelo `User` contiene un atributo `rate_limit`, puedes pasar el nombre del atributo al middleware `throttle` de modo que sea usado para calcular el conteo máximo de peticiones:
 
 ```php
 Route::middleware('auth:api', 'throttle:rate_limit,1')->group(function () {
+    Route::get('/user', function () {
+        //
+    });
+});
+```
+
+#### Limites de rango distintos para usuarios autenticados y no autenticados
+
+Puedes especificar diferentes limites de rango para usuarios autenticados y no autenticados. Por ejemplo, puedes especificar un máximo de `10` peticiones por minuto para usuarios no autenticados y `60` para usuarios autenticados:
+
+```php
+Route::middleware('throttle:10|60,1')->group(function () {
+    //
+});
+```
+
+También puedes combinar esta funcionalidad con limites de rango dinámicos. Por ejemplo, si tu usuario `Model` contiene un atributo `rage_limit`, puedes pasar el nombre del atributo al middleware `throttle` para que sea usado para calcular el número máximo de peticiones para usuarios autenticados:
+
+```php
+Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
     Route::get('/user', function () {
         //
     });
