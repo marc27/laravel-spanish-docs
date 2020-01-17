@@ -254,6 +254,18 @@ Route::get('user/{id}/profile', function ($id) {
 $url = route('profile', ['id' => 1]);
 ```
 
+Si pasas parametros adicionales en el arreglo, estos pares clave / valor serán automáticamente agregados a la cadena de consulta generada de la URL:
+
+```php
+Route::get('user/{id}/profile', function ($id) {
+    //
+})->name('profile');
+
+$url = route('profile', ['id' => 1, 'photos' => 'yes']);
+
+// /user/1/profile?photos=yes
+```
+
 #### Inspeccionando la ruta actual
 
 Si requieres determinar si la solicitud actual fue enrutada por una ruta nombrada dada, puedes usar el método `named` en una instancia de Ruta. Por ejemplo, puedes verficar el nombre de ruta actual desde el middleware de una ruta.
