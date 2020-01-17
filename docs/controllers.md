@@ -10,6 +10,7 @@
 - [Middleware de controlador](#controller-middleware)
 - [Controladores de recursos](#resource-controllers)
     - [Rutas de recursos parciales](#restful-partial-resource-routes)
+    - [Recursos anidados](#restful-nested-resources)
     - [Nombrando rutas de recursos](#restful-naming-resource-routes)
     - [Nombrando parámetros de rutas de recursos](#restful-naming-resource-route-parameters)
     - [Configuración regional para URIs de recursos](#restful-localizing-resource-uris)
@@ -253,6 +254,17 @@ Para generar rápidamente un controlador de recursos API que no incluya los mét
 ```php
 php artisan make:controller API/PhotoController --api
 ```
+
+<a name="restful-nested-resources"></a>
+### Recursos anidados
+
+Algunas veces necesitarás definir rutas a un recurso "anidado". Por ejemplo, una imagen puede tener múltiples "comentarios" que podrían estar atados a ésta. Para "anidar" controladores de recursos, usa la notación de "punto" en la declaración de tu ruta:
+
+```php
+Route::resource('photos.comments', 'PhotoCommentController');
+```
+
+Esta ruta registrará un recurso "anidado" al cual se puede acceder mediante URLs como la siguiente: photos/{photos}/comments/{comments}.
 
 <a name="restful-naming-resource-routes"></a>
 ### Nombrando rutas de recursos
