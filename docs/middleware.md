@@ -210,6 +210,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::middleware(['web', 'subscribed'])->group(function () { 
     //
 });
+
+Route::middleware(['web', 'subscribed'])->group(function () { 
+    //
+});
 ```
 
 ::: tip TIP
@@ -286,7 +290,7 @@ Route::put('post/{id}', function ($id) {
 <a name="terminable-middleware"></a>
 ## Middleware Terminable
 
-Algunas veces un middleware puede necesitar hacer algún trabajo después de que la respuesta HTTP ha sido preparada. Por ejemplo, el middleware "session" incluído con Laravel escribe los datos de la sesión para almacenarlos después de que la respuesta ha sido totalmente preparada. Si defines un método `terminate` en tu middleware, este automáticamente será llamado despúes de que la respuesta esté lista para ser enviada al navegador.
+Algunas veces un middleware puede necesitar hacer algún trabajo después de que la respuesta HTTP ha sido preparada. Si defines un método `terminate` en tu middleware y tu servidor web está usando FastCGI, el método `terminate` será llamado automáticamente despúes de que la respuesta sea enviada al navegador:
 
 ```php
 <?php
@@ -311,4 +315,4 @@ class StartSession
 
 El método `terminate` debería recibir tanto la consulta como la respuesta. Una vez has definido el middleware terminable, deberías agregarlo a la lista de rutas o como un middleware global en el archivo `app/Http/Kernel.php`.
 
-Cuando llamas al método `terminate` en tu middleware, Laravel resolverá una instancia fresca del middleware del [contenedor de servicio](/container.html). Si deseas utilizar la misma instancia del middleware cuando los métodos `handle` y `terminate` sean llamados, registra el middleware con el contenedor usando el método `singleton` del contenedor.
+Cuando llamas al método `terminate` en tu middleware, Laravel resolverá una instancia fresca del middleware del [contenedor de servicios](/container.html). Si deseas utilizar la misma instancia middleware cuando los métodos `handle` y `terminate` sean llamados, registra el middleware con el contenedor usando el método `singleton` del contenedor. Típicamente esto denería ser realizado en el método `register` de tu `AppServiceProvider.php`:
