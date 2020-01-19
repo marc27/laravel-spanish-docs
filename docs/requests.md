@@ -140,7 +140,7 @@ El [estándar PSR-7](https://www.php-fig.org/psr/psr-7/) específica interfaces 
 
 ```php
 composer require symfony/psr-http-message-bridge
-composer require zendframework/zend-diactoros
+composer require nyholm/psr7
 ```
 
 Una vez que has instalado estos paquetes, puedes obtener una solicitud PSR-7 al colocar la referencia  de la interface de solicitud en tu Closure de ruta o método de controlador:
