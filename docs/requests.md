@@ -293,6 +293,14 @@ if ($request->filled('name')) {
 }
 ```
 
+Para comprobar si la clave dada está ausente en la petición, puedes usar el método `missing`:
+
+```php
+if ($request->missing('name') {
+    //
+}
+```
+
 <a name="old-input"></a>
 ### Entrada antigua
 
