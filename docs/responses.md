@@ -84,7 +84,7 @@ return response($content)
 Laravel incluye un middleware `cache.headers`, el cual puede ser usado para rápidamente establecer el encabezado `Cache-control` para un grupo de rutas. Si `etag` está especificado en la lista de directivas, un hash MD5 del contenido de la respuesta será automáticamente establecido como identificador del ETag:
 
 ```php
-Route::middleware('cache-control:public,max-age=2628000;etag')->group(function() {
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
     Route::get('privacy', function () {
         // ...
     });
