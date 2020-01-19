@@ -100,6 +100,16 @@ use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+    * Register any application services.
+    *
+    * @return void
+    */
+    public function register()
+    {
+        //
+    }
+
+    /**
     * Bootstrap any application services.
     *
     * @return void
@@ -107,16 +117,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('key', 'value');
-    }
-
-    /**
-    * Register the service provider.
-    *
-    * @return void
-    */
-    public function register()
-    {
-        //
     }
 }
 ```
@@ -136,10 +136,20 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class ComposerServiceProvider extends ServiceProvider
+class ViewServiceProvider extends ServiceProvider
 {
     /**
-    * Register bindings in the container.
+    * Register any application services.
+    *
+    * @return void
+    */
+    public function register()
+    {
+        //
+    }
+
+    /**
+    * Bootstrap any application services.
     *
     * @return void
     */
@@ -155,17 +165,6 @@ class ComposerServiceProvider extends ServiceProvider
             //
         });
     }
-
-    /**
-    * Register the service provider.
-    *
-    * @return void
-    */
-    public function register()
-    {
-        //
-    }
-}
 ```
 
 ::: danger Nota
