@@ -691,7 +691,7 @@ El campo bajo validación debe ser _yes_, _on_, _1_, o _true_. Esto es útil par
 <a name="rule-active-url"></a>
 #### active_url
 
-El campo bajo validación debe tener un registro A o AAAA válido de acuerdo a la función de PHP `dns_get_record`.
+El campo bajo validación debe tener un registro A o AAAA válido de acuerdo a la función de PHP `dns_get_record`. El hostname de la URL proporcionada es extraido usando la función de PHP `parse_url` antes de ser pasado a `dns_get_record`.
 
 <a name="rule-after"></a>
 #### after:_date_
