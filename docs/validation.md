@@ -791,7 +791,7 @@ El campo bajo validación debe ser _numeric_ y debe tener una longitud exacta de
 <a name="rule-digits-between"></a>
 #### digits_between:_min_,_max_
 
-El campo bajo validación debe tener una longitud entre los valores de _min_ y _max_ dados.
+El campo bajo validación debe ser _númerico_ y tener una longitud entre los valores de _min_ y _max_ dados.
 
 <a name="rule-dimensions"></a>
 #### dimensions
