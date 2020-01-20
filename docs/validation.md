@@ -663,6 +663,8 @@ Debajo hay una lista con todas las reglas de validación disponibles y su funci�
 [Distinct](#rule-distinct)
 [E-Mail](#rule-email)
 [Ends With](#rule-ends-with)
+[Exclude If](#rule-exclude_if)
+[Exclude Unless](#rule-exclude_unless)
 [Exists (Database)](#rule-exists)
 [File](#rule-file)
 [Filled](#rule-filled)
@@ -877,6 +879,16 @@ El validador `filter`, que hace uso de la función `filter_var` de PHP, se entre
 #### ends_with:_foo_,_bar_,...
 
 El campo bajo validación debe terminar con alguno de los valores dados.
+
+<a name="rule-exclude-if"></a>
+#### exclude_if:_anotherfield_,_value_
+
+El campo bajo validación será excluido de los datos de la petición retornados por los métodos `validate` y `validated` si el campo _anotherfield_ es igual a _value_.
+
+<a name="rule-exclude-unless"></a>
+#### exclude_unless:_anotherfield_,_value_
+
+El campo bajo validación será excluido de los datos de la petición retornados por los métodos `validate` y `validated` a menos que _anotherfield_ sea igual a _value_.
 
 <a name="rule-exists"></a>
 #### exists:_table_,_column_
