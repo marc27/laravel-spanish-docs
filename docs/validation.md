@@ -14,6 +14,7 @@
     - [Autorizando solicitudes de formulario](#authorizing-form-requests)
     - [Personalizando los mensajes de error](#customizing-the-error-messages)
     - [Personalizando los atributos de validación](#customizing-the-validation-attributes)
+    - [Preparar datos para validación](#prepare-input-for-validation)
 - [Creando validadores manualmente](#manually-creating-validators)
     - [Redirección automática](#automatic-redirection)
     - [Paquetes de errores con nombres](#named-error-bags)
@@ -363,6 +364,27 @@ public function attributes()
     return [
         'email' => 'email address',
     ];
+}
+```
+
+<a name="prepare-input-for-validation"></a>
+### Preparar datos para validación
+
+Si necesitas limpiar datos de la petición antes de aplicar tus reglas de validación, puedes usar el método `prepareForValidation`:
+
+```php
+use Illuminate\Support\Str;
+
+/**
+* Prepare the data for validation.
+*
+* @return void
+*/
+protected function prepareForValidation()
+{
+    $this->merge([
+        'slug' => Str::slug($this->slug),
+    ]);
 }
 ```
 
