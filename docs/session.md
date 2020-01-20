@@ -65,7 +65,11 @@ php artisan migrate
 
 #### Redis
 
-Antes de usar sesiones Redis con Laravel, necesitarás instalar el paquete `predis/predis` (~1.0) por medio de Composer. Puedes configurar tus conexiones Redis en el archivo de configuración `database`. En el archivo de configuración de `session`, la opción `connection` puede ser usada para especificar cuál conexión Redis es usada por la sesión.
+Antes de usar sesiones de Redis con Laravel, necesitarás instalar ya sea la extensión PhpRedis de PHP mediante PECL o instalar el paquete `predis/predis` (~1.0) mediante Composer. Para más información sobre cómo configurar Redis, [consulta su página en la documentación](/redis.html#configuration).
+
+::: danger Tip
+En el archivo de configuración `session`, la opción `connection` puede ser usada para especificar que conexión de redis es usada por la sesión.
+:::
 
 <a name="using-the-session"></a>
 ## Usando la sesión
