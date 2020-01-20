@@ -909,12 +909,12 @@ El campo bajo validación no debe estar vacío cuando esté presente.
 <a name="rule-gt"></a>
 #### gt:_field_
 
-El campo bajo validación debe ser mayor que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla `size`.
+El campo bajo validación debe ser mayor que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla [`size`](#rule-size).
 
 <a name="rule-gte"></a>
 #### gte:_field_
 
-El campo bajo validación debe ser mayor o igual que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla `size`.
+El campo bajo validación debe ser mayor o igual que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla [`size`](#rule-size).
 
 <a name="rule-image"></a>
 #### image
@@ -972,12 +972,12 @@ El campo bajo validación debe ser una cadena JSON válida.
 <a name="rule-lt"></a>
 #### lt:_field_
 
-El campo bajo validación debe ser menor que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla `size`.
+El campo bajo validación debe ser menor que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla [`size`](#rule-size).
 
 <a name="rule-lte"></a>
 #### lte:_field_
 
-El campo bajo validación debe ser menor o igual que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla `size`.
+El campo bajo validación debe ser menor o igual que el _field_ dado. Los dos campos deben ser del mismo tipo. Las cadenas, los números, los arreglos y los archivos se evalúan utilizando las mismas convenciones que la regla [`size`](#rule-size).
 
 <a name="rule-max"></a>
 #### max:_value_
