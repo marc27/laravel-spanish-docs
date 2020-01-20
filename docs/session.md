@@ -284,7 +284,7 @@ use Illuminate\Support\ServiceProvider;
 class SessionServiceProvider extends ServiceProvider
 {
     /**
-    * Register bindings in the container.
+    * Register any application services.
     *
     * @return void
     */
