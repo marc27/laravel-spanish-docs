@@ -881,6 +881,12 @@ Ocasionalmente, puedes necesitar especificar una conexión de base de datos para
 'email' => 'exists:connection.staff,email'
 ```
 
+En lugar de especificar el nombre de la tabla directamente, puedes especificar el modelo de Eloquent que debe ser usado para determinar el nombre de la tabla:
+
+```php
+'user_id' => 'exists:App\User,id'
+```
+
 Si prefieres personalizar la consulta ejecutada por la regla de validación, puedes usar la clase `Rule` para definir con fluidez la regla. En este ejemplo, también especificaremos las reglas de validación como un arreglo en vez de usar el carácter `|` para delimitarlas.
 
 ```php
@@ -1159,7 +1165,15 @@ El campo bajo validación debe ser un identificador de zona horaria válida de a
 
 El campo bajo validación debe ser único en una tabla de base de datos dada. Si la opción `column` no es especificada, el nombre del campo será usado.
 
-**Especificando un nombre de columna personalizado:**
+**Especificando un nombre de tabla o columna personalizado:**
+
+En lugar de especificar el nombre de la tabla directamente, puedes especificar el modelo de Eloquent que debe ser usado para determinar el nombre de la tabla:
+
+```php
+'email' => 'unique:App\User,email_address'
+```
+
+La opción `column` puede ser usada para especificar la columna correspondiente al campo en la base de datos. Si la opción `column` no es especificada, el nombre del campo será usado. 
 
 ```php
 'email' => 'unique:users,email_address'
