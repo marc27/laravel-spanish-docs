@@ -190,7 +190,7 @@ $value = $request->session()->pull('key', 'default');
 <a name="flash-data"></a>
 ### Datos instantáneos
 
-Algunas veces puedes querer almacenar varios elementos en la sesión para la próxima solicitud. Puedes hacer eso usando el método `flash`. Los datos almacenados en la sesión usando este método solamente estarán disponibles durante la subsecuente solicitud HTTP, y luego serán eliminados. Los datos instantáneos son principalmente útiles para mensajes de estado con vida corta:
+Algunas veces puedes querer almacenar varios elementos en la sesión para la próxima solicitud. Puedes hacer eso usando el método `flash`. Los datos almacenados en la sesión usando este método estarán disponibles de forma inmediata así como también en la solicitud HTTP posterior. Luego de la petición HTTP posterior, los datos instantaneos serán eliminados. Los datos instantáneos son principalmente útiles para mensajes de estado con vida corta:
 
 ```php
 $request->session()->flash('status', 'Task was successful!');
