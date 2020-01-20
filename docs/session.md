@@ -284,7 +284,17 @@ use Illuminate\Support\ServiceProvider;
 class SessionServiceProvider extends ServiceProvider
 {
     /**
-    * Perform post-registration booting of services.
+    * Register bindings in the container.
+    *
+    * @return void
+    */
+    public function register()
+    {
+        //
+    }
+
+    /**
+    * Bootstrap any application services.
     *
     * @return void
     */
@@ -294,16 +304,6 @@ class SessionServiceProvider extends ServiceProvider
             // Return implementation of SessionHandlerInterface...
             return new MongoSessionHandler;
         });
-    }
-
-    /**
-    * Register bindings in the container.
-    *
-    * @return void
-    */
-    public function register()
-    {
-        //
     }
 }
 ```
