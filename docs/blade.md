@@ -637,16 +637,22 @@ Aunque la vista incluida heredará todos los datos disponibles en la vista princ
 @include('view.name', ['some' => 'data'])
 ```
 
-Si utiliza `@include` en una vista que no existe, Laravel lanzará un error. Si desea incluir una vista que puede o no estar presente, deberá utilizar la directiva `@includeIf`:
+Si utilizas `@include` en una vista que no existe, Laravel lanzará un error. Si deseas incluir una vista que puede o no estar presente, deberás utilizar la directiva `@includeIf`:
 
 ```php
 @includeIf('view.name', ['some' => 'data'])
 ```
 
-Si desea incluir una vista dependiendo de una condición booleana dada, puedes utilizar la directiva `@includeWhen`:
+Si deseas incluir una vista si una condición booleana dada evalua a `true`, puedes utilizar la directiva `@includeWhen`:
 
 ```php
 @includeWhen($boolean, 'view.name', ['some' => 'data'])
+```
+
+Si te gustaría incluir una vista si una expresión booleana evalua a `false`, puedes usar la directiva `@includeUnless`:
+
+```php
+@includeUnless($boolean, 'view.name', ['some' => 'data'])
 ```
 
 Para incluir la primera vista que exista para un arreglo dado de vistas, puedes usar la directiva `@includeFirst`:
