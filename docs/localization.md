@@ -36,6 +36,10 @@ return [
 ];
 ```
 
+::: danger Nota
+Para idiomas que difieren por territorio, debes nombrar los directorios de idiomas según la ISO 15897. Por ejemplo, "en_GB" debe ser usado para inglés británico en lugar de "en-gb".
+:::
+
 <a name="configuring-the-locale"></a>
 ### Configurando la configuración regional
 
