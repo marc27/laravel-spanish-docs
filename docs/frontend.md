@@ -145,9 +145,9 @@ php artisan ui react --auth
 Este único comando removerá la estructuración de Vue y la reemplazará con la de React, incluyendo un componente de ejemplo.
 
 <a name="adding-presets"></a>
-### Agregando Presets
+### Agregando presets
 
-Los ajustes prestablecidos son "macroable", lo que te permite agregar métodos adicionales a la clase `UiCommand` en tiempo de ejecución. Por ejemplo, el siguiente código agrega un método `nextjs` a la clase `UiCommand` . Por lo general debes declarar macros prestablecidos en un [proveedor de servicios](/providers.html):
+Los presets son "macroable", lo que te permite agregar métodos adicionales a la clase `UiCommand` en tiempo de ejecución. Por ejemplo, el siguiente código agrega un método `nextjs` a la clase `UiCommand`. Por lo general debes declarar los macros de un preset en un [proveedor de servicios](/providers.html):
 
 ```php
 use Laravel\Ui\UiCommand;
