@@ -768,7 +768,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-    * Register bindings in the container.
+    * Register any application services.
     *
     * @return void
     */
@@ -834,5 +834,9 @@ Una vez que el condicional personalizado haya sido definido, podremos usarlo fá
     // The application is in the testing environment...
 @else
     // The application is not in the local or testing environment...
+@endenv
+
+@unlessenv('production')
+    // The application is not in the production environment...
 @endenv
 ```
