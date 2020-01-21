@@ -385,6 +385,20 @@ if (mix.inProduction()) {
 }
 ```
 
+#### URLs base personalizadas
+
+Si tus assets compilados de mix son desplegados a un CDN separado de tu aplicación, necesitarás cambiar la URL base generada por la función `mix`. Puedes hacer esto agregando una opción de configuración `mix_url` a tu archivo de configuración `config/app.php`:
+
+```php
+'mix_url' => env('MIX_ASSET_URL', null)
+```
+
+Luego de configurar la URL de Mix, la función `mix` agregará la URL configurada al generar URLs a assets:
+
+```php
+https://cdn.example.com/js/app.js?id=1964becbdd96414518cd
+```
+
 <a name="browsersync-reloading"></a>
 ## Recarga con Browsersync
 
