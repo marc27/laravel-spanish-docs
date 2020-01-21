@@ -23,7 +23,7 @@ Ya que las aplicaciones manejadas por HTTP son sin estado, las sesiones proporci
 <a name="configuration"></a>
 ### Configuración
 
-El archivo de configuración de sesión es almacenado en `config/session.php`. Asegurate de revisar las opciones disponibles para ti en este archivo. De forma predeterminada, Laravel está configurado para usar el manejador de sesión `cookie`, el cual trabajará bién con muchas aplicaciones.
+El archivo de configuración de sesión es almacenado en `config/session.php`. Asegúrate de revisar las opciones disponibles para ti en este archivo. De forma predeterminada, Laravel está configurado para usar el manejador de sesión `cookie`, el cual trabajará bien con muchas aplicaciones.
 
 La opción de configuración `driver` de la sesión define donde los datos de la sesión serán almacenados para cada solicitud. Laravel viene con varios excelentes manejadores de forma predeterminada.
 
