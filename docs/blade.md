@@ -140,7 +140,7 @@ La variable `{{ $slot }}` tendrá el contenido que deseamos inyectar en el compo
 Para instruir a Laravel para que cargue la primera vista que existe desde un arreglo de posibles vistas para el componente, puedes usar la directiva `componentFirst`:
 
 ```php
-@componentFirst(['custom.alert', 'alert'])
+@componentfirst(['custom.alert', 'alert'])
     <strong>Whoops!</strong> Something went wrong!
 @endcomponentfirst
 ```
