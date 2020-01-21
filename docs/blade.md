@@ -142,7 +142,7 @@ Para instruir a Laravel para que cargue la primera vista que existe desde un arr
 ```php
 @componentFirst(['custom.alert', 'alert'])
     <strong>Whoops!</strong> Something went wrong!
-@endcomponent
+@endcomponentfirst
 ```
 
 A veces es útil definir múltiples slots para un componente. Vamos a modificar nuestro componente alerta para permitir la inyección de un "título". Los slots nombrados podrán despegarse al hacer "echo" a la variable que coincida con sus nombres:
