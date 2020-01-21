@@ -315,4 +315,4 @@ class StartSession
 
 El método `terminate` debería recibir tanto la consulta como la respuesta. Una vez has definido el middleware terminable, deberías agregarlo a la lista de rutas o como un middleware global en el archivo `app/Http/Kernel.php`.
 
-Cuando llamas al método `terminate` en tu middleware, Laravel resolverá una instancia fresca del middleware del [contenedor de servicios](/container.html). Si deseas utilizar la misma instancia middleware cuando los métodos `handle` y `terminate` sean llamados, registra el middleware con el contenedor usando el método `singleton` del contenedor. Típicamente esto denería ser realizado en el método `register` de tu `AppServiceProvider.php`:
+Cuando llamas al método `terminate` en tu middleware, Laravel resolverá una instancia fresca del middleware del [contenedor de servicios](/container.html). Si deseas utilizar la misma instancia middleware cuando los métodos `handle` y `terminate` sean llamados, registra el middleware con el contenedor usando el método `singleton` del contenedor. Típicamente esto debería ser realizado en el método `register` de tu `AppServiceProvider.php`:
