@@ -249,7 +249,7 @@ Si necesitas especificar [parametros de petición de S3](https://docs.aws.amazon
 $url = Storage::temporaryUrl(
     'file.jpg', 
     now()->addMinutes(5), 
-    ['ResponseContentType' => 'application/octet-stream'],
+    ['ResponseContentType' => 'application/octet-stream']
 );
 ```
 
