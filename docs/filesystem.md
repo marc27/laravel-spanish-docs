@@ -395,6 +395,10 @@ $path = Storage::putFileAs(
 );
 ```
 
+::: danger Nota
+Caracteres unicode invalidos y que no pueden ser mostrados serán automáticamente eliminados de rutas de archivos. Por lo tanto, podrías querer sanitizar las rutas de tus archivos antes de pasarlas a los métodos de almacenamiento de archivos de Laravel. Las rutas de archivos son normalizadas usando el método `League\Flysystem\Util::normalizePath`.
+:::
+
 #### Especificando un disco
 
 Por defecto, este método usará tu disco predeterminado. Si te gustaría especificar otro disco, pasa el nombre del disco como segundo argumento al método `store`:
