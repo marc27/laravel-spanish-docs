@@ -480,7 +480,9 @@ Auth::logout();
 <a name="invalidating-sessions-on-other-devices"></a>
 ### Invalidando sesiones en otros dispositivos
 
-Laravel también proporciona un mecanismo para invalidar y "sacar" las sesiones de un usuario que están activas en otros dispositivos sin invalidar la sesión en el dispositivo actual. Antes de comenzar, debes asegurarte de que el middleware `Illuminate\Session\Middleware\AuthenticateSession` está presente y no está comentado en tu clase `app/Http/Kernel.php` del grupo de middleware `web`:
+Laravel también proporciona un mecanismo para invalidar y "sacar" las sesiones de un usuario que están activas en otros dispositivos sin invalidar la sesión en el dispositivo actual. Esta característica es típicamente utilizada cuando un usuario está cambiando o actualizando su contraseña y te gustaría invalidar sesiones en otros dispositivos mientras mantienes el dispositivo actual autenticado.
+
+Antes de comenzar, debes asegurarte de que el middleware `Illuminate\Session\Middleware\AuthenticateSession` está presente y no está comentado en tu clase `app/Http/Kernel.php` del grupo de middleware `web`:
 
 ```php
 'web' => [
