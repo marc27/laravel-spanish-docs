@@ -433,7 +433,7 @@ Si el archivo ya ha sido almacenado, su visibilidad puede ser retornada y establ
 ```php
 $visibility = Storage::getVisibility('file.jpg');
 
-Storage::setVisibility('file.jpg', 'public')
+Storage::setVisibility('file.jpg', 'public');
 ```
 
 <a name="deleting-files"></a>
