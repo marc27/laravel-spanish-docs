@@ -1057,6 +1057,20 @@ $result = Str::endsWith('This is my name', 'name');
 // true
 ```
 
+También puedes pasar un arreglo de valores para determinar si la cadena dada termina con alguno de los valores dados:
+
+```php
+use Illuminate\Support\Str;
+
+$result = Str::endsWith('This is my name', ['name', 'foo']);
+
+// true
+
+$result = Str::endsWith('This is my name', ['this', 'foo']);
+
+// false
+```
+
 <a name="method-str-finish"></a>
 #### `Str::finish()` {#collection-method}
 
