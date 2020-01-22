@@ -347,7 +347,7 @@ class PostPolicy
     *
     * @param  \App\User  $user
     * @param  \App\Post  $post
-    * @return bool
+    * @return Response   $response
     */
     public function update(User $user, Post $post)
     {
@@ -452,7 +452,7 @@ class PostPolicy
     */
     public function update(?User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return optional($user)->id === $post->user_id;
     }
 }
 ```
