@@ -27,12 +27,12 @@
 <a name="introduction"></a>
 ## Introducción
 
-Laravel proporciona una API limpia y simple sobre la popular biblioteca [SwiftMailer](https://swiftmailer.symfony.com/) con drivers para SMTP, Mailgun, Postmark, SparkPost, Amazon SES y `sendmail`, permitiéndote comenzar rápidamente a enviar correos a través de un servicio local o en la nube de tu elección.
+Laravel proporciona una API limpia y simple sobre la popular biblioteca [SwiftMailer](https://swiftmailer.symfony.com/) con drivers para SMTP, Mailgun, Postmark, Amazon SES y `sendmail`, permitiéndote comenzar rápidamente a enviar correos a través de un servicio local o en la nube de tu elección.
 
 <a name="driver-prerequisites"></a>
 ### Requisitos previos
 
-Los drivers basados ​​en una API como Mailgun, SparkPost y Postmark suelen ser más simples y rápidos que los servidores SMTP. Si es posible, deberías usar uno de estos drivers. Todos los drivers con API requieren la biblioteca Guzzle HTTP, que puede instalarse a través del gestor de paquetes Composer:
+Los drivers basados ​​en una API como Mailgun y Postmark suelen ser más simples y rápidos que los servidores SMTP. Si es posible, deberías usar uno de estos drivers. Todos los drivers con API requieren la biblioteca Guzzle HTTP, que puede instalarse a través del gestor de paquetes Composer:
 
 ```php
 composer require guzzlehttp/guzzle
@@ -72,27 +72,6 @@ Luego, instala Guzzle y establece la opción `driver` en tu archivo de configura
 ```php
 'postmark' => [
     'token' => 'your-postmark-token',
-],
-```
-
-#### Driver SparkPost
-
-Para usar el driver SparkPost, primero instale Guzzle, luego configura la opción `driver` en tu archivo de configuración `config/mail.php` en `sparkpost`. Luego, verifica que tu archivo de configuración `config/services.php` contiene las siguientes opciones:
-
-```php
-'sparkpost' => [
-    'secret' => 'your-sparkpost-key',
-],
-```
-
-Si es necesario, puedes también configurar cuál [endpoint de API](https://developers.sparkpost.com/api/#header-endpoints) debería ser usado:
-
-```php
-'sparkpost' => [
-    'secret' => 'your-sparkpost-key',
-    'options' => [
-        'endpoint' => 'https://api.eu.sparkpost.com/api/v1/transmissions',
-    ],
 ],
 ```
 
