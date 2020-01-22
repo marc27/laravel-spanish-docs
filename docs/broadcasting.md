@@ -426,7 +426,7 @@ Broadcast::channel('order.{order}', function ($user, Order $order) {
 Los canales privados y de presencia autentican al usuario actual a través de la protección de autenticación por defecto de la aplicacion. Si el usuario no está autenticado, la autorizacion del canal es automáticamente negada y el callback de autorización nunca se ejecuta. Sin embargo, puedes asignar múltiples protecciones personalizadas que deben autenticar la solicitud entrante si es necesario:
 
 ```php
-Broadcast::channel('channel', function() {
+Broadcast::channel('channel', function () {
     // ...
 }, ['guards' => ['web', 'admin']]);
 ```
