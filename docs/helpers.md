@@ -38,6 +38,7 @@ Laravel incluye una variedad de funciones "helpers" globales de PHP. Muchas de e
 [Arr::forget](#method-array-forget)
 [Arr::get](#method-array-get)
 [Arr::has](#method-array-has)
+[Arr::isAssoc](#method-array-isassoc)
 [Arr::last](#method-array-last)
 [Arr::only](#method-array-only)
 [Arr::pluck](#method-array-pluck)
@@ -369,6 +370,23 @@ $contains = Arr::has($array, 'product.name');
 // true
 
 $contains = Arr::has($array, ['product.price', 'product.discount']);
+
+// false
+```
+
+<a name="method-array-isassoc"></a>
+#### `Arr::isAssoc()` {#collection-method}
+
+`Arr::isAssoc` retorna `true` si el arreglo dado es un arreglo asociativo. Un arreglo es considerado "asociativo" si no tiene claves númericas secuenciales comenzando por cero:
+
+```php
+use Illuminate\Support\Arr;
+
+$isAssoc = Arr::isAssoc(['product' => ['name' => 'Desk', 'price' => 100]]);
+
+// true
+
+$isAssoc = Arr::isAssoc([1, 2, 3]);
 
 // false
 ```
