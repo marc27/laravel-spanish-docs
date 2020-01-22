@@ -48,6 +48,7 @@ Las respuestas de [Eloquent](/eloquent.html) siempre retornan una instancia de `
 Las colecciones son "macroable", es decir, te permite agregar métodos adicionales a la clase `Collection` en tiempo de ejecución. Por ejemplo, el siguiente código agrega un método `toUpper` a la clase `Collection`:
 
 ```php
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 Collection::macro('toUpper', function () {
