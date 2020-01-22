@@ -93,7 +93,7 @@ window.Echo = new Echo({
 
 #### Redis
 
-Si estás usando el transmisor de Redis, debes instalar la librería Predis:
+Si estás usando el transmisor de Redis, debes instalar ya sea la extensión de PHP phpredis mediante PECL o instalar la librería Predis mediante Composer:
 
 ```php
 composer require predis/predis
