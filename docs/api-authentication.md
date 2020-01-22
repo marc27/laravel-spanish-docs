@@ -4,7 +4,7 @@
 
 - [Introducción](#introduction)
 - [Configuración](#configuration)
-    - [Migraciones de la base de datos](#database-preparation)
+    - [Preparando la base de datos](#database-preparation)
 - [Generando tokens](#generating-tokens)
     - [Hashing tokens](#hashing-tokens)
 - [Protegiendo rutas](#protecting-routes)
