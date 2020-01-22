@@ -91,6 +91,7 @@ Laravel incluye una variedad de funciones "helpers" globales de PHP. Muchas de e
 [Str::endsWith](#method-ends-with)
 [Str::finish](#method-str-finish)
 [Str::is](#method-str-is)
+[Str::isUuid](#method-str-is-uuid)
 [Str::kebab](#method-kebab-case)
 [Str::limit](#method-str-limit)
 [Str::orderedUuid](#method-str-ordered-uuid)
@@ -1101,6 +1102,23 @@ $matches = Str::is('foo*', 'foobar');
 // true
 
 $matches = Str::is('baz*', 'foobar');
+
+// false
+```
+
+<a name="method-str-is-uuid"></a>
+#### `Str::isUuid()` {#collection-method}
+
+El método `Str::isUuid` determina si la cadena dada es un UUID valido:
+
+```php
+use Illuminate\Support\Str;
+
+$isUuid = Str::isUuid('a0a2a2d2-0b87-4a18-83f2-2529882be2de');
+
+// true
+
+$isUuid = Str::isUuid('laravel');
 
 // false
 ```
