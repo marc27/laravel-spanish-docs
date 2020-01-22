@@ -85,18 +85,14 @@ Event::listen('event.*', function ($eventName, array $data) {
 <a name="event-discovery"></a>
 ### Descubrimiento de eventos
 
-::: danger Nota
-El Descubrimiento de Eventos está disponible para Laravel 5.8.9 o posterior.
-:::
-
 En vez de registrar eventos y oyentes (listeners) manualmente en el arreglo `$listen` del `EventServiceProvider`, puedes habilitar la detección automática de eventos. Cuando se habilita la detección de eventos, Laravel encontrará y registrará automáticamente tus eventos y oyentes escaneando el directorio `Listeners` de tu aplicación. Además, todos los eventos definidos explícitamente listados en el `EventServiceProvider` seguirán registrados.
 
 Laravel encuentra los listeners de eventos mediante el escaneo de las clases listener usando reflexión. Cuando Laravel encuentra algun método de clase listener que empieza por `handle`, Laravel registrará dichos métodos como listeners de eventos para el evento que está escrito en la firma del método:
 
 ```php
 use App\Events\PodcastProcessed;
-class SendPodcastProcessedNotification
 
+class SendPodcastProcessedNotification
 {
     /**
     * Handle the given event.
