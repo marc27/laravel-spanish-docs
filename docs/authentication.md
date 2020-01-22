@@ -327,7 +327,21 @@ if (Auth::guard('admin')->attempt($credentials)) {
 
 Para desconectar usuarios de tu aplicación, debes utilizar el método `logout` del facade `Auth`. Esto va a borrar la información de autenticación en la sesión del usuario:
 
-    Auth::logout();
+```php
+Auth::logout();
+```
+
+Laravel también proporciona métodos para desconectar a un usuario de la aplicación únicamente en su dispositivo actual, o para desconectar a un usuario de la aplicación en otros dispositivos:
+
+```php
+Auth::logoutCurrentDevice();
+
+Auth::logoutOtherDevices();
+```
+
+::: danger Nota
+Antes de usar el método `logoutOtherDevices`, asegurate de que el middleware `Illuminate\Session\Middleware\AuthenticateSession::class` está presente y activo en el [grupo middleware](/middleware.html#middleware-groups) `web` de tu kernel HTTP.
+:::
 
 <a name="remembering-users"></a>
 ### Recordar usuarios
