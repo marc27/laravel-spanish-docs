@@ -58,6 +58,27 @@ Al usar el driver `local`, todas las operaciones sobre archivos son relativas al
 Storage::disk('local')->put('file.txt', 'Contents');
 ```
 
+#### Permisos
+
+La [visibilidad](#file-visibility) `public` se traduce a `0755` para directorios y `0644` para archivos. Puedes modificar el mapeo de permisos por defecto en tu archivo de configuración `filesystems`:
+
+```php
+'local' => [
+    'driver' => 'local',
+    'root' => storage_path('app'),
+    'permissions' => [
+        'file' => [
+            'public' => 0664,
+            'private' => 0600,
+        ],
+        'dir' => [
+            'public' => 0775,
+            'private' => 0700,
+        ],
+    ],
+],
+```
+
 <a name="driver-prerequisites"></a>
 ### Prerrequisitos del driver
 
