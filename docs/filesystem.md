@@ -520,7 +520,7 @@ use Spatie\FlysystemDropbox\DropboxAdapter;
 class DropboxServiceProvider extends ServiceProvider
 {
     /**
-    * Register bindings in the container.
+    * Register any application services.
     *
     * @return void
     */
