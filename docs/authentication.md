@@ -94,26 +94,11 @@ Ahora que ya tienes tus rutas y vistas configuradas para los controladores de au
 
 #### Personalizar rutas
 
-Cuando un usuario se ha autenticado exitosamente, será redirigido a la URI `/home`. Puedes personalizar la ubicación de redireccionamiento post-autenticación definiendo una propiedad `redirectTo` en `LoginController`, `RegisterController`, `ResetPasswordController` y `VerificationController`:
+Cuando un usuario se ha autenticado exitosamente, será redirigido a la URI `/home`. Puedes personalizar la ruta de redirección post-autenticación usando la constante `HOME` definida en tu `RouteServiceProvider`:
 
 ```php
-protected $redirectTo = '/';
+public const HOME = '/home';
 ```
-
-Luego, debes modificar el método `handle` del middleware `RedirectIfAuthenticated` para usar tu nueva URI al redirigir al usuario.
-
-Si la ruta de redireccionamiento necesita generar lógica personalizada puedes definir un método `redirectTo` en lugar de una propiedad `redirectTo`:
-
-```php
-protected function redirectTo()
-{
-    return '/path';
-}
-```
-
-::: tip TIP
-El método `redirectTo` toma precedencia sobre la propiedad `redirectTo`.
-:::
 
 #### Personalizar usuario
 
