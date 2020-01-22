@@ -46,7 +46,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->fill([
-            'secret' => encrypt($request->secret)
+            'secret' => encrypt($request->secret),
         ])->save();
     }
 }
