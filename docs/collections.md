@@ -2651,13 +2651,20 @@ Este método tiene la misma funcionalidad que el método [`whereIn`](#method-whe
 El método `whereInstanceOf` filtra la colección por un tipo de clase dado:
 
 ```php
+use App\User;
+use App\Post;
+
 $collection = collect([
     new User,
     new User,
     new Post,
 ]);
 
-return $collection->whereInstanceOf(User::class);
+$filtered = $collection->whereInstanceOf(User::class);
+
+$filtered->all();
+
+// [App\User, App\User]
 ```
 
 <a name="method-wherenotbetween"></a>
