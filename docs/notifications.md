@@ -888,7 +888,7 @@ public function toSlack($notifiable)
 {
     return (new SlackMessage)
                 ->from('Laravel')
-                ->image('https://laravel.com/favicon.png')
+                ->image('https://laravel.com/img/favicon/favicon.ico')
                 ->content('This will display the Laravel logo next to the message');
 }
 ```
