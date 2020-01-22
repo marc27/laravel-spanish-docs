@@ -81,7 +81,9 @@ Laravel incluye una variedad de funciones "helpers" globales de PHP. Muchas de e
 [e](#method-e)
 [preg_replace_array](#method-preg-replace-array)
 [Str::after](#method-str-after)
+[Str::afterLast](#method-str-after-last)
 [Str::before](#method-str-before)
+[Str::beforeLast](#method-str-before-last)
 [Str::camel](#method-camel-case)
 [Str::contains](#method-str-contains)
 [Str::containsAll](#method-str-contains-all)
@@ -936,6 +938,19 @@ $slice = Str::after('This is my name', 'This is');
 // ' my name'
 ```
 
+<a name="method-str-after-last"></a>
+#### `Str::afterLast()` {#collection-method}
+
+El método `Str::afterLast` retorna todo luego de la última ocurrencia del valor dado en una cadena:
+
+```php
+use Illuminate\Support\Str;
+
+$slice = Str::afterLast('App\Http\Controllers\Controller', '\\');
+
+// 'Controller'
+```
+
 <a name="method-str-before"></a>
 #### `Str::before()` {#collection-method}
 
@@ -947,6 +962,19 @@ use Illuminate\Support\Str;
 $slice = Str::before('This is my name', 'my name');
 
 // 'This is '
+```
+
+<a name="method-str-before-last"></a>
+#### `Str::beforeLast()` {#collection-method}
+
+El método `Str::beforeLast` retorna todo antes de la última ocurrencia del valor dado en una cadena:
+
+```php
+use Illuminate\Support\Str;
+
+$slice = Str::beforeLast('This is my name', 'is');
+
+// 'This '
 ```
 
 <a name="method-camel-case"></a>
