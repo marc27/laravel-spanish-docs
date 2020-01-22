@@ -238,7 +238,7 @@ public function __construct()
 <a name="password-confirmation"></a>
 ### Confirmación de contraseña
 
-Algunas veces, puedes querer requerir al usuario la confirmación de su contraseña antes de acceder a alguna area especifica de tu aplicación. Por ejemplo, puedes requerir esto antes de que el usuario modifique cualquier configuración de facturación dentro de la aplicación. 
+Algunas veces, puedes querer requerir al usuario la confirmación de su contraseña antes de acceder a alguna área específica de tu aplicación. Por ejemplo, puedes requerir esto antes de que el usuario modifique cualquier configuración de facturación dentro de la aplicación. 
 
 Para lograr esto, Laravel proporciona un middleware `password.confirm`. Adjuntar el middleware `password.confirm` a una ruta redireccionará a los usuarios a una pantalla donde necesitan confirmar su contraseña antes de continuar:
 
@@ -248,7 +248,7 @@ Route::get('/settings/security', function () {
 })->middleware(['auth', 'password.confirm']);
 ```
 
-Luego de que el usuario ha confirmado con éxito su contraseña, este sera redirigido a la ruta a la que originalmente intentaron acceder. Por defecto, luego de confirmar su contraseña, el usuario no tendrá que confirmar su contraseña de nuevo por tres horas. Eres libre de personalizar la longitud de tiempo antes de que el usuario deba volver a confirmar su contraseña usando la opción de configuración `auth.password_timeout`.
+Luego de que el usuario ha confirmado con éxito su contraseña, este será redirigido a la ruta a la que originalmente intentaron acceder. Por defecto, luego de confirmar su contraseña, el usuario no tendrá que confirmar su contraseña de nuevo por tres horas. Eres libre de personalizar la longitud de tiempo antes de que el usuario deba volver a confirmar su contraseña usando la opción de configuración `auth.password_timeout`.
 
 <a name="login-throttling"></a>
 ### Regulación De Inicio De Sesión
@@ -340,7 +340,7 @@ Auth::logoutOtherDevices();
 ```
 
 ::: danger Nota
-Antes de usar el método `logoutOtherDevices`, asegurate de que el middleware `Illuminate\Session\Middleware\AuthenticateSession::class` está presente y activo en el [grupo middleware](/middleware.html#middleware-groups) `web` de tu kernel HTTP.
+Antes de usar el método `logoutOtherDevices`, asegúrate de que el middleware `Illuminate\Session\Middleware\AuthenticateSession::class` está presente y activo en el [grupo middleware](/middleware.html#middleware-groups) `web` de tu kernel HTTP.
 :::
 
 <a name="remembering-users"></a>
