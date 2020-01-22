@@ -38,7 +38,19 @@ php artisan help migrate
 
 ### Tinker REPL
 
-Todas las aplicaciones de Laravel incluyen Tinker, un REPL desarrollado usando el paquete [PsySH](https://github.com/bobthecow/psysh). Tinker te permite interactuar con toda tu aplicación de Laravel en la línea de comando, incluyendo el ORM Eloquent, colas de trabajo, eventos, entre otros. Para entrar en el entorno de Tinker, ejecuta el comando de Artisan `tinker`:
+Laravel Tinker es un poderoso REPL para el framework Laravel, desarrollado usando el paquete [PsySH](https://github.com/bobthecow/psysh).
+
+#### Instalación
+
+Todas las aplicaciones de Laravel incluyen Tinker por defecto. Sin embargo, de ser necesario puedes instalarlo manualmente usando Composer:
+
+```php
+composer require laravel/tinker
+```
+
+#### Uso
+
+Tinker te permite interactuar con toda tu aplicación de Laravel en la línea de comandos, incluyendo el ORM Eloquent, trabajos, eventos y más. Para ingresar al entorno de Tinker, ejecuta el comando de Artisan `Tinker`:
 
 ```php
 php artisan tinker
@@ -49,6 +61,10 @@ Puedes publicar el archivo de configuración de Tinker usando el comando vendor:
 ```php
 php artisan vendor:publish --provider="Laravel\Tinker\TinkerServiceProvider"
 ```
+
+::: danger Nota
+La función helper `dispatch` y el método `dispatch` en la clase `Dispatchable` dependen de garbage collection para colocar el trabajo en la cola. Por lo tanto, al usar tinker, debes usar `Bus::dispatch` o `Queue::push` para despachar trabajos.
+:::
 
 #### Lista blanca de comandos
 
