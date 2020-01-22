@@ -791,7 +791,7 @@ public function toNexmo($notifiable)
 <a name="routing-sms-notifications"></a>
 ### Enrutar notificaciones por SMS
 
-Al enviar notificaciones a través del canal `nexmo`, el sistema de notificaciones buscará automáticamente por un atributo `phone_number` en la entidad notificable. Si deseas personalizar el número telefónico al cual la notificación será entregada, define un método `routeNotificationForNexmo` en la entidad:
+Para enrutar notificaciones de Nexmo al número de telefono correcto, define un método `routeNotificationForNexmo` en tu entidad notifiable:
 
 ```php
 <?php
@@ -813,7 +813,7 @@ class User extends Authenticatable
     */
     public function routeNotificationForNexmo($notification)
     {
-        return $this->phone;
+        return $this->phone_number;
     }
 }
 ```
