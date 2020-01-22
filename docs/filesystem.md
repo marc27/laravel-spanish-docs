@@ -207,6 +207,12 @@ El método `exists` puede ser usado para determinar si un archivo existe en el d
 $exists = Storage::disk('s3')->exists('file.jpg');
 ```
 
+El método `missing` puede ser usado para determinar si falta un archivo en el disco:
+
+```php
+$missing = Storage::disk('s3')->missing('file.jpg');
+```
+
 <a name="downloading-files"></a>
 ### Descargando archivos
 
