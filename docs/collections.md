@@ -9,6 +9,7 @@
 - [Mensajes de orden superior](#higher-order-messages)
 - [Colecciones lazy](#lazy-collections)
     - [Introducción](#lazy-collection-introduction)
+    - [Creando colecciones lazy](#creating-lazy-collections)
     - [El contrato Enumerable](#the-enumerable-contract)
     - [Métodos de colección lazy](#lazy-collection-methods)
 
