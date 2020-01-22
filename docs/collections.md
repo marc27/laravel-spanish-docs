@@ -693,7 +693,7 @@ Si la colección está vacía, `every` devolverá true:
 ```php
 $collection = collect([]);
 
-$collection->every(function($value, $key) {
+$collection->every(function ($value, $key) {
     return $value > 2;
 });
 
@@ -2499,7 +2499,7 @@ $collection->all();
 
 $collection = collect(['michael', 'tom']);
 
-$collection->whenEmpty(function($collection) {
+$collection->whenEmpty(function ($collection) {
     return $collection->push('adam');
 }, function($collection) {
     return $collection->push('taylor');
@@ -2542,7 +2542,7 @@ $collection->all();
 
 $collection = collect();
 
-$collection->whenNotEmpty(function($collection) {
+$collection->whenNotEmpty(function ($collection) {
     return $collection->push('adam');
 }, function($collection) {
     return $collection->push('taylor');
