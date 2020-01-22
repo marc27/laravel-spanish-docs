@@ -410,6 +410,10 @@ El método `contains` utiliza comparaciones "flexibles" (loose) al verificar val
 
 Este método funciona igual que el método [`contains`](#method-contains); sin embargo, todos los valores se comparan utilizando comparaciones "estrictas".
 
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-contains).
+:::
+
 <a name="method-count"></a>
 #### `count()`
 
@@ -529,6 +533,10 @@ $diff->all();
 
 // [1, 3, 5]
 ```
+
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-diff).
+:::
 
 <a name="method-diffassoc"></a>
 #### `diffAssoc()`
@@ -717,6 +725,10 @@ $filtered->all();
 ```
 
 Para hacer lo contrario a `except`, vea el método [only](#method-only).
+
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-except).
+:::
 
 <a name="method-filter"></a>
 #### `filter()`
@@ -1099,6 +1111,10 @@ $intersect->all();
 
 // [0 => 'Desk', 2 => 'Chair']
 ```
+
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-intersect).
+:::
 
 <a name="method-intersectbykeys"></a>
 #### `intersectByKeys()`
@@ -1523,6 +1539,10 @@ $filtered->all();
 ```
 
 Para hacer lo inverso a `only`, usa el método [except](#method-except).
+
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-only).
+:::
 
 <a name="method-pad"></a>
 #### `pad()`
@@ -2366,6 +2386,10 @@ $unique->values()->all();
 ```
 
 El método `unique` utiliza comparaciones "flexibles" (loose) al verificar valores de elementos, lo que significa que una cadena con un valor entero se considerará igual a un entero del mismo valor. Usa el método [`uniqueStrict`](#method-uniquestrict) para filtrar usando una comparación "estricta".
+
+::: tip TIP
+El comportamiento de este método es modificado al usar [colecciones de Eloquent](/eloquent-collections.html#method-unique).
+:::
 
 <a name="method-uniquestrict"></a>
 #### `uniqueStrict()` 
