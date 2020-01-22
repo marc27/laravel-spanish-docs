@@ -462,25 +462,25 @@ use Illuminate\Support\ServiceProvider;
 class CacheServiceProvider extends ServiceProvider
 {
     /**
-    * Perform post-registration booting of services.
-    *
-    * @return void
-    */
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
         Cache::extend('mongo', function ($app) {
             return Cache::repository(new MongoStore);
         });
-    }
-
-    /**
-    * Register bindings in the container.
-    *
-    * @return void
-    */
-    public function register()
-    {
-        //
     }
 }
 ```
