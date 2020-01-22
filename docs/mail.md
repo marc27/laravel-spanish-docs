@@ -585,11 +585,11 @@ Para enviar un mensajes debes usar el método `to` en el [facade](/facades.html)
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Http\Controllers\Controller;
 use App\Mail\OrderShipped;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
