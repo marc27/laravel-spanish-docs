@@ -254,7 +254,7 @@ Route::get('user/{id}/profile', function ($id) {
 $url = route('profile', ['id' => 1]);
 ```
 
-Si pasas parametros adicionales en el arreglo, estos pares clave / valor serán automáticamente agregados a la cadena de consulta generada de la URL:
+Si pasas parámetros adicionales en el arreglo, estos pares clave / valor serán automáticamente agregados a la cadena de consulta generada de la URL:
 
 ```php
 Route::get('user/{id}/profile', function ($id) {
@@ -505,7 +505,7 @@ Route::middleware('auth:api', 'throttle:rate_limit,1')->group(function () {
 
 #### Limites de rango distintos para usuarios autenticados y no autenticados
 
-Puedes especificar diferentes limites de rango para usuarios autenticados y no autenticados. Por ejemplo, puedes especificar un máximo de `10` peticiones por minuto para usuarios no autenticados y `60` para usuarios autenticados:
+Puedes especificar diferentes límites de rango para usuarios autenticados y no autenticados. Por ejemplo, puedes especificar un máximo de `10` peticiones por minuto para usuarios no autenticados y `60` para usuarios autenticados:
 
 ```php
 Route::middleware('throttle:10|60,1')->group(function () {
@@ -513,7 +513,7 @@ Route::middleware('throttle:10|60,1')->group(function () {
 });
 ```
 
-También puedes combinar esta funcionalidad con limites de rango dinámicos. Por ejemplo, si tu usuario `Model` contiene un atributo `rage_limit`, puedes pasar el nombre del atributo al middleware `throttle` para que sea usado para calcular el número máximo de peticiones para usuarios autenticados:
+También puedes combinar esta funcionalidad con límites de rango dinámicos. Por ejemplo, si tu usuario `Model` contiene un atributo `rage_limit`, puedes pasar el nombre del atributo al middleware `throttle` para que sea usado para calcular el número máximo de peticiones para usuarios autenticados:
 
 ```php
 Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
