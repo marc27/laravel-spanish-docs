@@ -72,6 +72,14 @@ Este comando debe ser utilizado en aplicaciones nuevas e instalará vistas de di
 Si tu aplicación no necesita registro, puedes desactivarlo eliminando el recién creado `RegisterController` y modificando tu declaración de ruta: `Auth::routes(['register' => false]);`.
 :::
 
+#### Crear aplicaciones incluyendo autenticación
+
+Si estás creando una nueva aplicación y te gustaría incluir autenticación, puedes usar la directiva `--auth` al crear tu aplicación. Este comando creará una nueva aplicación con toda la estructura de autenticación compilada e instalada:
+
+```php
+laravel new blog --auth
+```
+
 <a name="included-views"></a>
 ### Vistas
 
