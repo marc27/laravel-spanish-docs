@@ -397,6 +397,14 @@ El método `anticipate` puede ser usado para proporcionar autocompletado para po
 $name = $this->anticipate('What is your name?', ['Taylor', 'Dayle']);
 ```
 
+Alternativamente, puedes pasar una Closure como segundo argumento del método `anticipate`. La Closure será llamada cada vez que el usuario ingrese un caracter. La Closure debe aceptar una cadena como parametro que contenga el texto ingresado por el usuario y retornar un arreglo de opciones de auto-completado:
+
+```php
+$name = $this->anticipate('What is your name?', function ($input) {
+    // Return auto-completion options...
+});
+```
+
 #### Preguntas de selección múltiple
 
 Si necesitas darle al usuario un conjunto de opciones predefinadas, puedes usar el método `choice`. Puedes establecer el índice del valor predeterminado del arreglo que se devolverá si no se escoge ninguna opción:
