@@ -10,6 +10,7 @@
     - [Autenticando](#included-authenticating)
     - [Retornando el usuario autenticado](#retrieving-the-authenticated-user)
     - [Proteger Rutas](#protecting-routes)
+    - [Confirmación de contraseña](#password-confirmation)
     - [Regulación De Inicio De Sesión](#login-throttling)
 - [Autenticar usuarios manualmente](#authenticating-users)
     - [Recordar usuarios](#remembering-users)
@@ -240,6 +241,21 @@ public function __construct()
     $this->middleware('auth:api');
 }
 ```
+
+<a name="password-confirmation"></a>
+### Confirmación de contraseña
+
+Algunas veces, puedes querer requerir al usuario la confirmación de su contraseña antes de acceder a alguna area especifica de tu aplicación. Por ejemplo, puedes requerir esto antes de que el usuario modifique cualquier configuración de facturación dentro de la aplicación. 
+
+Para lograr esto, Laravel proporciona un middleware `password.confirm`. Adjuntar el middleware `password.confirm` a una ruta redireccionará a los usuarios a una pantalla donde necesitan confirmar su contraseña antes de continuar:
+
+```php
+Route::get('/settings/security', function () {
+    // Users must confirm their password before continuing...
+})->middleware(['auth', 'password.confirm']);
+```
+
+Luego de que el usuario ha confirmado con éxito su contraseña, este sera redirigido a la ruta a la que originalmente intentaron acceder. Por defecto, luego de confirmar su contraseña, el usuario no tendrá que confirmar su contraseña de nuevo por tres horas. Eres libre de personalizar la longitud de tiempo antes de que el usuario deba volver a confirmar su contraseña usando la opción de configuración `auth.password_timeout`.
 
 <a name="login-throttling"></a>
 ### Regulación De Inicio De Sesión
