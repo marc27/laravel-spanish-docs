@@ -1155,7 +1155,7 @@ return (string) Str::orderedUuid();
 <a name="method-str-plural"></a>
 #### `Str::plural()` {#collection-method}
 
-La función `Str::plural` convierte una cadena a su forma plural. Esta función actualmente solo soporta el idioma inglés:
+La función `Str::plural` convierte una cadena de una única palabra a su forma plural. Esta función actualmente solo soporta el idioma inglés:
 
 ```php
 use Illuminate\Support\Str;
