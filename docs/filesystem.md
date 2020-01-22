@@ -415,6 +415,20 @@ $path = $request->file('avatar')->store(
 );
 ```
 
+#### Otra información de archivos
+
+Si te gustaría obtener el nombre original del archivo cargado, puedes hacer esto usando el método `getClientOriginalName`:
+
+```php
+$name = $request->file('avatar')->getClientOriginalName();
+```
+
+El método `extension` puede ser usado para obtener la extensión del archivo cargado:
+
+```php
+$extension = $request->file('avatar')->extension();
+```
+
 <a name="file-visibility"></a>
 ### Visibilidad de archivos
 
