@@ -1,5 +1,15 @@
 # Estado de la traducción
 
+En esta página encontrarás el estado de actualización de cada archivo. El texto entre comillas es el último commit en el repositorio oficial (laravel/docs) hasta donde se actualizó la traducción. Para ayudar a mantener la documentación actualizada, sólo debes comprobar si hay commits nuevos en el repositorio oficial y agregarlos a la traducción. 
+
+Para ello debes hacer fork del repositorio de la traducción (https://github.com/stydenet/laravel-spanish-docs) y realizar un PR con la actualización/corrección que quieras agregar. El nombre del commit debe ser igual al del commit en el repositorio oficial. 
+
+Otra forma en la que puedes contribuir a la traducción es revisar si hay errores en las actualizaciones que tienen la X roja (&#9989;). Estas son las últimas actualizaciones que se agregaron a la traducción y aún no han sido revisadas por otra persona que no sea la que realizó la actualización. Esto se hace para que la calidad de la traducción sea mucho mejor.
+
+Para revisarlas solo verifica que los commits hechos no tengan errores (ortográficos por ejemplo) y de tenerlos solo debes hacer un PR con la corrección.
+
+## Estado por archivo
+
 - [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/installation.md) Última actualización el día 10/01/2020 hasta "Correct sub-spelling (31/12/2019)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/installation.md) - Revisado [&#9989;]
 - [configuration.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/configuration.md) Última actualización el día 10/01/2020 hasta "unify placeholder spelling (27/11/2018)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/configuration.md) - Revisado [&#9989;]
 - [homestead.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/homestead.md) Última actualización el día 10/01/2020 hasta "Add PHP 7.4 to included software (03/01/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/homestead.md) - Revisado [&#9989;]
