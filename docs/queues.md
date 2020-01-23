@@ -919,6 +919,10 @@ class ProcessPodcast implements ShouldQueue
 }
 ```
 
+::: danger Nota
+El método `failed` no será llamado si la tarea fue despachada usando el método `dispatchNow`.
+:::
+
 <a name="failed-job-events"></a>
 ### Eventos de trabajo fallido
 
