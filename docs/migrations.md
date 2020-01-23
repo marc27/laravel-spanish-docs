@@ -255,10 +255,10 @@ Comando  |  Descripción
 `$table->bigInteger('votes');`  |  Tipo de columna equivalente a BIGINT equivalent.
 `$table->binary('data');`  |  Tipo de columna equivalente a BLOB.
 `$table->boolean('confirmed');`  |  Tipo de columna equivalente a BOOLEAN.
-`$table->char('name', 100);`  |  Tipo de columna equivalente a CHAR con una longitud opcional.
+`$table->char('name', 100);`  |  Tipo de columna equivalente a CHAR con una longitud.
 `$table->date('created_at');`  |  Tipo de columna equivalente a DATE.                          
-`$table->dateTime('created_at');`  |  Tipo de columna equivalente a DATETIME.                      
-`$table->dateTimeTz('created_at');`  |  Tipo de columna equivalente a DATETIME (con hora de la zona).
+`$table->dateTime('created_at', 0);`  |  Tipo de columna equivalente a DATETIME con precisión (el total de dígitos).                      
+`$table->dateTimeTz('created_at', 0);`  |  Tipo de columna equivalente a DATETIME (con hora de la zona) y con una precisión (el total de dígitos).
 `$table->decimal('amount', 8, 2);`  |  Tipo de columna equivalente a DECIMAL con una precisión (el total de dígitos) y escala de dígitos decimales.
 `$table->double('amount', 8, 2);`  |  Tipo de columna equivalente a DOUBLE con una precisión (el total de dígitos) y escala de dígitos decimales.
 `$table->enum('level', ['easy', 'hard']);` |  Tipo de columna equivalente a ENUM.
@@ -290,7 +290,7 @@ Comando  |  Descripción
 `$table->set('flavors', ['strawberry', 'vanilla']);`  |  Establece una columna equivalente.
 `$table->smallIncrements('id');`  |  Tipo de columna equivalente a Auto-incremento UNSIGNED SMALLINT (clave primaria).
 `$table->smallInteger('votes');`  |  Tipo de columna equivalente a SMALLINT.                      
-`$table->softDeletes();`  |  Permite nulos en el tipo de columna equivalente a TIMESTAMP `deleted_at` para eliminaciones.
+`$table->softDeletes(0);` |  Permite nulos en el tipo de columna equivalente a TIMESTAMP `deleted_at` para eliminaciones.
 `$table->softDeletesTz();`  |  Permite nulos en el tipo de columna equivalente a TIMESTAMP `deleted_at` (con la hora de la zona) para eliminaciones.
 `$table->string('name', 100);`  |  Tipo de columna equivalente a VARCHAR con una longitud opcional.
 `$table->text('description');`  |  Tipo de columna equivalente a TEXT.                          
