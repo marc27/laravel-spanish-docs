@@ -200,6 +200,23 @@ $this->app->bindMethod(ProcessPodcast::class.'@handle', function ($job, $app) {
 Los datos binarios, como los contenidos de imagen, deben ser pasados a través de la función `base64_encode` antes de ser pasados a un trabajo en cola. De otra forma, el trabajo podría no serializarse correctamente a JSON cuando es colocado en la cola.
 :::
 
+#### Manejando relaciones
+
+Dado que las relaciones cargadas también son serializadas, la cadena serializada de la tarea puede volverse algo larga. Para evitar que las relaciones sean serializadas, puedes llamar al método `withoutRelations` en el modelo al momento de establecer el valor de una propiedad. Este método retornará una instancia del modelo sin cargar ninguna relación:
+
+```php
+/**
+* Create a new job instance.
+*
+* @param  \App\Podcast  $podcast
+* @return void
+*/
+public function __construct(Podcast $podcast)
+{
+    $this->podcast = $podcast->withoutRelations();
+}
+```
+
 <a name="job-middleware"></a>
 ### Middleware job
 
