@@ -173,6 +173,29 @@ public function boot()
 
 Una vez que se hayan registrado las migraciones de tu paquete, éstas se ejecutarán automáticamente cuando se utilize el comando `php artisan migrate`. Cabe destacar que no es necesario exportarlas al directorio principal de las migraciones en la aplicación.
 
+<a name="factories"></a>
+### Factories
+
+Si tu paquete contiene [factories de bases de datos](/database-testing.html#writing-factories), puedes usar el método `loadFactoriesFrom` para informar a Laravel de cómo cargarlos. El método `loadFactoriesFrom` acepta la ruta al factory de tu paquete como único argumento:
+
+```php
+/**
+* Bootstrap any application services.
+*
+* @return void
+*/
+public function boot()
+{
+    $this->loadFactoriesFrom(__DIR__.'/path/to/factories');
+}
+```
+
+Una vez que el factory de tu paquete ha sido registrado, puedes usarlos en tus aplicación:
+
+```php
+factory(Package\Namespace\Model::class)->create();
+```
+
 <a name="translations"></a>
 ### Traducciones
 
