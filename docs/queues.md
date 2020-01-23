@@ -118,7 +118,7 @@ Las siguientes dependencias son necesarias para sus controladores respectivos:
 
 - Amazon SQS: `aws/aws-sdk-php ~3.0`
 - Beanstalkd: `pda/pheanstalk ~4.0`
-- Redis: `predis/predis ~1.0`
+- Redis: `predis/predis ~1.0` o la extensión de PHP phpredis
 
 <a name="creating-jobs"></a>
 ## Creación de trabajos
