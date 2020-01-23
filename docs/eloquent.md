@@ -1005,7 +1005,7 @@ Los modelos de Eloquent ejecutan varios eventos, permitiendo que captes los sigu
 El evento `retrieved` se disparará cuando un modelo existente es obtenido de la base de datos. Cuando un nuevo modelo es guardado la primera vez, los eventos `creating` y `created` se disparan. Si un modelo ya existe en la base de datos y el método `save` es ejecutado, los eventos `updating` / `updated` se dispararán. Sin embargo, en ambos casos, los eventos `saving` / `saved` se dispararán.
 
 ::: danger Nota
-Al realizar una actualización masiva a través de Eloquent, los eventos de modelo `saved` y `updated` no se activarán para los modelos actualizados. Esto se debe a que los modelos nunca se recuperan cuando se emite una actualización masiva.
+Al realizar una actualización o eliminación masiva a través de Eloquent, los eventos de modelo `saved`, `updated`, `deleting` y `deleted` no se activarán para los modelos actualizados. Esto se debe a que los modelos nunca se recuperan cuando se emite una actualización masiva.
 :::
 
 Para empezar, define una propiedad `$dispatchesEvents` en tu modelo Eloquent que mapee varios puntos del ciclo de vida de modelo de Eloquent a tus propias [clases de eventos](/events.html):
