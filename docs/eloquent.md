@@ -391,7 +391,7 @@ return Destination::orderByDesc(
 <a name="retrieving-single-models"></a>
 ## Obteniendo modelos individuales / Agrupamientos
 
-Además de obtener todos los registros de una tabla dada, también puedes obtener registros individuales usando `find` o `first`. En lugar de devolver una colección de modelos, estos métodos devuelven una única instancia de modelo:
+Además de obtener todos los registros de una tabla dada, también puedes obtener registros individuales usando `find`, `first` o `firstWhere`. En lugar de devolver una colección de modelos, estos métodos devuelven una única instancia de modelo:
 
 ```php
 // Recupera un modelo por su clave primaria...
@@ -399,6 +399,9 @@ $flight = App\Flight::find(1);
 
 // Recupera el primer modelo que coincida con las restricciones de consulta...
 $flight = App\Flight::where('active', 1)->first();
+
+// Shorthand for retrieving the first model matching the query constraints...
+$flight = App\Flight::firstWhere('active', 1);
 ```
 
 También puedes ejecutar el método `find` con un arreglo de claves primarias, el cual devolverá una colección de los registros que coincidan:
