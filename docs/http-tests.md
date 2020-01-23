@@ -155,7 +155,7 @@ $this->actingAs($user, 'api')
 <a name="testing-json-apis"></a>
 ## Probando APIs JSON
 
-Laravel también proporciona varios helpers para probar APIs JSON y sus respuestas. Por ejemplo, los métodos `json`, `get`, `post`, `put`, `patch` y `delete` pueden ser usados para hacer solicitudes con varios verbos HTTP. También puedes pasar datos y encabezados fácilmente a estos métodos. Para empezar, vamos a escribir una prueba para hacer una solicitud `POST` a `/user` y comprobar que los datos esperados fueron devueltos:
+Laravel también proporciona varios helpers para probar APIs JSON y sus respuestas. Por ejemplo, los métodos `json`, `get`, `post`, `put`, `patch`, `delete` y `option` pueden ser usados para hacer solicitudes con varios verbos HTTP. También puedes pasar datos y encabezados fácilmente a estos métodos. Para empezar, vamos a escribir una prueba para hacer una solicitud `POST` a `/user` y comprobar que los datos esperados fueron devueltos:
 
 ```php
 <?php
@@ -312,6 +312,7 @@ Laravel proporciona una variedad de métodos de aserción personalizados para tu
 [assertSeeText](#assert-see-text)
 [assertSeeTextInOrder](#assert-see-text-in-order)
 [assertSessionHas](#assert-session-has)
+[assertSessionHasInput](#assert-session-has-input)
 [assertSessionHasAll](#assert-session-has-all)
 [assertSessionHasErrors](#assert-session-has-errors)
 [assertSessionHasErrorsIn](#assert-session-has-errors-in)
@@ -578,6 +579,15 @@ Comprueba que la sesión contenga la porción dada de datos:
 
 ```php
 $response->assertSessionHas($key, $value = null);
+```
+
+<a name="assert-session-has-input"></a>
+#### assertSessionHasInput
+
+Comprueba que la sesión tiene un valor dado en los datos del arreglo proporcionado:
+
+```php
+$response->assertSessionHasInput($key, $value = null);
 ```
 
 <a name="assert-session-has-all"></a>
