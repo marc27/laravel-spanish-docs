@@ -1576,7 +1576,7 @@ public function user()
 */
 public function user()
 {
-    return $this->belongsTo('App\User')->withDefault(function ($user) {
+    return $this->belongsTo('App\User')->withDefault(function ($user, $post) {
         $user->name = 'Guest Author';
     });
 }
