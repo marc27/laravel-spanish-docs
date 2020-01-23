@@ -407,6 +407,23 @@ También puedes ejecutar el método `find` con un arreglo de claves primarias, e
 $flights = App\Flight::find([1, 2, 3]);
 ```
 
+Algunas veces puedes querer retornar el primer resultado de una consulta o realizar alguna otra acción si ningún resultado es encontrado. El método `firstOr` retornará el primer resultado encontrado o, si ningún resultado es encontrado, ejecutará el callback dado. El resultado del callback será considerado el resultado del método `firstOr`:
+
+```php
+$model = App\Flight::where('legs', '>', 100)->firstOr(function () {
+        // ...
+});
+```
+
+El método `firstOr` también acepta un arreglo de columnas a ser retornadas:
+
+```php
+$model = App\Flight::where('legs', '>', 100)
+            ->firstOr(['id', 'legs'], function () {
+                // ...
+            });
+```
+
 #### Excepciones not found (no encontrado)
 
 Algunas veces, puedes desear arrojar una excepción si un modelo no es encontrado. Es particularmente útil en rutas o controladores. Los métodos `findOrFail` y `firstOrFail` obtendrán el primer resultado de la consulta; sin embargo, si nada es encontrado, una excepción de `Illuminate\Database\Eloquent\ModelNotFoundException` será arrojada:
