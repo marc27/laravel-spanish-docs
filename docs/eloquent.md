@@ -371,7 +371,6 @@ use App\Destination;
 return Destination::addSelect(['last_flight' => Flight::select('name')
     ->whereColumn('destination_id', 'destinations.id')
     ->orderBy('arrived_at', 'desc')
-    ->latest()
     ->limit(1)
 ])->get();
 ```
@@ -385,7 +384,6 @@ return Destination::orderByDesc(
     Flight::select('arrived_at')
         ->whereColumn('destination_id', 'destinations.id')
         ->orderBy('arrived_at', 'desc')
-        ->latest()
         ->limit(1)
 )->get();
 ```
