@@ -738,7 +738,7 @@ Route::get('/user', function () {
 });
 ```
 
-Sin embargo, a veces es posible que necesites personalizar la respuesta HTTP saliente antes de enviarla al cliente. Hay dos maneras de lograr esto. Primero, puedes encadenar el método `response` en el recurso. Este método devolverá una instancia de `Illuminate\Http\Response`, que te permite un control total de los encabezados de la respuesta:
+Sin embargo, a veces es posible que necesites personalizar la respuesta HTTP saliente antes de enviarla al cliente. Hay dos maneras de lograr esto. Primero, puedes encadenar el método `response` en el recurso. Este método devolverá una instancia de `Illuminate\Http\JsonResponse`, que te permite un control total de los encabezados de la respuesta:
 
 ```php
 use App\Http\Resources\User as UserResource;
