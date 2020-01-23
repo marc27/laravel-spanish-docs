@@ -45,6 +45,14 @@ $users = App\User::all();
 return $users->toArray();
 ```
 
+Para convertir únicamente los atributos de un modelo a arreglo, usa el método `attributesToArray`:
+
+```php
+$user = App\User::first();
+
+return $user->attributesToArray();
+```
+
 <a name="serializing-to-json"></a>
 ### Serializando a JSON
 
