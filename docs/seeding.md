@@ -118,10 +118,10 @@ php artisan db:seed
 php artisan db:seed --class=UsersTableSeeder
 ```
 
-También puedes alimentar tu base de datos usando el comando `migrate:refresh`, el cual también deshará y volverá a ejecutar tods tus migraciones. Este comando es útil para reconstruir tu base de datos completamente:
+También puedes alimentar tu base de datos usando el comando `migrate:fresh`, el cual eliminará todas las tablas y volverá a ejecutar todas tus migraciones. Este comando es útil para reconstruir tu base de datos completamente:
 
 ```php
-php artisan migrate:refresh --seed
+php artisan migrate:fresh --seed
 ```
 
 #### Forzar la ejecución de seeders en producción
