@@ -770,6 +770,15 @@ DB::table('users')->insert([
 ]);
 ```
 
+El método `insertOrIgnore` ignorará los errores de registros duplicados al momento de insertar registros en la base de datos:
+
+```php
+DB::table('users')->insertOrIgnore([
+    ['id' => 1, 'email' => 'taylor@example.com'],
+    ['id' => 2, 'email' => 'dayle@example.com']
+]);
+```
+
 #### IDs de auto-incremento
 
 Si la tabla tiene un id de auto-incremento, usa el método `insertGetId` para insertar un registro y recibir el ID:
