@@ -525,6 +525,52 @@ El método `update` espera un arreglo de pares de columna y valor representando 
 Al momento de utilizar una actualización masiva por medio de Eloquent, los eventos de modelo `saving`, `saved`, `updating` y `updated` no serán disparados para los modelos actualizados. Esto es debido a que los modelos nunca son obtenidos en realidad al momento de hacer una actualización masiva.
 :::
 
+#### Examinando cambios en los atributos
+
+Eloquent proporciona los métodos `isDirty`, `isClean` y `wasChanged` para examinar el estado interno de tus modelos y determinar como sus atributos han cambiando desde que fueron originalmente cargados.
+
+El método `isDirty` determina si algún atributo ha cambiado desde que el modelo fue cargado. Puedes pasar un nombre de atributo especifico para determinar si un atributo particular está sucio. El método `isClean` es el opuesto a `isDirty` y también acepta un atributo opcional como argumento:
+
+```php
+$user = User::create([
+    'first_name' => 'Taylor',
+    'last_name' => 'Otwell',
+    'title' => 'Developer',
+]);
+
+$user->title = 'Painter';
+
+$user->isDirty(); // true
+$user->isDirty('title'); // true
+$user->isDirty('first_name'); // false
+
+$user->isClean(); // false
+$user->isClean('title'); // false
+$user->isClean('first_name'); // true
+
+$user->save();
+
+$user->isDirty(); // false
+$user->isClean(); // true
+```
+
+El método `wasChanged` determina si algún atributo fue cambiado cuando el modelo fue guardado por última vez dentro del ciclo de solicitud actual. También puedes pasar un nombre de atributo para ver si un atributo particular ha cambiado:
+
+```php
+$user = User::create([
+    'first_name' => 'Taylor',
+    'last_name' => 'Otwell',
+    'title' => 'Developer',
+]);
+
+$user->title = 'Painter';
+$user->save();
+
+$user->wasChanged(); // true
+$user->wasChanged('title'); // true
+$user->wasChanged('first_name'); // false
+```
+
 <a name="mass-assignment"></a>
 ### Asignación masiva
 
