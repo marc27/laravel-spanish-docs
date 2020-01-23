@@ -381,12 +381,14 @@ foreach ($users->flatMap->podcasts as $podcast) {
 
 #### Filtrando relaciones a través de columnas de tablas intermedias
 
-También puedes filtrar los resultados devueltos por `belongsToMany` usando los métodos `wherePivot` y `wherePivotIn` al momento de definir la relación:
+También puedes filtrar los resultados devueltos por `belongsToMany` usando los métodos `wherePivot`, `wherePivotIn` y `wherePivotNotIn` al momento de definir la relación:
 
 ```php
 return $this->belongsToMany('App\Role')->wherePivot('approved', 1);
 
 return $this->belongsToMany('App\Role')->wherePivotIn('priority', [1, 2]);
+
+return $this->belongsToMany('App\Role')->wherePivotNotIn('priority', [1, 2]);
 ```
 
 <a name="defining-custom-intermediate-table-models"></a>
