@@ -121,7 +121,7 @@ También puedes fusionar tu propio archivo de configuración de paquete con la c
 
 ```php
 /**
-* Register bindings in the container.
+* Register any application services.
 *
 * @return void
 */
