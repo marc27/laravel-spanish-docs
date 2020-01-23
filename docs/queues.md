@@ -270,7 +270,7 @@ Luego de crear el middleware job, este puede ser agregado a una tarea retornando
 use App\Jobs\Middleware\RateLimited;
 
 /**
-* Get the middlewarwe the job should pass through.
+* Get the middleware the job should pass through.
 *
 * @return array
 */
