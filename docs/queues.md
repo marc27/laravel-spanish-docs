@@ -108,6 +108,10 @@ Ajustar este valor en la carga de cola puede ser más eficiente que consultar co
 ],
 ```
 
+::: danger Nota
+Establecer `block_for` a `0` causará que los trabajadores de una cola se bloqueen de forma indefinida hasta que una tarea esté disponible. Esto también evitará que señales como `SIGTERM` sean manejadas hasta que la siguiente tarea sea procesada.
+:::
+
 #### Requisitos previos para otros controladores
 
 Las siguientes dependencias son necesarias para sus controladores respectivos:
