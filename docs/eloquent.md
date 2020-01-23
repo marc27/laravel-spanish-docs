@@ -1092,6 +1092,17 @@ class UserObserver
     {
         //
     }
+
+    /**
+    * Handle the User "forceDeleted" event.
+    *
+    * @param  \App\User  $user
+    * @return void
+    */
+    public function forceDeleted(User $user)
+    {
+        //
+    }    
 }
 ```
 
