@@ -292,7 +292,7 @@ $time = Storage::lastModified('file.jpg');
 <a name="storing-files"></a>
 ## Almacenando archivos
 
-El método `put` puede ser usado para almacenar el contenido de archivos en un disco. Puedes también pasar un `recurso` de PHP al método `put`, que usará el soporte subyancete de stream de Flysystem. Recuerda, todas las rutas de archivos deben ser especificadas de forma relativa a la ubicación "raiz" configurada en el disco:
+El método `put` puede ser usado para almacenar el contenido de archivos en un disco. Puedes también pasar un `recurso` de PHP al método `put`, que usará el soporte subyacente de stream de Flysystem. Recuerda, todas las rutas de archivos deben ser especificadas de forma relativa a la ubicación "raíz" configurada en el disco:
 
 ```php
 use Illuminate\Support\Facades\Storage;
