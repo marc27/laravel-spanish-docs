@@ -341,6 +341,40 @@ Modificador  |  Descripción
 `->generatedAs($expression)`  |  Crea una columna de identidad con opciones de secuencia especificadas (PostgreSQL)
 `->always()`  |  Define la prioridad de los valores de secuencia sobre la entrada para una columna de identidad (PostgreSQL)
 
+#### Expresiones por defecto
+
+El modificador `default` acepta un valor o una instancia `\Illuminate\Database\Query\Expression`. Usar una instancia `Expression` evitará envolver el valor en comillas y te permitirá usar funciones especificas de la base de datos. Una situación donde esto es particularmente útil es al momento de asignar valores por defecto a columnas JSON:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+    * Run the migrations.
+    *
+    * @return void
+    */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('movies')->default(new Expression('(JSON_ARRAY())'));
+            $table->timestamps();
+        });
+    }
+}
+```
+
+::: danger Nota
+El soporte para expresiones por defecto depende del driver de tu base de datos, la versión de la base de datos y el tipo de campo. Por favor refierete a la documentación apropiada por compatibilidad. También ten en cuenta que usar funciones especificas de la base de datos puede vincularte estrechamente a un driver especifico.
+:::
+
 <a name="modifying-columns"></a>
 ### Modificando columnas
 
