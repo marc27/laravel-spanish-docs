@@ -9,6 +9,7 @@
 - [Recursos](#resources)
     - [Configuración](#configuration)
     - [Migraciones](#migrations)
+    - [Factories](#factories)
     - [Rutas](#routes)
     - [Traducciones](#translations)
     - [Vistas](#views)
