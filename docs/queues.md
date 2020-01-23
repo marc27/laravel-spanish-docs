@@ -803,9 +803,14 @@ user=forge
 numprocs=8
 redirect_stderr=true
 stdout_logfile=/home/forge/app.com/worker.log
+stopwaitsecs=3600
 ```
 
 En este ejemplo, la directiva `numprocs` le indicará a Supervisor ejecutar ocho procesos `queue:work` y monitorearlos todos, reiniciándolos automáticamente si fallan. Debes cambiar la porción `queue:work sqs` de la directiva `command` para reflejar la conexión de cola deseada.
+
+::: danger Nota
+Debes asegurarte de que el valor de `stopwaitsecs` es mayor que el número de segundos consumido por tu tarea de más larga duración. De otra forma, Supervisor podría detener la tarea antes de que se termine de procesar.
+:::
 
 #### Iniciar Supervisor
 
