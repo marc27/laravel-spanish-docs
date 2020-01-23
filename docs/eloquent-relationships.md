@@ -1389,7 +1389,7 @@ Si necesitas establecer restricciones de consultas adicionales en la consulta de
 ```php
 use Illuminate\Database\Eloquent\Builder;
 
-$books->load(['author' => function ($query) {
+$author->load(['books' => function ($query) {
     $query->orderBy('published_date', 'asc');
 }]);
 ```
