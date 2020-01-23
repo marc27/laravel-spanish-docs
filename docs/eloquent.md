@@ -9,6 +9,7 @@
 - [Obteniendo modelos](#retrieving-models)
     - [Colecciones](#collections)
     - [Resultados divididos en partes (chunk)](#chunking-results)
+    - [Subconsultas avanzadas](#advanced-subqueries)
 - [Obteniendo modelos individuales / Agrupamientos](#retrieving-single-models)
     - [Obteniendo agrupamientos](#retrieving-aggregates)
 - [Insertando y actualizando modelos](#inserting-and-updating-models)
@@ -352,6 +353,41 @@ $users = App\User::cursor()->filter(function ($user) {
 foreach ($users as $user) {
     echo $user->id;
 }
+```
+
+<a name="advanced-subqueries"></a>
+### Subconsultas avanzadas
+
+#### Selects de subconsultas
+
+Eloquent también ofrece soporte avanzado para subconsultas, lo que te permite extraer información de tablas relacionadas en una única consulta. Por ejemplo, imaginemos que tenemos una tabla `destinations` y una tabla `flights`. La tabla `flights` contiene una columna `arrived_at` que indica cuando el vuelo ha arribado al destino. 
+
+Usando la funcionalidad de subconsulta disponible en los métodos `select` y `addSelect`, podemos seleccionar todos los destinos y el nombre del vuelo que más recientemente arribo a dicho destino usando una única consulta:
+
+```php
+use App\Flight;
+use App\Destination;
+
+return Destination::addSelect(['last_flight' => Flight::select('name')
+    ->whereColumn('destination_id', 'destinations.id')
+    ->orderBy('arrived_at', 'desc')
+    ->latest()
+    ->limit(1)
+])->get();
+```
+
+#### Ordenando subconsultas
+
+Adicionalmente, la función `orderBy` del constructor de consultas soporta subconsultas. Podemos usar esta funcionalidad para ordenar los destinos en base a cuando llegó el último vuelo a dicho destino. De nuevo, esto puede ser hecho ejecutando una única consulta en la base de datos:
+
+```php
+return Destination::orderByDesc(
+    Flight::select('arrived_at')
+        ->whereColumn('destination_id', 'destinations.id')
+        ->orderBy('arrived_at', 'desc')
+        ->latest()
+        ->limit(1)
+)->get();
 ```
 
 <a name="retrieving-single-models"></a>
