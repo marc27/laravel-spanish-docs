@@ -327,7 +327,7 @@ Modificador  |  Descripción
 `->after('column')`  |  Coloca la columna "después de" otra columna (MySQL)                    
 `->autoIncrement()`  |  Establece las columnas tipo INTEGER como auto-incremento (clave primaria)
 `->charset('utf8')`  |  Especifica un conjunto de caracteres para la columna (MySQL)
-`->collation('utf8_unicode_ci')`  |  Especifica un ordenamiento para la columna (MySQL/SQL Server)
+`->collation('utf8_unicode_ci')`  |  Especifica un ordenamiento para la columna (MySQL/PostgreSQL/SQL Server)
 `->comment('my comment')`  |  Agrega un comentario a una columna (MySQL/PostgreSQL)
 `->default($value)`  |  Especifica un valor "predeterminado" para la columna
 `->first()`  |  Coloca la columna al "principio" en la tabla (MySQL)
