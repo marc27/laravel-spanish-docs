@@ -57,6 +57,10 @@ $user->posts()->where('active', 1)->get();
 
 Pero, antes de profundizar demasiado en el uso de relaciones, aprendamos cómo definir cada tipo.
 
+::: danger Nota
+Los nombres de las relaciones no pueden colisionar con nombres de atributos dado que eso podría ocasionar que tu modelo no sea capaz de saber cual resolver.
+:::
+
 <a name="one-to-one"></a>
 ### Uno A Uno
 
