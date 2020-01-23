@@ -562,7 +562,7 @@ $users = DB::table('users')
 Algunas veces puedes necesitar crear cláusulas where más avanzadas como cláusulas "where exists" o grupos de parámetros anidados. El constructor de consultas de Laravel puede manejar éstos también. Para empezar, vamos a mirar un ejemplo de grupos de restricciones encerrado por llaves:
 
 ```php
-DB::table('users')
+$users = DB::table('users')
             ->where('name', '=', 'John')
             ->where(function ($query) {
                 $query->where('votes', '>', 100)
@@ -587,7 +587,7 @@ Siempre debes agrupar llamadas `orWhere` para evitar comportamiento inesperado c
 El método `whereExists` permite que escribas cláusulas de SQL `whereExists`. El método `whereExists` acepta un argumento de tipo `Closure`, el cual recibirá una instancia del constructor de consultas permitiendo que definas la consulta que debería ser puesta dentro de la cláusula "exists":
 
 ```php
-DB::table('users')
+$users = DB::table('users')
             ->whereExists(function ($query) {
                 $query->select(DB::raw(1))
                         ->from('orders')
