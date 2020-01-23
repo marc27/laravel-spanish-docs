@@ -4,7 +4,7 @@ En esta página encontrarás el estado de actualización de cada archivo. El tex
 
 Para ello debes hacer fork del repositorio de la traducción (https://github.com/stydenet/laravel-spanish-docs) y realizar un PR con la actualización/corrección que quieras agregar. El nombre del commit debe ser igual al del commit en el repositorio oficial. 
 
-Otra forma en la que puedes contribuir a la traducción es revisar si hay errores en las actualizaciones que tienen la X roja (&#9989;). Estas son las últimas actualizaciones que se agregaron a la traducción y aún no han sido revisadas por otra persona que no sea la que realizó la actualización. Esto se hace para que la calidad de la traducción sea mucho mejor.
+Otra forma en la que puedes contribuir a la traducción es revisar si hay errores en las actualizaciones que tienen la X roja (&#10060;). Estas son las últimas actualizaciones que se agregaron a la traducción y aún no han sido revisadas por otra persona que no sea la que realizó la actualización. Esto se hace para que la calidad de la traducción sea mucho mejor.
 
 Para revisarlas solo verifica que los commits hechos no tengan errores (ortográficos por ejemplo) y de tenerlos solo debes hacer un PR con la corrección.
 
