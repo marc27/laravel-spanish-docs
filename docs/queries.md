@@ -436,7 +436,8 @@ El método `whereBetween` verifica que un valor de columna esté en un intervalo
 
 ```php
 $users = DB::table('users')
-                    ->whereBetween('votes', [1, 100])->get();
+            ->whereBetween('votes', [1, 100])
+            ->get();
 ```
 
 **whereNotBetween / orWhereNotBetween**
@@ -551,7 +552,7 @@ Al método `whereColumn` también le puede ser pasado un arreglo de condiciones 
 $users = DB::table('users')
                 ->whereColumn([
                     ['first_name', '=', 'last_name'],
-                    ['updated_at', '>', 'created_at']
+                    ['updated_at', '>', 'created_at'],
                 ])->get();
 ```
 
