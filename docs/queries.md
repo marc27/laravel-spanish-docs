@@ -800,9 +800,9 @@ Cuando estás usando PostgreSQL el método `insertGetId` espera que la columna d
 Además de insertar registros dentro de la base de datos, el constructor de consultas también puede actualizar registros existentes usando el método `update`. El método `update`, como el método `insert`, acepta un arreglo de pares de columna y valor que contienen las columnas a ser actualizadas. Puedes restringir la consulta `update` usando cláusulas `where`:
 
 ```php
-DB::table('users')
-            ->where('id', 1)
-            ->update(['votes' => 1]);
+$affected = DB::table('users')
+                ->where('id', 1)
+                ->update(['votes' => 1]);
 ```
 
 #### Actualizar o insertar
@@ -825,9 +825,9 @@ DB::table('users')
 Cuando estamos actualizando una columna JSON, deberías usar la sintaxis `->` para acceder a la clave apropiada en el objeto JSON. Esta operación es soportada solamente en MySQL 5.7+ y PostgreSQL 9.5+:
 
 ```php
-DB::table('users')
-            ->where('id', 1)
-            ->update(['options->enabled' => true]);
+$affected = DB::table('users')
+                ->where('id', 1)
+                ->update(['options->enabled' => true]);
 ```
 
 <a name="increment-and-decrement"></a>
