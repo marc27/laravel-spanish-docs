@@ -322,7 +322,7 @@ class RewardGiftCard implements ShouldQueue
 
 #### Cola condicional de listeners
 
-Algunas veces, puedes necesitar determinar si un listener debería agregar a una cola en base algún dato que sólo está disponible en tiempo de ejecución. Para lograr esto, el método `shouldQueue` puede ser agregado a un listener para determinar si el listener debe ser agregado a una cola y ejecutado de forma sincronizada:
+Algunas veces, puedes necesitar determinar si un listener debería agregarse a una cola en función de algún dato que sólo está disponible en tiempo de ejecución. Para lograr esto, el método `shouldQueue` puede ser añadido a un listener para determinar si el listener debe ser agregado a una cola y ejecutado de forma sincronizada:
 
 ```php
 <?php
