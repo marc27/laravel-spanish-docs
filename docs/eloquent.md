@@ -342,6 +342,18 @@ foreach (Flight::where('foo', 'bar')->cursor() as $flight) {
 }
 ```
 
+El `cursor` retorna una instancia `Illuminate\Support\LazyCollection`. Las [colecciones lazy](/collections.html#lazy-collections) te permiten usar muchos de los métodos de colección disponibles en colecciones típicas de Laravel mientras que sólo carga un único modelo en memoria a la vez:
+
+```php
+$users = App\User::cursor()->filter(function ($user) {
+    return $user->id > 500;
+});
+
+foreach ($users as $user) {
+    echo $user->id;
+}
+```
+
 <a name="retrieving-single-models"></a>
 ## Obteniendo modelos individuales / Agrupamientos
 
