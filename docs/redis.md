@@ -17,14 +17,15 @@
 
 Antes de utilizar Redis con Laravel, te recomendamos que instales y uses la extension de PHP [PhpRedis](https://github.com/phpredis/phpredis) mediante PECL. La extension es mas dificil de instalar pero contribuira a un mejor rendimiento en aplicaciones que hacen un uso intensivo de Redis.
 
-::: danger NOTA
-El mantenimiento de Predis se ha abandonado por su autor original y puede que sea eliminado de Laravel en futuras versiones.
 Alternativamente, puedes instalar el paquete `predis/predis` mediante Composer:
-:::
 
 ```php
 composer require predis/predis
 ```
+
+::: danger NOTA
+El mantenimiento de Predis se ha abandonado por su autor original y puede que sea eliminado de Laravel en futuras versiones.
+:::
 
 <a name="configuration"></a>
 ### Configuración
@@ -147,6 +148,7 @@ La extensión PhpRedis esta configurada por defecto en el fichero env como `REDI
     // Resto de la configuración de Redis...
 ],
 ```
+
 Si planeas usar la extension junto con el llamado `Redis` Facade, deberias renombrarlo como `RedisManager` para evitar el conflicto con la clase Redis. Puedes hacerlo en la seccion de alias de tu archivo de configuracion `app.php`.
 
 ```php
@@ -165,7 +167,7 @@ Además de las opciones predeterminadas de configuración del servidor `host`, `
 ],
 ```
 
-#### La Redis Facade
+#### Facade Redis
 
 Para evitar conflictos de nombramiento de clases con la propia extension de Redis PHP, necesitaras eliminar or renombrar el alias Facade `Illuminate\Support\Facades\Redis` de la configuracion de tu `app` en el apartado o vector `aliases`. Generalmente, deberas eliminar este alias completamente y solo referenciar la Facade por su nombre de clase completo mientras que uses la extension Redis PHP.
 
@@ -230,7 +232,7 @@ $redis = Redis::connection('my-connection');
 <a name="pipelining-commands"></a>
 ### Canalizar comandos
 
-La canalización debe ser utilizada cuando envíes muchos comandos al servidor en una sola operación. El método `pipeline` acepta un argumento: un `Closure` que reciba una instancia de Redis. Puedes emitir todos tus comandos a esta instancia de Redis y después éstos serán ejecutados dentro de una sola operación:
+La canalización debe ser utilizada cuando necesites enviar muchos comandos al servidor. El método `pipeline` acepta un argumento: un `Closure` que reciba una instancia de Redis. Puedes emitir todos tus comandos a esta instancia de Redis y después éstos serán enviados al servidor proporcionando mejor rendimiento:
 
 ```php
 Redis::pipeline(function ($pipe) {
