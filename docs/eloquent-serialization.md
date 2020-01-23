@@ -168,7 +168,7 @@ class User extends Model
     */
     public function getIsAdminAttribute()
     {
-        return $this->attributes['admin'] == 'yes';
+        return $this->attributes['admin'] === 'yes';
     }
 }
 ```
