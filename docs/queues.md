@@ -39,7 +39,7 @@ Laravel ahora ofrece Horizon, un hermoso tablero y sistema de configuración par
 
 Las colas de Laravel brindan una API unificada a través de una variedad de backends de cola diferentes como Beanstalk, Amazon SQS, Redis, o incluso una base de datos relacional. Las colas permiten diferir el procesamiento de una tarea que consume tiempo, como enviar un correo electrónico, para un momento posterior. Diferir estas tareas acelera drásticamente las solicitudes web en tu aplicación.
 
-La configuración de cola está almacenada en `config/queue.php`. En este archivo encontrarás configuraciones de conexión para cada driver de cola incluido en el framework, que comprende una base de datos, [Beanstalkd](https://kr.github.io/beanstalkd/), [Amazon SQS](https://aws.amazon.com/sqs/), [Redis](https://redis.io), y un controlador sincrónico que ejecutará trabajos inmediatamente (para uso local). Un driver de cola `null` también está incluido, que descarta los trabajos completados de la cola.
+La configuración de cola está almacenada en `config/queue.php`. En este archivo encontrarás configuraciones de conexión para cada driver de cola incluido en el framework, que comprende una base de datos, [Beanstalkd](https://beanstalkd.github.io/), [Amazon SQS](https://aws.amazon.com/sqs/), [Redis](https://redis.io), y un controlador sincrónico que ejecutará trabajos inmediatamente (para uso local). Un driver de cola `null` también está incluido, que descarta los trabajos completados de la cola.
 
 <a name="connections-vs-queues"></a>
 ### Conexiones vs. colas
