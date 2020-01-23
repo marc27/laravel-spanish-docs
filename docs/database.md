@@ -36,7 +36,7 @@ DB_CONNECTION=sqlite
 DB_DATABASE=/absolute/path/to/database.sqlite
 ```
 
-Para habilitar las claves foráneas en conexiones de SQLite, debes agregar la variable de entorno `DB_FOREIGN_KEYS`:
+Para habilitar las claves foráneas en conexiones de SQLite, debes establecer la variable de entorno `DB_FOREIGN_KEYS` a `true`:
 
 ```php
 DB_FOREIGN_KEYS=true
