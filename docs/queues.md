@@ -8,6 +8,7 @@
 - [Creación de trabajos](#creating-jobs)
     - [Generación de clases de trabajos](#generating-job-classes)
     - [Estructura de clases](#class-structure)
+    - [Middleware job](#job-middleware)
 - [Despachar trabajos](#dispatching-jobs)
     - [Despacho postergado](#delayed-dispatching)
     - [Envío sincrónico](#synchronous-dispatching)
@@ -194,6 +195,86 @@ $this->app->bindMethod(ProcessPodcast::class.'@handle', function ($job, $app) {
 ::: danger Nota
 Los datos binarios, como los contenidos de imagen, deben ser pasados a través de la función `base64_encode` antes de ser pasados a un trabajo en cola. De otra forma, el trabajo podría no serializarse correctamente a JSON cuando es colocado en la cola.
 :::
+
+<a name="job-middleware"></a>
+### Middleware job
+
+El middleware job te permite envolver lógica personalizada alrededor de la ejecución de trabajos en cola, reduciendo el boilerplate en los mismos. Por ejemplo, considera el siguiente método `handle` el cual depende de las características de limitación de Redis para permitir que se procese sólo un trabajo cada cinco segundos:
+
+```php
+/**
+* Execute the job.
+*
+* @return void
+*/
+public function handle()
+{
+    Redis::throttle('key')->block(0)->allow(1)->every(5)->then(function () {
+        info('Lock obtained...');
+
+        // Handle job...
+    }, function () {
+        // Could not obtain lock...
+
+        return $this->release(5);
+    });
+}
+```
+
+Aunque este código es válido, la estructura del método `handle` se vuelve ruidosa dado que está llena de lógica de limitación de Redis. Además, esta lógica de limitación debe ser duplicada para cualquier otro trabajo que queramos limitar.
+
+En lugar de limitar en el método handle, podemos definir un middleware job que maneja el limite. Laravel no tiene una ubicación por defecto para el middleware job, así que eres bienvenido a colocar el middleware job en cualquier sitio de tu aplicación. En este ejemplo, colocaremos el middleware en un directorio `app/Jobs/Middleware`:
+
+```php
+<?php
+
+namespace App\Jobs\Middleware;
+
+use Illuminate\Support\Facades\Redis;
+
+class RateLimited
+{
+    /**
+    * Process the queued job.
+    *
+    * @param  mixed  $job
+    * @param  callable  $next
+    * @return mixed
+    */
+    public function handle($job, $next)
+    {
+        Redis::throttle('key')
+                ->block(0)->allow(1)->every(5)
+                ->then(function () use ($job, $next) {
+                    // Lock obtained...
+
+                    $next($job);
+                }, function () use ($job) {
+                    // Could not obtain lock...
+
+                    $job->release(5);
+                });
+    }
+}
+```
+
+Como puedes ver, al igual que [el middleware route](/middleware.html), el middleware job recibe el trabajo siendo procesado y un callback que debe ser invocado para continuar procesando el trabajo.
+
+Luego de crear el middleware job, este puede ser agregado a una tarea retornandolas desde el método `middleware` de la tarea. Este método no existe en tareas creadas con el comando de Artisan `make:job`, así que necesitarás agregarla a tu propia definición de clase de la tarea:
+
+```php
+use App\Jobs\Middleware\RateLimited;
+
+/**
+* Get the middlewarwe the job should pass through.
+*
+* @return array
+*/
+public function middleware()
+{
+    return [new RateLimited];
+}
+```
 
 <a name="dispatching-jobs"></a>
 ## Despachar trabajos
