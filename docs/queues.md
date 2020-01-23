@@ -669,9 +669,9 @@ php artisan queue:work
 Para mantener el proceso `queue:work` ejecutado permanentemente en segundo plano, debes usar un monitor de procesos como [Supervisor](#supervisor-configuration) para asegurar que el worker de cola no deja de ejecutarse.
 :::
 
-Recuerda, los workers en cola son procesos de larga duración y almacenan el estado de la aplicación iniciada en la memoria. Como resultado, no notarán cambios en la base de código después de que se han iniciado. Por lo tanto, durante el proceso de despliegue, asegúrate de [reiniciar los workers de cola](#queue-workers-and-deployment).
+Recuerda, los workers en cola son procesos de larga duración y almacenan el estado de la aplicación iniciada en la memoria. Como resultado, no notarán cambios en la base de código después de que se han iniciado. Por lo tanto, durante el proceso de despliegue, asegúrate de [reiniciar los workers de cola](#queue-workers-and-deployment). Además, recuerda que cualquier estado estático creado o modificado por tu aplicación no será automáticamente reseteado entre tareas.
 
-Alternativamente, puedes ejecutar el comando `queue:listen`. Al usar el comando `queue:listen`, no tienes que reiniciar manualmente el worker luego de que tu código sea cambiado; sin embargo, este comando no es tan eficiente como `queue:work`:
+Alternativamente, puedes ejecutar el comando `queue:listen`. Al usar el comando `queue:listen`, no tienes que reiniciar manualmente el worker cuando quieras recargar tu código actualizado o resetear el estado de la aplicación; sin embargo, este comando no es tan eficiente como `queue:work`:
 
 ```php
 php artisan queue:listen
