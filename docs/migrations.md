@@ -277,10 +277,12 @@ Comando  |  Descripción
 `$table->mediumInteger('votes');`  |  Tipo de columna equivalente a MEDIUMINT.
 `$table->mediumText('description');`  |  Tipo de columna equivalente a MEDIUMTEXT.
 `$table->morphs('taggable');`  |  Agrega los tipos de columna equivalente a UNSIGNED INTEGER `taggable_id` y VARCHAR `taggable_type`.
+`$table->uuidMorphs('taggable');`  |  Agrega las columnas UUID equivalentes `taggable_id` CHAR(36) y `taggable_type` VARCHAR(255).
 `$table->multiLineString('positions');`  |  Tipo de columna equivalente a MULTILINESTRING.
 `$table->multiPoint('positions');`  |  Tipo de columna equivalente a MULTIPOINT.                    
 `$table->multiPolygon('positions');`  |  Tipo de columna equivalente a MULTIPOLYGON.
 `$table->nullableMorphs('taggable');`  |  Permite que la columna `morphs()` acepte una versión de valor nulo.
+`$table->nullableUuidMorphs('taggable');`  |  Agrega versiones nullable de las columnas `uuidMorphs()`.
 `$table->nullableTimestamps();`  |  Método Alias de `timestamps()`.                              
 `$table->point('position');`  |  Tipo de columna equivalente a POINT.
 `$table->polygon('positions');`  |  Tipo de columna equivalente a POLYGON.
