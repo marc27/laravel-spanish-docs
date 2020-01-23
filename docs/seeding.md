@@ -33,9 +33,10 @@ Como un ejemplo, vamos a modificar la clase `DatabaseSeeder` predeterminada y ag
 ```php
 <?php
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -49,7 +50,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
-            'password' => bcrypt('password'),
+            'password' => Hash::make('password'),
         ]);
     }
 }
