@@ -796,7 +796,7 @@ public function toNexmo($notifiable)
 <a name="routing-sms-notifications"></a>
 ### Enrutar notificaciones por SMS
 
-Para enrutar notificaciones de Nexmo al número de telefono correcto, define un método `routeNotificationForNexmo` en tu entidad notifiable:
+Para enrutar notificaciones de Nexmo al número de teléfono correcto, define un método `routeNotificationForNexmo` en tu entidad notifiable:
 
 ```php
 <?php

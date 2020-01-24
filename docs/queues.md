@@ -244,7 +244,7 @@ public function handle()
 
 Aunque este código es válido, la estructura del método `handle` se vuelve ruidosa dado que está llena de lógica de limitación de Redis. Además, esta lógica de limitación debe ser duplicada para cualquier otro trabajo que queramos limitar.
 
-En lugar de limitar en el método handle, podemos definir un middleware job que maneja el limite. Laravel no tiene una ubicación por defecto para el middleware job, así que eres bienvenido a colocar el middleware job en cualquier sitio de tu aplicación. En este ejemplo, colocaremos el middleware en un directorio `app/Jobs/Middleware`:
+En lugar de limitar en el método handle, podemos definir un middleware job que maneja el límite. Laravel no tiene una ubicación por defecto para el middleware job, así que eres bienvenido a colocar el middleware job en cualquier sitio de tu aplicación. En este ejemplo, colocaremos el middleware en un directorio `app/Jobs/Middleware`:
 
 ```php
 <?php
@@ -281,7 +281,7 @@ class RateLimited
 
 Como puedes ver, al igual que [el middleware route](/middleware.html), el middleware job recibe el trabajo siendo procesado y un callback que debe ser invocado para continuar procesando el trabajo.
 
-Luego de crear el middleware job, este puede ser agregado a una tarea retornandolas desde el método `middleware` de la tarea. Este método no existe en tareas creadas con el comando de Artisan `make:job`, así que necesitarás agregarla a tu propia definición de clase de la tarea:
+Luego de crear el middleware job, este puede ser agregado a una tarea retornándolas desde el método `middleware` de la tarea. Este método no existe en tareas creadas con el comando de Artisan `make:job`, así que necesitarás agregarla a tu propia definición de clase de la tarea:
 
 ```php
 use App\Jobs\Middleware\RateLimited;

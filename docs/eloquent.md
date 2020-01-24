@@ -362,7 +362,7 @@ foreach ($users as $user) {
 
 Eloquent también ofrece soporte avanzado para subconsultas, lo que te permite extraer información de tablas relacionadas en una única consulta. Por ejemplo, imaginemos que tenemos una tabla `destinations` y una tabla `flights`. La tabla `flights` contiene una columna `arrived_at` que indica cuando el vuelo ha arribado al destino. 
 
-Usando la funcionalidad de subconsulta disponible en los métodos `select` y `addSelect`, podemos seleccionar todos los destinos y el nombre del vuelo que más recientemente arribo a dicho destino usando una única consulta:
+Usando la funcionalidad de subconsulta disponible en los métodos `select` y `addSelect`, podemos seleccionar todos los destinos y el nombre del vuelo que más recientemente arribó a dicho destino usando una única consulta:
 
 ```php
 use App\Flight;
@@ -527,9 +527,9 @@ Al momento de utilizar una actualización masiva por medio de Eloquent, los even
 
 #### Examinando cambios en los atributos
 
-Eloquent proporciona los métodos `isDirty`, `isClean` y `wasChanged` para examinar el estado interno de tus modelos y determinar como sus atributos han cambiando desde que fueron originalmente cargados.
+Eloquent proporciona los métodos `isDirty`, `isClean` y `wasChanged` para examinar el estado interno de tus modelos y determinar cómo sus atributos han cambiado desde que fueron originalmente cargados.
 
-El método `isDirty` determina si algún atributo ha cambiado desde que el modelo fue cargado. Puedes pasar un nombre de atributo especifico para determinar si un atributo particular está sucio. El método `isClean` es el opuesto a `isDirty` y también acepta un atributo opcional como argumento:
+El método `isDirty` determina si algún atributo ha cambiado desde que el modelo fue cargado. Puedes pasar un nombre de atributo específico para determinar si un atributo particular está sucio. El método `isClean` es el opuesto a `isDirty` y también acepta un atributo opcional como argumento:
 
 ```php
 $user = User::create([
