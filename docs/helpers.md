@@ -947,7 +947,7 @@ $replaced = preg_replace_array('/:[a-z_]+/', ['8:30', '9:00'], $string);
 <a name="method-str-after"></a>
 #### `Str::after()` {#collection-method}
 
-La función `Str::after` retorna todo después del valor dado en una cadena:
+La función `Str::after` retorna todo después del valor dado en una cadena. La cadena entera será retornada si el valor no existe dentro de la cadena:
 
 ```php
 use Illuminate\Support\Str;
@@ -960,7 +960,7 @@ $slice = Str::after('This is my name', 'This is');
 <a name="method-str-after-last"></a>
 #### `Str::afterLast()` {#collection-method}
 
-El método `Str::afterLast` retorna todo luego de la última ocurrencia del valor dado en una cadena:
+El método `Str::afterLast` retorna todo luego de la última ocurrencia del valor dado en una cadena. La cadena entera será retornada si el valor no existe dentro de la cadena:
 
 ```php
 use Illuminate\Support\Str;
