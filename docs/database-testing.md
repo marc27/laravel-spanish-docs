@@ -244,30 +244,26 @@ $users = factory(App\User::class, 3)
 
 #### Relaciones y closures de atributos
 
-También puedes adjuntar relaciones a los modelos usando atributos de Closure en tus definiciones del factory. Por ejemplo, si prefieres crear una nueva instancia `User` al momento de crear un `Post`, puedes hacer lo siguiente:
+También puedes adjuntar relaciones a los modelos en tus definiciones del factory. Por ejemplo, si prefieres crear una nueva instancia `User` al momento de crear un `Post`, puedes hacer lo siguiente:
 
 ```php
 $factory->define(App\Post::class, function ($faker) {
     return [
         'title' => $faker->title,
         'content' => $faker->paragraph,
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        },
+        'user_id' => factory(App\User::class),
     ];
 });
 ```
 
-Estas Closures también reciben el arreglo de atributos evaluados del factory que los define:
+Si la relación depende del factory que las define debes proporcionar un callback que acepta el arreglo de atributos evaluado:
 
 ```php
 $factory->define(App\Post::class, function ($faker) {
     return [
         'title' => $faker->title,
         'content' => $faker->paragraph,
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        },
+        'user_id' => factory(App\User::class),
         'user_type' => function (array $post) {
             return App\User::find($post['user_id'])->type;
         },
@@ -321,4 +317,18 @@ Método  | Descripción
 ------------- | -------------
 `$this->assertDatabaseHas($table, array $data);`  |  Comprueba que una tabla en la base de datos contiene los datos dados.
 `$this->assertDatabaseMissing($table, array $data);`  |  Comprueba que una tabla en la base de datos no contiene los datos dados.
+`$this->assertDeleted($table, array $data);`  |  Comprueba que el registro dado ha sido eliminado.
 `$this->assertSoftDeleted($table, array $data);`  |  Comprueba que el registro dado ha sido borrado lógicamente.
+
+Por conveniencia, puedes pasar un modelo a los helpers `assertDeleted` y `assertSoftDeleted` para comprobar que el registro fue eliminado o borrado lógicamente, respectivamente, de la base de datos en base a la clave primaria del modelo.
+
+Por ejemplo, si estás usando un model factory en tu prueba, puedes pasar este modelo a uno de estos helpers para probar si tu aplicación borró de forma apropiada el registro de la base de datos:
+
+```php
+public function testDatabase()
+{
+    $user = factory(App\User::class)->create();
+    // Make call to application...
+    $this->assertDeleted($user);
+}
+```
