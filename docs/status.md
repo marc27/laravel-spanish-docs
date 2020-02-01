@@ -10,7 +10,7 @@ Para revisarlas solo verifica que los commits hechos no tengan errores (ortográ
 
 ## Estado por archivo
 
-- [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/installation.md) Última actualización el día 10/01/2020 hasta "Correct sub-spelling (31/12/2019)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/installation.md) - Revisado [&#9989;]
+- [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/installation.md) Última actualización el día 30/01/2020 hasta "Added composer global installation path for Linux (23/01/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/installation.md) - Revisado [&#9989;]
 - [configuration.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/configuration.md) Última actualización el día 10/01/2020 hasta "unify placeholder spelling (27/11/2018)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/configuration.md) - Revisado [&#9989;]
 - [homestead.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/homestead.md) Última actualización el día 10/01/2020 hasta "Add PHP 7.4 to included software (03/01/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/homestead.md) - Revisado [&#9989;]
 - [valet.md](https://github.com/StydeNet/laravel-spanish-docs/blob/6.0_press/docs/valet.md) Última actualización el día 12/01/2020 hasta "Formatting (23/12/2019)" en [laravel/docs](https://github.com/laravel/docs/commits/6.x/valet.md) - Revisado [&#9989;]
