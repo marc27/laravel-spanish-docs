@@ -523,6 +523,25 @@ Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
 });
 ```
 
+#### Segmentos de limite de rango
+
+Típicamente, probablemente especificaras un limite de rango para toda tu API. Sin embargo, tu aplicación puede requerir diferentes limites de rango para diferentes segmentos de tu API. si este es el caso, necesitarás pasar un nombre de segmento como tercer argumento del middleware `throttle`:
+
+```php
+Route::middleware('auth:api')->group(function () {
+    Route::middleware('throttle:60,1,default')->group(function () {
+        Route::get('/servers', function () {
+            //
+        });
+    });
+    Route::middleware('throttle:60,1,deletes')->group(function () {
+        Route::delete('/servers/{id}', function () {
+            //
+        });
+    });
+});
+```
+
 <a name="form-method-spoofing"></a>
 ## La suplantación de método del formulario
 
