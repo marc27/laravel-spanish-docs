@@ -241,6 +241,14 @@ Al momento de enviar solicitudes JSON a tu aplicación, puedes acceder a los dat
 $name = $request->input('user.name');
 ```
 
+#### Retornando valores de campos booleanos
+
+Al lidiar con elementos HTML como checkboxes, tu aplicación puede recibir valores _verdaderos o falsos_ que son en realidad cadenas. Por ejemplo, "true" o "on". Por conveniencia, puedes usar el método `boolean` para retornar estos valores como booleanos. El método `boolean` retorna `true` para 1, "1", true, "true", "on" y "yes". Todos los demás valores retornarán `false`:
+
+```php
+$archived = $request->boolean('archived');
+```
+
 #### Obteniendo una porción de los datos ingresados
 
 Si necesitas obtener un subconjunto de los datos ingresados, puedes usar los métodos `only` y `except`. Ambos métodos aceptan un solo arreglo o una lista dinámica de argumentos:
