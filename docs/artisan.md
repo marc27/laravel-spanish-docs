@@ -429,6 +429,18 @@ Si necesitas darle al usuario un conjunto de opciones predefinadas, puedes usar 
 $name = $this->choice('What is your name?', ['Taylor', 'Dayle'], $defaultIndex);
 ```
 
+Adicionalmente, el método `choice` acepta un cuarto y quinto argumento opcional para determinar el maximo número de intentos para seleccionar una respuesta valida y si múltiples selecciones están permitidas:
+
+```php
+$name = $this->choice(
+    'What is your name?',
+    ['Taylor', 'Dayle'],
+    $defaultIndex,
+    $maxAttempts = null,
+    $allowMultipleSelections = false
+);
+```
+
 <a name="writing-output"></a>
 ### Escritura de salida
 
