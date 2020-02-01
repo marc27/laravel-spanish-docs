@@ -72,7 +72,7 @@ El canal `papertrail` requiere de las opciones de configuración `url` y `port`.
 
 #### Configurando el canal de Slack
 
-El canal `slack` requiere una opción de configuración `url`. Esta URL debe coincidir con una URL de un [webhook entrante](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) que has configurado para tu equipo de Slack.
+El canal `slack` requiere una opción de configuración `url`. Esta URL debe coincidir con una URL de un [webhook entrante](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) que has configurado para tu equipo de Slack. Por defecto, Slack sólo recibirará registros en el nivel `critical` y superior; sin embargo, puedes ajustar esto en tu archivo de configuración `logging`.
 
 <a name="building-log-stacks"></a>
 ### Construyendo stacks de registros
