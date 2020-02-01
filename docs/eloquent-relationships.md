@@ -259,7 +259,25 @@ public function post()
 <a name="many-to-many"></a>
 ### Muchos a muchos
 
-Las relaciones de muchos-a-muchos son ligeramente más complicadas que las relaciones `hasOne` y `hasMany`. Un ejemplo de tal relación es un usuario con muchos roles, donde los roles también son compartidos por otros usuarios. Por ejemplo, muchos usuarios pueden tener el rol "Admin". Para definir esta relación, tres tablas de bases de datos son necesitadas: `users`, `roles`, y `role_user`. La tabla `role_user` es derivada del orden alfabético de los nombres de modelo relacionados y contiene las columnas `user_id` y `role_id`.
+Las relaciones de muchos-a-muchos son ligeramente más complicadas que las relaciones `hasOne` y `hasMany`. Un ejemplo de tal relación es un usuario con muchos roles, donde los roles también son compartidos por otros usuarios. Por ejemplo, muchos usuarios pueden tener el rol "Admin". 
+
+#### Estructura de la tabla
+
+Para definir esta relación, tres tablas de bases de datos son necesitadas: `users`, `roles`, y `role_user`. La tabla `role_user` es derivada del orden alfabético de los nombres de modelo relacionados y contiene las columnas `user_id` y `role_id`.
+
+```php
+users
+    id - entero
+    name - cadena
+roles
+    id - entero
+    name - cadena
+role_user
+    user_id - entero
+    role_id - entero
+```
+
+#### Estructura del modelo
 
 Las relaciones de muchos-a-muchos son definidas escribiendo un método que devuelve el resultado del método `belongsToMany`. Por ejemplo, vamos a definir el método `roles` en nuestro modelo `User`:
 
@@ -1059,7 +1077,7 @@ Puedes usar notación "de puntos" para ejecutar una consulta contra una relació
 use Illuminate\Database\Eloquent\Builder;
 
 $posts = App\Post::whereDoesntHave('comments.author', function (Builder $query) {
-    $query->where('banned', 1);
+    $query->where('banned', 0);
 })->get();
 ```
 
