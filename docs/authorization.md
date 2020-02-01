@@ -359,7 +359,7 @@ class PostPolicy
 Puedes continuar definiendo métodos adicionales en la política como sea necesario para las diferentes acciones que este autorice. Por ejemplo, puedes definir métodos `view` o `delete` para autorizar varias acciones de `Post`, pero recuerda que eres libre de darle los nombres que quieras a los métodos de la política.
 
 ::: tip TIP
-Si usas la opción `--model` cuando generes tu política con el comando de Artisan, éste contendrá métodos para las acciones `view`, `create`, `update`, `delete`, `restore` y `forceDelete`.
+Si usas la opción `--model` cuando generes tu política con el comando de Artisan, éste contendrá métodos para las acciones `viewAny`, `view`, `create`, `update`, `delete`, `restore` y `forceDelete`.
 :::
 
 <a name="policy-responses"></a>
