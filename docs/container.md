@@ -88,7 +88,7 @@ Dentro de un proveedor de servicios, siempre tienes acceso al contenedor mediant
 
 ```php
 $this->app->bind('HelpSpot\API', function ($app) {
-    return new HelpSpot\API($app->make('HttpClient'));
+    return new \HelpSpot\API($app->make('HttpClient'));
 });
 ```
 
@@ -100,7 +100,7 @@ El método `singleton` enlaza una clase o interfaz al contenedor que debería se
 
 ```php
 $this->app->singleton('HelpSpot\API', function ($app) {
-    return new HelpSpot\API($app->make('HttpClient'));
+    return new \HelpSpot\API($app->make('HttpClient'));
 });
 ```
 
@@ -109,7 +109,7 @@ $this->app->singleton('HelpSpot\API', function ($app) {
 También puedes enlazar una instancia de objeto existente al contenedor usando el método `instance`. La instancia dada siempre será retornada en llamadas siguientes al contenedor:
 
 ```php
-$api = new HelpSpot\API(new HttpClient);
+$api = new \HelpSpot\API(new HttpClient);
 
 $this->app->instance('HelpSpot\API', $api);
 ```
@@ -293,7 +293,7 @@ $this->app->resolving(function ($object, $app) {
     // Called when container resolves object of any type...
 });
 
-$this->app->resolving(HelpSpot\API::class, function ($api, $app) {
+$this->app->resolving(\HelpSpot\API::class, function ($api, $app) {
     // Called when container resolves objects of type "HelpSpot\API"...
 });
 ```
