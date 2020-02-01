@@ -266,6 +266,26 @@ Route::resource('photos.comments', 'PhotoCommentController');
 
 Esta ruta registrará un recurso "anidado" al cual se puede acceder mediante URLs como la siguiente: photos/{photos}/comments/{comments}.
 
+#### Anidación superficial
+
+A menudo, no es completamente necesario tener tanto el ID del padre como del hijo dentro de una URI dado que el ID del hijo es un identificador único. Al usar identificadores únicos como claves primarias de auto incremento para identificar tus modelos en segmentos de una URI, puedes elegir usar "anidación superficial":
+
+```php
+Route::resource('photos.comments', 'CommentController')->shallow();
+```
+
+La definición de ruta de arriba definirá las siguientes rutas:
+
+Verb      | URI                               | Action       | Route Name
+----------|-----------------------------------|--------------|---------------------
+GET       | `/photos/{photo}/comments`        | index        | photos.comments.index
+GET       | `/photos/{photo}/comments/create` | create       | photos.comments.create
+POST      | `/photos/{photo}/comments`        | store        | photos.comments.store
+GET       | `/comments/{comment}`             | show         | comments.show
+GET       | `/comments/{comment}/edit`        | edit         | comments.edit
+PUT/PATCH | `/comments/{comment}`             | update       | comments.update
+DELETE    | `/comments/{comment}`             | destroy      | comments.destroy
+
 <a name="restful-naming-resource-routes"></a>
 ### Nombrando rutas de recursos
 
