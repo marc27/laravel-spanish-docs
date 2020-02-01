@@ -500,8 +500,10 @@ use Illuminate\Support\Facades\Auth;
 Auth::logoutOtherDevices($password);
 ```
 
-::: danger Nota 
 Cuando el método `logoutOtherDevices` es invocado, las otras sesiones del usuario serán invalidadas completamente, lo que quiere decir que serán "sacadas" de todos los guards en los que previamente estaban autenticadas.
+
+::: danger Nota
+Al usar el middleware `AuthenticateSession` en combinación con un nombre de ruta personalizado para la ruta `login`, debes sobrescribir el método `unauthenticated` en el manejador de excepciones de tu aplicación para redirigir apropiadamente a los usuarios a tu página de inicio de sesión.
 :::
 
 <a name="adding-custom-guards"></a>
