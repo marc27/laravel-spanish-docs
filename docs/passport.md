@@ -3,6 +3,7 @@
 # Laravel Passport
 
 - [Introducción](#introduction)
+- [Actualizando Passport](#upgrading)
 - [Instalación](#installation)
     - [Inicio rápido de frontend](#frontend-quickstart)
     - [Despliegue de passport](#deploying-passport)
@@ -43,6 +44,11 @@ Laravel ya hace fácil ejecutar la autenticación por medio de los tradicionales
 ::: danger Nota
 Esta documentación asume que estás familiarizado con OAuth2. Si no sabes nada sobre OAuth2, considera familiarizarte con la [terminología general](https://oauth2.thephpleague.com/terminology/) y las características de Outh2 antes de continuar.
 :::
+
+<a name="upgrading"></a>
+#### Actualizando Passport
+
+Al actualizar a una nueva versión mayor de Passport, es importante que revises detalladamente [la guía de actualización](https://github.com/laravel/passport/blob/master/UPGRADE.md).
 
 <a name="installation"></a>
 ## Instalación
