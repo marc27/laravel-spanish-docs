@@ -115,6 +115,10 @@ protected function gate()
 }
 ```
 
+::: danger Nota
+Recuerda que Laravel inyecta el usuario *autenticado* al Gate de forma automática. Si tu aplicación está proporcionando seguridad de Horizon mediante algún otro método, como restricciones de IP, entonces tus usuarios de Horizon pueden no necesitar iniciar sesión. Por lo tanto, necesitarás cambiar el `function ($user)` de arriba por `function ($user = null)` para forzar a Laravel a que no requiera autenticación. 
+:::
+
 <a name="running-horizon"></a>
 ## Ejecutando Horizon
 
