@@ -87,6 +87,12 @@ Si necesitas de otros archivos PHP antes de ejecutar tus tareas, puedes utilizar
 @endtask
 ```
 
+También puedes importar otros archivos de Envoy para que así sus historias y tareas sean agregadas a los tuyos. Luego de que han sido importados, puedes ejecutar las tareas en dichos archivos como si estuvieran definidas en los tuyos. Debes usar la directiva `@import` al principio de tu archivo `Envoy.blade.php`:
+
+```php
+@import('package/Envoy.blade.php')
+```
+
 <a name="variables"></a>
 ### Variables
 
