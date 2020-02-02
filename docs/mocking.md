@@ -44,6 +44,16 @@ $this->mock(Service::class, function ($mock) {
 });
 ```
 
+Puedes usar el método `partialMock` cuando sólo necesitas simular algunos métodos de un objeto. Los métodos que no son simulados serán ejecutados de forma normal al ser llamados:
+
+```php
+use App\Service;
+
+$this->partialMock(Service::class, function ($mock) {
+    $mock->shouldReceive('process')->once();
+});
+```
+
 De forma similar, si quieres espiar un objeto, la clase de prueba base de Laravel ofrece un método `spy` como un wrapper conveniente del método `Mockery::spy`:
 
 ```php
@@ -298,6 +308,15 @@ class ExampleTest extends TestCase
         Notification::assertSentTo(
             new AnonymousNotifiable, OrderShipped::class
         );
+
+        // Comprueba que el método Notification::route() envió la notificación al usuario correcto...
+        Notification::assertSentTo(
+            new AnonymousNotifiable,
+            OrderShipped::class,
+            function ($notification, $channels, $notifiable) use ($user) {
+                return $notifiable->routes['mail'] === $user->email;
+            }
+        );        
     }
 }
 ```
@@ -313,6 +332,8 @@ Como alternativa a mocking, puedes usar el método `fake` de la clase facade `Qu
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Jobs\AnotherJob;
+use App\Jobs\FinalJob;
 use App\Jobs\ShipOrder;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -328,7 +349,6 @@ class ExampleTest extends TestCase
         Queue::assertNothingPushed();
 
         // Perform order shipping...
-
         Queue::assertPushed(ShipOrder::class, function ($job) use ($order) {
             return $job->order->id === $order->id;
         });
@@ -342,11 +362,22 @@ class ExampleTest extends TestCase
         // Comprueba que un trabajo no fue agregado...
         Queue::assertNotPushed(AnotherJob::class);
 
-        // Comprueba que un trabajo fue agregado con una cadena específica...
+        // Comprueba que un trabajo fue agregado con una cadena dada de trabajos, emparejada por clase...
         Queue::assertPushedWithChain(ShipOrder::class, [
             AnotherJob::class,
             FinalJob::class
         ]);
+
+        // Configuración para trabajos emparejados por clase y propiedades
+        $expectedAnotherJob = new AnotherJob("foo");
+        $expectedFinalJob = new FinalJob("bar");
+        
+        // Comprueba que un trabajo fue agregado con una cadena dada de trabajos, emparejada tanto por clase 
+        // como propiedades...
+        Queue::assertPushedWithChain(ShipOrder::class, [
+            new AnotherJob('foo'),
+            new FinalJob('bar'),
+        ]);        
     }
 }
 ```
