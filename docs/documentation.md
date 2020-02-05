@@ -3,7 +3,7 @@
 En este índice podrás encontrar la lista completa de todos los capitulos de la documentación, incluyendo la guía de actualización y las notas de lanzamiento.
 
 ::: tip TIP
-Si apenas estás comenzando con Laravel, en [Styde.net](https://styde.net/) contamos con un [completo curso de Laravel 5 desde cero](https://styde.net/laravel-5/).
+Si apenas estás comenzando con Laravel, en [Styde.net](https://styde.net/) contamos con un [completo curso de Laravel 6 desde cero](https://styde.net/laravel-6/).
 :::
 
 - ## Prólogo

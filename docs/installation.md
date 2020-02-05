@@ -14,7 +14,7 @@
 ## Instalación
 
 ::: tip TIP
-¿Te gustaría un curso en video para profundizar tu aprendizaje? En Styde cuentas con un [completo curso de Laravel](https://styde.net/laravel-5/) totalmente gratuito que incluye más de 40 lecciones.
+Si apenas estás comenzando con Laravel, en [Styde.net](https://styde.net/) contamos con un [completo curso de Laravel 6 desde cero](https://styde.net/laravel-6/).
 :::
 
 <a name="server-requirements"></a>
@@ -44,7 +44,7 @@ La instalación de Laravel en un subdirectorio no está soportada.
 Laravel utiliza [Composer](https://getcomposer.org) para administrar sus dependencias. Por lo que, antes de utilizar Laravel, deberás asegurarte de tener Composer instalado en tu sistema.
 
 ::: tip TIP
-En la lección [instalación de Composer y Laravel](https://styde.net/instalacion-de-composer-y-laravel/) del curso gratuito [Laravel desde cero](https://styde.net/laravel-5/) de Styde puedes ver el proceso de instalación paso a paso.
+En la lección [Instalación de Composer](https://styde.net/instalacion-de-composer/) así como en [Instalación de Laravel 6](https://styde.net/instalacion-de-laravel-6/) del curso gratuito [Laravel desde cero](https://styde.net/laravel-6/) de Styde puedes ver el proceso de instalación paso a paso.
 :::
 
 #### Mediante el instalador de Laravel
