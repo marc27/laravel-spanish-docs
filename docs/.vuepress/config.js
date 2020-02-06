@@ -3,7 +3,7 @@ module.exports = {
   	head: [
 		['link', {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Catamaran:300,700|Miriam+Libre'}],
 		['link', { rel: 'icon', href: '/favicon.png' }],
-		['script', {src: '/custom.js'}]
+		['script', {src: '/custom.js'}],
 		['meta', { property: 'og:url', content: 'https://documentacion-laravel.com' }],
 		['meta', { property: 'og:type', content: 'article' }],
                 ['meta', { property: 'og:title', content: 'Documentación de Laravel en español' }],
