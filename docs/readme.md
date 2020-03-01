@@ -6,7 +6,7 @@ meta:
 
 # Traducción de la documentación de Laravel al español
 
-Bienvenido a la traducción de la documentación de Laravel 6.0 al español.
+Bienvenido a la traducción de la documentación de Laravel 7.0 al español.
 
 Puedes encontrar la documentación oficial de Laravel en inglés en [https://laravel.com/docs](https://laravel.com/docs)
 
@@ -18,7 +18,7 @@ Actualmente esta traducción de la documentación de Laravel se encuentra en per
 
 ## Guía para contribuir
 
-Si está enviando documentación para la **versión estable actual**, envíala a la rama correspondiente. Por ejemplo, la documentación para Laravel 6.0 se enviaría a la rama `6.0_press`. La documentación destinada a la próxima versión de Laravel debe enviarse a la rama `master`.
+Si está enviando documentación para la **versión estable actual**, envíala a la rama correspondiente. Por ejemplo, la documentación para Laravel 7.0 se enviaría a la rama `7.0_press`. La documentación destinada a la próxima versión de Laravel debe enviarse a la rama `master`.
 
 ## Sobre esta traducción
 
