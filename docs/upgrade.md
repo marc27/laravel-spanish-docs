@@ -72,6 +72,13 @@ protected function serializeDate(DateTimeInterface $date)
 Este cambio solo afecta la serialización de modelos y colecciones de modelos para arreglos y JSON. Este cambio no tiene ningún efecto sobre cómo se almacenan las fechas en su base de datos.
 :::
 
+<a name="factory-types"></a>
+#### Tipos de Factory 
+
+**Probabilidad de impacto: Medio**
+
+Laravel 7 elimina la característica de los tipos de factory. Esta característica no ha sido documentada desde octubre de 2016. Si todavía usa esta característica, debería actualizar a factory states, que proporcionan más flexibilidad.
+
 <a name="miscellaneous"></a>
 ### Misceláneos
 
