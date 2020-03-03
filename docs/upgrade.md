@@ -27,13 +27,13 @@ Intentamos documentar cada posible cambio de ruptura (breaking change). Dado que
 
 **Probabilidad de impacto: Medio**
 
-Laravel 7 añade soporte para Symfony 5, que ahora es también la nueva versión mínima compatible.
+Laravel 7 actualiza sus componentes subyacentes de Symfony a la serie 5.x, que ahora es también la nueva versión mínima compatible.
 
 ### Requiere PHP 7.2.5
 
 **Probabilidad de impacto: Bajo**
 
-La nueva versión mínima de PHP (que imita a Symfony 5.0) es ahora 7.2.5.
+La nueva versión mínima de PHP es ahora 7.2.5.
 
 <a name="updating-dependencies"></a>
 ### Actualizando Dependencias
@@ -49,24 +49,28 @@ A continuación, examine cualquier paquete de terceros consumido por su aplicaci
 
 **Probabilidad de impacto: Alto**
 
-Laravel 7 viene con un nuevo valor por defecto para serializar fechas cuando se utiliza el método `toArray` o `toJson` en modelos Eloquent. Hace uso del comportamiento por defecto de Carbon `toJSON` y proporcionará una cadena de fecha y hora con fracciones e información de la zona horaria.
+Laravel 7 usa un nuevo formato de serialización de fecha cuando se utiliza el método `toArray` o `toJson` en modelos Eloquent. Para dar formato a las fechas de serialización, el marco de trabajo ahora utiliza el método `toJSON` de Carbon, el cual produce una fecha compatible con ISO-8601 incluyendo información de la zona horaria y los segundos fraccionarios y una mejor integración con las bibliotecas de análisis de fechas del lado del cliente.
 
-El comportamiento anterior serializaría una fecha, por ejemplo, a `2019-12-02 20:01:00`. El nuevo comportamiento serializará una fecha a algo como `2019-12-02T20:01:00.283041Z`. Esto proporcionará más información si, por ejemplo, estás construyendo API's.
+Anteriormente, las fechas se serializaban en un formato como el siguiente: `2019-12-02 20:01:00`. Las fechas serializadas con el nuevo formato aparecerán como: `2019-12-02T20:01:00.283041Z`. 
 
-Si quieres seguir usando el comportamiento anterior puedes anular el método `serializeDate` en tu modelo:
+Si deseas seguir usando el comportamiento anterior puedes anular el método `serializeDate` en tu modelo:
 
 ```php
-    /**
-     * Prepare a date for array / JSON serialization.
-     *
-     * @param  \DateTimeInterface  $date
-     * @return string
-     */
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
+/**
+* Prepare a date for array / JSON serialization.
+*
+* @param  \DateTimeInterface  $date
+* @return string
+*/
+protected function serializeDate(DateTimeInterface $date)
+{
+    return $date->format('Y-m-d H:i:s');
+}
 ```
+
+::: tip TIP
+Este cambio solo afecta la serialización de modelos y colecciones de modelos para arreglos y JSON. Este cambio no tiene ningún efecto sobre cómo se almacenan las fechas en su base de datos.
+:::
 
 <a name="miscellaneous"></a>
 ### Misceláneos
