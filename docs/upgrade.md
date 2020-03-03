@@ -134,7 +134,7 @@ Se han eliminado los métodos no documentados `addHidden` y `addVisible`. En su 
 
 **Probabilidad de impacto: Bajo**
 
-Los métodos `booting` y `booted` se han agregado a Eloquent para proporcionar un lugar para definir  convenientemente cualquier lógica que deba ejecutarse durante el proceso "boot" del modelo. Si ya tiene métodos del modelo con estos nombres, tendrá que cambiar el nombre de sus métodos para que no entren en conflicto con los métodos recién agregados.
+Los métodos `booting` y `booted` se han agregado a Eloquent para proporcionar un lugar para definir convenientemente cualquier lógica que deba ejecutarse durante el proceso "boot" del modelo. Si ya tiene métodos del modelo con estos nombres, tendrá que cambiar el nombre de sus métodos para que no entren en conflicto con los métodos recién agregados.
 
 <a name="date-serialization"></a>
 #### Serialización de fechas
@@ -175,7 +175,7 @@ Laravel 7 elimina la característica de los "tipos de factory". Esta caracterís
 
 **Probabilidad d eimpacto: Bajo**
 
-El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea  continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
+El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
 
 #### Enlace de Ruta
 
@@ -215,7 +215,7 @@ Las plantillas de correo de Markdown predeterminadas se han actualizado con un d
 
 **Probabilidad de impacto: Bajo**
 
-Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo  se ejecuta como un demonio por defecto.
+Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo se ejecuta como un demonio por defecto.
 
 ### Recursos
 
