@@ -125,7 +125,7 @@ Se han eliminado los métodos no documentados `addHidden` y `addVisible`. En su 
 
 **Probabilidad de impacto: Bajo**
 
-Los métodos `booting` y `booted` se han agregado a Eloquent para proporcionar un lugar para definir convenientemente cualquier lógica que deba ejecutarse durante el proceso "boot" del modelo. Si ya tiene métodos del modelo con estos nombres, tendrá que cambiar el nombre de sus métodos para que no entren en conflicto con los métodos recién agregados.
+Los métodos `booting` y `booted` se han agregado a Eloquent para proporcionar un lugar para definir  convenientemente cualquier lógica que deba ejecutarse durante el proceso "boot" del modelo. Si ya tiene métodos del modelo con estos nombres, tendrá que cambiar el nombre de sus métodos para que no entren en conflicto con los métodos recién agregados.
 
 <a name="date-serialization"></a>
 #### Serialización de fechas
