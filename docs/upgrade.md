@@ -17,7 +17,7 @@
 
 ## Actualizando a 7.0 desde 6.0
 
-#### Tiempo de actualización estimado: ?
+#### Tiempo de actualización estimado: 15 Minutos
 
 ::: danger NOTA
 Intentamos documentar cada posible cambio de ruptura (breaking change). Dado que algunos de estos cambios de ruptura se encuentran en las partes oscuras del framework, solo una parte de estos cambios puede afectar tu aplicación.
