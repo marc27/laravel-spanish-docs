@@ -88,10 +88,10 @@ A continuación, por favor, actualice la opción `secure` de su archivo de confi
 
 **Probabilidad de impacto: Alto**
 
-Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `~ 2.0` de este paquete:
+Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete:
 
 ```shell
-composer require laravel/ui "~2.0"
+composer require laravel/ui "^2.0"
 ```
 
 #### El `TokenRepositoryInterface`
