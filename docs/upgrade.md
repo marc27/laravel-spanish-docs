@@ -1,7 +1,7 @@
 :::pre
 # Guía de Actualización
 
-- [Actualizando a 7.0 desde 6.0](#upgrade-7.0)
+- [Actualizando a 7.0 desde 6.x](#upgrade-7.0)
 
 <a name="high-impact-changes"></a>
 ## Cambios de alto impacto
@@ -21,7 +21,7 @@
 
 <a name="upgrade-7.0"></a>
 
-## Actualizando a 7.0 desde 6.0
+## Actualizando a 7.0 desde 6.x
 
 #### Tiempo de actualización estimado: 15 Minutos
 
