@@ -188,6 +188,12 @@ La biblioteca Zend Diactoros para generar respuestas PSR-7 ha quedado en desuso.
 
 ### Correo
 
+#### Cambios en el archivo de configuración
+
+**Probabilidad de impacto: Opcional**
+
+Para poder soportar múltiples correos, el archivo de configuración por defecto de `mail` ha cambiado en Laravel 7.x para incluir un array de `mailers`.  Sin embargo, para preservar la compatibilidad con versiones anteriores, el formato Laravel 6.x de este archivo de configuración todavía se admite. Por lo tanto, no hay cambios **requeridos** cuando se actualiza a Laravel 7.x; sin embargo, es posible que desee [examinar la nueva estructura del archivo de configuración de `mail`](https://github.com/laravel/laravel/blob/develop/config/mail.php) y actualizar su archivo para reflejar los cambios.
+
 #### Actualizaciones de la plantilla de correo de Markdown 
 
 **Probabilidad de impacto: Bajo**
@@ -209,6 +215,14 @@ Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta
 **Probabilidad de impacto: Bajo**
 
 Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En su lugar, los recursos deben extender la clase `Illuminate\Http\Resources\Json\JsonResource`.
+
+### Rutas
+
+#### El método de rutas `getRoutes` 
+
+**Probabilidad de impacto: Bajo**
+
+El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routing\RouteCollectionInterface` en lugar de `Illuminate\Routing\RouteCollection`. 
 
 ### Sesión
 
