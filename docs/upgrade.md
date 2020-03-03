@@ -49,7 +49,7 @@ A continuación, examine cualquier paquete de terceros consumido por su aplicaci
 
 **Probabilidad de impacto: Alto**
 
-Laravel 7 usa un nuevo formato de serialización de fecha cuando se utiliza el método `toArray` o `toJson` en modelos Eloquent. Para dar formato a las fechas de serialización, el marco de trabajo ahora utiliza el método `toJSON` de Carbon, el cual produce una fecha compatible con ISO-8601 incluyendo información de la zona horaria y los segundos fraccionarios y una mejor integración con las bibliotecas de análisis de fechas del lado del cliente.
+Laravel 7 usa un nuevo formato de serialización de fecha cuando se utiliza el método `toArray` o `toJson` en modelos Eloquent. Para dar formato a las fechas de serialización, el marco de trabajo ahora utiliza el método `toJSON` de Carbon, el cual produce una fecha compatible con ISO-8601 incluyendo información de la zona horaria y los segundos fraccionarios. Además, este cambio proporciona un mejor soporte e integración con las bibliotecas de análisis de fechas del lado del cliente.
 
 Anteriormente, las fechas se serializaban en un formato como el siguiente: `2019-12-02 20:01:00`. Las fechas serializadas con el nuevo formato aparecerán como: `2019-12-02T20:01:00.283041Z`. 
 
