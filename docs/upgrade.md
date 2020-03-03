@@ -245,11 +245,9 @@ Se ha agregado un nuevo método `getEmailForVerification` a la interfaz `Illumin
 <a name="email-verification-route-change"></a>
 #### Cambio de ruta de verificación de correo electrónico
 
-**Probabilidad de impacto: Alta**
+**Probabilidad de impacto: Medio**
 
-La ruta para verificar los correos electrónicos ha cambiado en 6.x de: `/email/verify/{id}` a `/email/verify/{id}/{hash}`
-
-Esto significa que los correos electrónicos de verificación que se enviaron antes de la actualización a 6.x ya no serán válidos y pasarán a una página 404.
+La ruta para verificar los correos electrónicos ha cambiado de  `/email/verify/{id}` a `/email/verify/{id}/{hash}`. Cualquier correo electrónico de verificación que se haya enviado antes de actualizar a Laravel 6.x ya no será válido y mostrará una página 404. Si lo desea, puede definir una ruta que coincida con la antigua ruta URL de verificación y mostrar un mensaje informativo para sus usuarios que les pida que vuelvan a verificar su dirección de correo electrónico.
 
 <a name="helpers"></a>
 ### Helpers
