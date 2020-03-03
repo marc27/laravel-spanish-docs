@@ -46,7 +46,7 @@ La nueva versión mínima de PHP es ahora 7.2.5.
 
 Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`.
 
-Finalmente, examine cualquier paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
+Finalmente, examine cualquier otro paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
 
 <a name="symfony-5-related-upgrades"></a>
 ### Actualizaciones relacionadas con Symfony 5
@@ -55,7 +55,7 @@ Finalmente, examine cualquier paquete de terceros consumido por su aplicación y
 
 Laravel 7 utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
 
-En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`.
+En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de la clase `Exception`:
 
 ```php
 use Throwable;
@@ -166,7 +166,7 @@ Laravel 7 elimina la característica de los "tipos de factory". Esta caracterís
 
 **Probabilidad d eimpacto: Bajo**
 
-El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
+El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea  continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
 
 #### Enlace de Ruta
 
@@ -239,7 +239,7 @@ Los datos del controlador de sesión `array` ahora son persistentes para la soli
 
 **Probabilidad de impacto: Medio**
 
-La aserción `assertSee` en la clase `TestResponse` ahora escapará automáticamente los valores. Si está escapando manualmente cualquier valor pasado a esta aserción, ya no debería hacerlo.
+Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo.
 
 ### Validación
 
