@@ -22,6 +22,7 @@
 - [Método de configuración regional `Lang::getFromJson`](#get-from-json)
 - [Límite de reintento de cola](#queue-retry-limit)
 - [Reenviar ruta de verificación de correo electrónico](#email-verification-route)
+- [Cambio de ruta de verificación de correo electrónico](#email-verification-route-change)
 - [Facade `Input`](#the-input-facade)
 
 ## Cambios de bajo impacto
@@ -240,6 +241,15 @@ Para evitar posibles ataques de CSRF, la ruta `email/resend` registrada por el e
 **Probabilidad de impacto: Bajo**
 
 Se ha agregado un nuevo método `getEmailForVerification` a la interfaz `Illuminate\Contracts\Auth\MustVerifyEmail`. Si estás implementando manualmente esta interfaz, debes implementar este método, el cual debe devolver la dirección de correo electrónico asociada del objeto. Si tu modelo `App\User` está utilizando el trait `Illuminate\Auth\MustVerifyEmail`, no se requieren cambios, ya que este trait implementa este método por ti.
+
+<a name="email-verification-route-change"></a>
+#### Cambio de ruta de verificación de correo electrónico
+
+**Probabilidad de impacto: Alta**
+
+La ruta para verificar los correos electrónicos ha cambiado en 6.x de: `/email/verify/{id}` a `/email/verify/{id}/{hash}`
+
+Esto significa que los correos electrónicos de verificación que se enviaron antes de la actualización a 6.x ya no serán válidos y pasarán a una página 404.
 
 <a name="helpers"></a>
 ### Helpers
