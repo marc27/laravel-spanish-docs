@@ -166,7 +166,7 @@ Laravel 7 elimina la característica de los "tipos de factory". Esta caracterís
 
 **Probabilidad d eimpacto: Bajo**
 
-El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin formato. 
+El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
 
 #### Enlace de Ruta
 
