@@ -12,6 +12,8 @@
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
+- [El método `Blade::component`](#the-blade-component-method)
+- [Blade Components y "Blade X"](#blade-components-and-blade-x)
 - [Tipos de Factory](#factory-types)
 - [La regla de validación `different`](#the-different-rule)
 
@@ -75,6 +77,28 @@ A continuación, por favor, actualice la opción `secure` de su archivo de confi
 **Probabilidad de impacto: Muy Bajo**
 
 Se ha agregado un método `recentlyCreatedToken` a la interfaz `Illuminate\Auth\Passwords\TokenRepositoryInterface`. Si estás escribiendo una implementación personalizada de esta interfaz, debes agregar este método a su implementación.
+
+### Blade
+
+<a name="the-blade-component-method"></a>
+#### El método `component` 
+
+**Probabilidad de impacto: Medio**
+
+El método `Blade::component` ha sido renombrado a `Blade::aliasComponent`. Por favor, actualice sus llamadas a este método en consecuencia.
+
+<a name="blade-components-and-blade-x"></a>
+#### Blade Components y "Blade X"
+
+**Probabilidad de impacto: Medio**
+
+Laravel 7.x incluye la primera parte de sorpote para "tag components" de Blade. Si está usando el paquete de Composer `spatie/laravel-blade-x` y desea continuar usando ese paquete, por favor, deshabilite la funcionalidad integrada del componente de etiquetas de Blade usando el método `Blade::withoutComponentTags`. Si no está utilizando el paquete de Spatie, puede ignorar estas instrucciones de actualización. Puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
+
+```php
+use Illuminate\Support\Facades\Blade;
+
+Blade::withoutComponentTags();
+```
 
 ### Eloquent
 
@@ -144,6 +168,8 @@ Finalmente, el método `resolveRouteBinding` del trait `Illuminate\Http\Resource
 ### HTTP
 
 #### Compatibilidad con PSR-7
+
+**Probabilidad de impacto: Bajo**
 
 La biblioteca Zend Diactoros para generar respuestas PSR-7 ha quedado en desuso. Si está usando este paquete para la compatibilidad con PSR-7, por favor, instale en su lugar el paquete de Composer `nyholm/psr7`. Además, por favor, instale la versión `^2.0` del paquete de Composer `symfony/psr-http-message-bridge`.
 
