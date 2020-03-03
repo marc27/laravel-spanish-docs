@@ -58,8 +58,11 @@ Si quieres seguir usando el comportamiento anterior puedes anular el método `se
 ```php
     /**
      * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
      */
-    protected function serializeDate(DateTimeInterface $date) : string
+    protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
     }
