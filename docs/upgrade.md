@@ -7,6 +7,7 @@
 ## Cambios de alto impacto
 
 - [Actualizaciones relacionadas con Symfony 5](#symfony-5-related-upgrades)
+- [Autenticación Scaffolding](#authentication-scaffolding)
 - [Serialización de fechas](#date-serialization)
 
 <a name="medium-impact-changes"></a>
@@ -72,9 +73,20 @@ A continuación, por favor, actualice la opción `secure` de su archivo de confi
 
 ### Autenticación
 
+<a name="authentication-scaffolding"></a>
+#### Scaffolding
+
+**Probabilidad de impacto: Alto**
+
+Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `~ 2.0` de este paquete:
+
+```shell
+composer require laravel/ui "~2.0"
+```
+
 #### El `TokenRepositoryInterface`
 
-**Probabilidad de impacto: Muy Bajo**
+**Probabilidad de impacto: Bajo**
 
 Se ha agregado un método `recentlyCreatedToken` a la interfaz `Illuminate\Auth\Passwords\TokenRepositoryInterface`. Si estás escribiendo una implementación personalizada de esta interfaz, debes agregar este método a su implementación.
 
