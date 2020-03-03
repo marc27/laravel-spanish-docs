@@ -52,6 +52,13 @@ Laravel 7.x utiliza la serie 5.x de los componentes Symfony. Se requieren alguno
 
 En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`.
 
+```php
+use Throwable;
+
+public function report(Throwable $exception);
+public function render($request, Throwable $exception);
+```
+
 A continuación, por favor, actualice la opción `secure` de su archivo de configuración de `session` para que tenga un valor de reserva `null` y la opción `same_site` para que tenga un valor de reserva `lax`.
 
 ```php
