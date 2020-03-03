@@ -17,6 +17,7 @@
 - [Blade Components y "Blade X"](#blade-components-and-blade-x)
 - [Tipos de Factory](#factory-types)
 - [La regla de validación `different`](#the-different-rule)
+- [La aserción `assertSee`](#assert-see)
 
 <a name="upgrade-7.0"></a>
 
@@ -216,6 +217,15 @@ Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En
 **Probabilidad d eimpacto: Bajo**
 
 Los datos del controlador de sesión `array` ahora son persistentes para la solicitud actual. Anteriormente, los datos almacenados en la sesión `array` no podían ser recuperados ni siquiera durante la solicitud actual.
+
+### Pruebas
+
+<a name="assert-see"></a>
+#### La aserción `assertSee`
+
+**Probabilidad de impacto: Medio**
+
+La aserción `assertSee` en la clase `TestResponse` ahora escapará automáticamente los valores. Si está escapando manualmente cualquier valor pasado a esta aserción, ya no debería hacerlo.
 
 ### Validación
 
