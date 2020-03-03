@@ -6,6 +6,7 @@
 <a name="high-impact-changes"></a>
 ## Cambios de alto impacto
 
+- [Actualizaciones relacionadas con Symfony 5](#symfony-5-related-upgrades)
 - [Serialización de fechas](#date-serialization)
 
 <a name="medium-impact-changes"></a>
@@ -25,7 +26,7 @@ Intentamos documentar cada posible cambio de ruptura (breaking change). Dado que
 
 ### Requiere Symfony 5
 
-**Probabilidad de impacto: Medio**
+**Probabilidad de impacto: Alto**
 
 Laravel 7 actualiza sus componentes subyacentes de Symfony a la serie 5.x, que ahora es también la nueva versión mínima compatible.
 
@@ -41,6 +42,23 @@ La nueva versión mínima de PHP es ahora 7.2.5.
 Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.0`.
 
 Finalmente, examine cualquier paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
+
+<a name="symfony-5-related-upgrades"></a>
+### Actualizaciones relacionadas con Symfony 5
+
+**Probabilidad de impacto: Alto**
+
+Laravel 7.x utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
+
+En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`.
+
+A continuación, por favor, actualice la opción `secure` de su archivo de configuración de `session` para que tenga un valor de reserva `null` y la opción `same_site` para que tenga un valor de reserva `lax`.
+
+```php
+'secure' => env('SESSION_SECURE_COOKIE', null),
+
+'same_site' => 'lax',
+```
 
 ### Autenticación
 
@@ -104,6 +122,16 @@ Laravel 7 elimina la característica de los "tipos de factory". Esta caracterís
 **Probabilidad d eimpacto: Bajo**
 
 El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin formato. 
+
+#### Enlace de Ruta
+
+**Probabilidad de impacto: Bajo**
+
+El método `resolveRouteBinding` de la interfaz `Illuminate\Contracts\Routing\UrlRoutable` ahora acepta un argumento `$field`. Si estaba implementando esta interfaz a mano, debería actualizar su implementación.
+
+Además, el método `resolveRouteBinding` de la clase `Illuminate\Database\Eloquent\Model` ahora también acepta un parámetro `$field`. Si estaba reemplazando este método, debe actualizar su método para aceptar este argumento. 
+
+Finalmente, el método `resolveRouteBinding` del trait `Illuminate\Http\Resources\DelegatesToResources` ahora también acepta el parámetro `$field`. Si estaba reemplazando este método, debe actualizar su método para aceptar este argumento. 
 
 ### Queue
 
