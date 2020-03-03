@@ -105,7 +105,7 @@ El método `Blade::component` ha sido renombrado a `Blade::aliasComponent`. Por 
 
 **Probabilidad de impacto: Medio**
 
-Laravel 7 incluye la primera parte de sorpote para "tag components" de Blade. Si está usando el paquete de Composer `spatie/laravel-blade-x` y desea continuar usando ese paquete, por favor, deshabilite la funcionalidad integrada del componente de etiquetas de Blade usando el método `Blade::withoutComponentTags`. Si no está utilizando el paquete de Spatie, puede ignorar estas instrucciones de actualización. Puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
+Laravel 7 incluye sorpote propio para los "componentes de etiqueta" de Blade. Si desea desactivar la funcionalidad integrada del componente de etiquetas de Blade, puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
 
 ```php
 use Illuminate\Support\Facades\Blade;
