@@ -13,6 +13,7 @@
 ## Cambios de mediano impacto
 
 - [Tipos de Factory](#factory-types)
+- [La regla de validación `different`](#the-different-rule)
 
 <a name="upgrade-7.0"></a>
 
@@ -140,15 +141,33 @@ Además, el método `resolveRouteBinding` de la clase `Illuminate\Database\Eloqu
 
 Finalmente, el método `resolveRouteBinding` del trait `Illuminate\Http\Resources\DelegatesToResources` ahora también acepta el parámetro `$field`. Si estaba reemplazando este método, debe actualizar su método para aceptar este argumento. 
 
+### HTTP
+
+#### Compatibilidad con PSR-7
+
+La biblioteca Zend Diactoros para generar respuestas PSR-7 ha quedado en desuso. Si está usando este paquete para la compatibilidad con PSR-7, por favor, instale en su lugar el paquete de Composer `nyholm/psr7`. Además, por favor, instale la versión `^2.0` del paquete de Composer `symfony/psr-http-message-bridge`.
+
+### Correo
+
+#### Actualizaciones de la plantilla de correo de Markdown 
+
+**Probabilidad de impacto: Bajo**
+
+Las plantillas de correo de Markdown predeterminadas se han actualizado con un diseño más profesional y atractivo. Además, se ha eliminado el componente de correo de Markdown `promotion` no documentado.
+
 ### Queue
 
 #### Se ha eliminado la bandera `--daemon` en desuso
+
+**Probabilidad de impacto: Bajo**
 
 Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo se ejecuta como un demonio por defecto.
 
 ### Recursos
 
 #### La clase `Illuminate\Http\Resources\Json\Resource` 
+
+**Probabilidad de impacto: Bajo**
 
 Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En su lugar, los recursos deben extender la clase `Illuminate\Http\Resources\Json\JsonResource`.
 
@@ -159,6 +178,15 @@ Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En
 **Probabilidad d eimpacto: Bajo**
 
 Los datos del controlador de sesión `array` ahora son persistentes para la solicitud actual. Anteriormente, los datos almacenados en la sesión `array` no podían ser recuperados ni siquiera durante la solicitud actual.
+
+### Validación
+
+<a name="the-different-rule"></a>
+#### La regla `different` 
+
+**Probabilidad de impacto: Medio**
+
+La regla `different` ahora fallará si falta uno de los parámetros especificados en la solicitud.
 
 <a name="miscellaneous"></a>
 ### Misceláneos
