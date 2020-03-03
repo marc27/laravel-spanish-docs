@@ -48,11 +48,12 @@ Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer
 
 Los siguientes paquetes de origen tienen nuevas versiones principales para admitir Laravel 7. Si hay alguno, lea sus guías de actualización individuales antes de actualizar:
 
-- Browser Kit Testing v6.0
-- Envoy v2.0
-- Horizon v4.0
-- Scout v8.0
-- UI v2.0
+- [Browser Kit Testing v6.0](https://github.com/laravel/browser-kit-testing/blob/master/UPGRADE.md)
+- [Envoy v2.0](https://github.com/laravel/envoy/blob/master/UPGRADE.md)
+- [Horizon v4.0](https://github.com/laravel/horizon/blob/master/UPGRADE.md)
+- [Nova v3.0](https://nova.laravel.com/releases)
+- [Scout v8.0](https://github.com/laravel/scout/blob/master/UPGRADE.md)
+- UI v2.0 (No changes necessary)
 
 Finalmente, examine cualquier otro paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
 
