@@ -33,7 +33,7 @@ Intentamos documentar cada posible cambio de ruptura (breaking change). Dado que
 
 **Probabilidad de impacto: Alto**
 
-Laravel 7 actualiza sus componentes subyacentes de Symfony a la serie 5.x, que ahora es también la nueva versión mínima compatible.
+Laravel 7 actualizó sus componentes subyacentes de Symfony a la serie 5.x, que ahora es también la nueva versión mínima compatible.
 
 ### Requiere PHP 7.2.5
 
