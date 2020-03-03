@@ -46,6 +46,14 @@ La nueva versión mínima de PHP es ahora 7.2.5.
 
 Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`.
 
+Los siguientes paquetes de origen tienen nuevas versiones principales para admitir Laravel 7. Si hay alguno, lea sus guías de actualización individuales antes de actualizar:
+
+- Browser Kit Testing v6.0
+- Envoy v2.0
+- Horizon v4.0
+- Scout v8.0
+- UI v2.0
+
 Finalmente, examine cualquier otro paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
 
 <a name="symfony-5-related-upgrades"></a>
