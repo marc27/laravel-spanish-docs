@@ -200,7 +200,7 @@ Las plantillas de correo de Markdown predeterminadas se han actualizado con un d
 
 **Probabilidad de impacto: Bajo**
 
-Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo se ejecuta como un demonio por defecto.
+Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo  se ejecuta como un demonio por defecto.
 
 ### Recursos
 
