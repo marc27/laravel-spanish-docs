@@ -152,7 +152,7 @@ protected function serializeDate(DateTimeInterface $date)
 ```
 
 ::: tip TIP
-Este cambio solo afecta la serialización de modelos y colecciones de modelos para arreglos y JSON. Este cambio no tiene ningún efecto sobre cómo se almacenan las fechas en su base de datos.
+Este cambio solo afecta la serialización de modelos y colecciones de modelos para arreglos y JSON. Este cambio no tiene efecto sobre cómo se almacenan las fechas en su base de datos.
 :::
 
 <a name="factory-types"></a>
