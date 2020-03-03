@@ -55,7 +55,7 @@ Finalmente, examine cualquier otro paquete de terceros consumido por su aplicaci
 
 Laravel 7 utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
 
-En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de la clase `Exception`:
+En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`:
 
 ```php
 use Throwable;
