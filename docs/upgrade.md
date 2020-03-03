@@ -11,7 +11,7 @@
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
-- ...
+- [Tipos de Factory](#factory-types)
 
 <a name="upgrade-7.0"></a>
 
@@ -77,7 +77,7 @@ Este cambio solo afecta la serialización de modelos y colecciones de modelos pa
 
 **Probabilidad de impacto: Medio**
 
-Laravel 7 elimina la característica de los tipos de factory. Esta característica no ha sido documentada desde octubre de 2016. Si todavía usa esta característica, debería actualizar a factory states, que proporcionan más flexibilidad.
+Laravel 7 elimina la característica de los "tipos de factory". Esta característica no ha sido documentada desde octubre de 2016. Si todavía usa esta característica, debería actualizar a [factory states](/docs/{{version}}/database-testing#factory-states), que proporcionan más flexibilidad.
 
 <a name="miscellaneous"></a>
 ### Misceláneos
