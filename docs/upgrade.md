@@ -53,7 +53,7 @@ Finalmente, examine cualquier paquete de terceros consumido por su aplicación y
 
 **Probabilidad de impacto: Alto**
 
-Laravel 7.x utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
+Laravel 7 utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
 
 En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`.
 
@@ -105,7 +105,7 @@ El método `Blade::component` ha sido renombrado a `Blade::aliasComponent`. Por 
 
 **Probabilidad de impacto: Medio**
 
-Laravel 7.x incluye la primera parte de sorpote para "tag components" de Blade. Si está usando el paquete de Composer `spatie/laravel-blade-x` y desea continuar usando ese paquete, por favor, deshabilite la funcionalidad integrada del componente de etiquetas de Blade usando el método `Blade::withoutComponentTags`. Si no está utilizando el paquete de Spatie, puede ignorar estas instrucciones de actualización. Puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
+Laravel 7 incluye la primera parte de sorpote para "tag components" de Blade. Si está usando el paquete de Composer `spatie/laravel-blade-x` y desea continuar usando ese paquete, por favor, deshabilite la funcionalidad integrada del componente de etiquetas de Blade usando el método `Blade::withoutComponentTags`. Si no está utilizando el paquete de Spatie, puede ignorar estas instrucciones de actualización. Puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
 
 ```php
 use Illuminate\Support\Facades\Blade;
