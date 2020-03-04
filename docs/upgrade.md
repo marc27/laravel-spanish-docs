@@ -262,5 +262,5 @@ La regla `different` ahora fallará si falta uno de los parámetros especificado
 <a name="miscellaneous"></a>
 ### Misceláneos
 
-También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/6.0...master) y elegir qué actualizaciones son importantes para ti.
+También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/6.x...master) y elegir qué actualizaciones son importantes para ti.
 :::
