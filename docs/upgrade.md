@@ -233,6 +233,12 @@ Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En
 
 El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routing\RouteCollectionInterface` en lugar de `Illuminate\Routing\RouteCollection`. 
 
+#### CORS
+
+**Probabilidad de impacto: Bajo**
+
+El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php) y agregar el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares `App\Http\Kernel`. Esto es especialmente cierto si está usando el paquete `barryvdh/laravel-cors`, ya que entraría en conflicto con la versión de `illuminate/support` usada ahora por Laravel.
+
 ### Sesión
 
 #### El controlador de sesión `array`
@@ -258,6 +264,8 @@ Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora es
 **Probabilidad de impacto: Medio**
 
 La regla `different` ahora fallará si falta uno de los parámetros especificados en la solicitud.
+
+
 
 <a name="miscellaneous"></a>
 ### Misceláneos
