@@ -173,7 +173,7 @@ Laravel 7 elimina la característica de los "tipos de factory". Esta caracterís
 
 #### El método `getOriginal` 
 
-**Probabilidad d eimpacto: Bajo**
+**Probabilidad de impacto: Bajo**
 
 El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
 
@@ -237,7 +237,7 @@ El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routi
 
 #### El controlador de sesión `array`
 
-**Probabilidad d eimpacto: Bajo**
+**Probabilidad de impacto: Bajo**
 
 Los datos del controlador de sesión `array` ahora son persistentes para la solicitud actual. Anteriormente, los datos almacenados en la sesión `array` no podían ser recuperados ni siquiera durante la solicitud actual.
 
