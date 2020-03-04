@@ -248,7 +248,7 @@ Los datos del controlador de sesión `array` ahora son persistentes para la soli
 
 **Probabilidad de impacto: Medio**
 
-Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo.
+Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo. Si necesita assert sin escapar valores, puede pasar 'false' como segundo argumento. 
 
 ### Validación
 
