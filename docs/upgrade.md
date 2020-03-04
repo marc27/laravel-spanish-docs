@@ -240,7 +240,7 @@ El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routi
 
 **Probabilidad de impacto: Medio**
 
-Aunque nunca se documentó oficialmente, antes de Laravel 7 se podían definir técnicamente dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos para tus rutas.
+Aunque nunca se documentó oficialmente, antes de Laravel 7 se podían definir técnicamente dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos  para tus rutas.
 
 <a name="cors-support"></a>
 #### Soporte de CORS
