@@ -90,7 +90,7 @@ A continuación, por favor, actualice la opción `secure` de su archivo de confi
 
 **Probabilidad de impacto: Alto**
 
-Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete:
+Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete y el paquete debe instalarse en todos los entornos. Si anteriormente incluía este paquete en la porción `require-dev` del archivo` composer.json` de su aplicación, debe moverlo a la sección `require`:
 
 ```shell
 composer require laravel/ui "^2.0"
