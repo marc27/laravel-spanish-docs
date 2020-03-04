@@ -13,13 +13,13 @@
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
+- [Nombres de rutas únicos](#unique-route-names)
 - [Soporte de CORS](#cors-support)
 - [El método `Blade::component`](#the-blade-component-method)
 - [Blade Components y "Blade X"](#blade-components-and-blade-x)
 - [Tipos de Factory](#factory-types)
 - [La regla de validación `different`](#the-different-rule)
 - [La aserción `assertSee`](#assert-see)
-- [Nombres de rutas únicos](#unique-route-names)
 
 <a name="upgrade-7.0"></a>
 
@@ -240,7 +240,7 @@ El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routi
 
 **Probabilidad de impacto: Medio**
 
-Aunque nunca se documentó oficialmente, antes de Laravel 7 se podían definir técnicamente dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos  para tus rutas.
+Aunque nunca se documentó oficialmente, las versiones anteriores de Laravel permiten definir dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos para tus rutas. Las rutas con nombres duplicados pueden causar un comportamiento inesperado en múltiples áreas del framework.
 
 <a name="cors-support"></a>
 #### Soporte de CORS
