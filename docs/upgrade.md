@@ -1,397 +1,266 @@
 :::pre
 # Guía de Actualización
 
-- [Actualizando a 6.0 desde 5.8](#upgrade-6.0)
+- [Actualizando a 7.0 desde 6.x](#upgrade-7.0)
 
 <a name="high-impact-changes"></a>
 ## Cambios de alto impacto
 
-- [Recursos autorizados y `viewAny`](#authorized-resources)
-- [Helpers de String y Array](#helpers)
+- [Actualizaciones relacionadas con Symfony 5](#symfony-5-related-upgrades)
+- [Autenticación Scaffolding](#authentication-scaffolding)
+- [Serialización de fechas](#date-serialization)
 
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
-- [Carbon 1.x ya no está soportado](#carbon-support)
-- [Cliente por defecto de Redis](#redis-default-client)
-- [Método `Capsule::table` de base de datos](#capsule-table)
-- [Arrayable y `toArray` de Eloquent](#eloquent-to-array)
-- [Método `BelongsTo::update` de Eloquent](#belongs-to-update)
-- [Tipos de clave primaria en Eloquent](#eloquent-primary-key-type)
-- [Métodos de configuración regional `Lang::trans` y `Lang::transChoice`](#trans-and-trans-choice)
-- [Método de configuración regional `Lang::getFromJson`](#get-from-json)
-- [Límite de reintento de cola](#queue-retry-limit)
-- [Reenviar ruta de verificación de correo electrónico](#email-verification-route)
-- [Facade `Input`](#the-input-facade)
+- [El método `Blade::component`](#the-blade-component-method)
+- [Blade Components y "Blade X"](#blade-components-and-blade-x)
+- [Tipos de Factory](#factory-types)
+- [La regla de validación `different`](#the-different-rule)
+- [La aserción `assertSee`](#assert-see)
 
-## Cambios de bajo impacto
-- [Devolviendo respuestas "Deny"](#deny_responses)
-- [El Método `validationData` de FormRequest](#validation_data_method)
+<a name="upgrade-7.0"></a>
 
+## Actualizando a 7.0 desde 6.x
 
-<a name="upgrade-6.0"></a>
-
-## Actualizando a 6.0 desde 5.8
-
-#### Tiempo de actualización estimado: una hora
+#### Tiempo de actualización estimado: 15 Minutos
 
 ::: danger NOTA
 Intentamos documentar cada posible cambio de ruptura (breaking change). Dado que algunos de estos cambios de ruptura se encuentran en las partes oscuras del framework, solo una parte de estos cambios puede afectar tu aplicación.
 :::
 
-### PHP 7.2 Obligatorio
-
-**Probabilidad de impacto: Medio**
-
-PHP 7.1 ya no se mantendrá activamente a partir de diciembre de 2019. Por lo tanto, Laravel 6.0 requiere PHP 7.2 o superior.
-
-<a name="updating-dependencies"></a>
-### Actualizando dependencias
-
-Actualiza tu dependencia `laravel/framework` a `^6.0` en tu archivo `composer.json`.
-
-Luego, revisa los paquetes de terceros consumidos por tu aplicación y verifica estás usando la versión adecuada para soportar Laravel 6.
-
-### Autorización
-
-<a name="authorized-resources"></a>
-#### Recursos autorizados y `viewAny`
+### Requiere Symfony 5
 
 **Probabilidad de impacto: Alto**
 
-Las políticas de autorización adjuntadas a los controladores que utilizan el método `authorizeResource` ahora deberían definir un método `viewAny`, que se llamará cuando un usuario acceda al método `index` del controlador. De lo contrario, las llamadas al método `index` del controlador serán rechazadas como no autorizadas.
+Laravel 7 actualizó sus componentes subyacentes de Symfony a la serie 5.x, que ahora es también la nueva versión mínima compatible.
 
-#### Respuestas de autorización
+### Requiere PHP 7.2.5
 
 **Probabilidad de impacto: Bajo**
 
-La firma del constructor de la clase `Illuminate\Auth\Access\Response` ha cambiado. Debes actualizar tu código de acuerdo a ello. Si no estás manualmente construyendo respuestas y solo estás usando los métodos de instancia `allow` y `deny` dentro de tus políticas, no se requiere ningún cambio:
+La nueva versión mínima de PHP es ahora 7.2.5.
+
+<a name="updating-dependencies"></a>
+### Actualizando Dependencias
+
+Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`.
+
+Los siguientes paquetes de origen tienen nuevas versiones principales para admitir Laravel 7. Si hay alguno, lea sus guías de actualización individuales antes de actualizar:
+
+- [Browser Kit Testing v6.0](https://github.com/laravel/browser-kit-testing/blob/master/UPGRADE.md)
+- [Envoy v2.0](https://github.com/laravel/envoy/blob/master/UPGRADE.md)
+- [Horizon v4.0](https://github.com/laravel/horizon/blob/master/UPGRADE.md)
+- [Nova v3.0](https://nova.laravel.com/releases)
+- [Scout v8.0](https://github.com/laravel/scout/blob/master/UPGRADE.md)
+- UI v2.0 (No changes necessary)
+
+Finalmente, examine cualquier otro paquete de terceros consumido por su aplicación y verifique que está utilizando la versión adecuada para el soporte de Laravel 7.
+
+<a name="symfony-5-related-upgrades"></a>
+### Actualizaciones relacionadas con Symfony 5
+
+**Probabilidad de impacto: Alto**
+
+Laravel 7 utiliza la serie 5.x de los componentes Symfony. Se requieren algunos cambios menores en la aplicación para adaptar esta actualización.
+
+En primer lugar, los métodos `report` y `render` de la clase `App\Exceptions\Handler` de su aplicación deben aceptar instancias de la interfaz `Throwable` en lugar de instancias `Exception`:
 
 ```php
-/**
-* Create a new response.
-*
-* @param  bool  $allowed
-* @param  string  $message
-* @param  mixed  $code
-* @return void
-*/
-public function __construct($allowed, $message = '', $code = null)
+use Throwable;
+
+public function report(Throwable $exception);
+public function render($request, Throwable $exception);
 ```
 
-<a name="deny_responses"></a>
-#### Devolviendo respuestas "Deny" 
-
-**Probabilidad de impacto: Bajo**
-
-En versiones anteriores de Laravel, no era necesario devolver el valor del método `deny` de tus métodos de política ya que una excepción se lanzaba de forma automática. Sin embargo, de acuerdo a la documentación de Laravel, se debe ahora retornar el valor del método `deny` desde tus políticas:
+A continuación, por favor, actualice la opción `secure` de su archivo de configuración de `session` para que tenga un valor de reserva `null` y la opción `same_site` para que tenga un valor de reserva `lax`.
 
 ```php
-public function update(User $user, Post $post)
-{
-    if (! $user->role->isEditor()) {
-        return $this->deny("Debes ser Editor para editar este post.")
-    }
+'secure' => env('SESSION_SECURE_COOKIE', null),
 
-    return $user->id === $post->user_id;
-}
+'same_site' => 'lax',
 ```
 
-<a name="auth-access-gate-contract"></a>
+### Autenticación
 
-#### La interfaz `Illuminate\Contracts\Auth\Access\Gate`
+<a name="authentication-scaffolding"></a>
+#### Scaffolding
+
+**Probabilidad de impacto: Alto**
+
+Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete:
+
+```shell
+composer require laravel/ui "^2.0"
+```
+
+#### El `TokenRepositoryInterface`
 
 **Probabilidad de impacto: Bajo**
 
-La interfaz `Illuminate\Contracts\Auth\Access\Gate` ha recibido un nuevo método `inspect`. Si estás implementando esta interfaz manualmente, debes agregar debes agregar este método en tu implementación.
+Se ha agregado un método `recentlyCreatedToken` a la interfaz `Illuminate\Auth\Passwords\TokenRepositoryInterface`. Si estás escribiendo una implementación personalizada de esta interfaz, debes agregar este método a su implementación.
 
-### Carbon
+### Blade
 
-<a name="carbon-support"></a>
-#### Carbon 1.x ya no está soportado
+<a name="the-blade-component-method"></a>
+#### El método `component` 
 
 **Probabilidad de impacto: Medio**
 
-Carbon 1.x [ya no está soportado](https://github.com/laravel/framework/pull/28683) debido a que la fecha de fin de mantenimiento está cerca. Por favor actualiza tu aplicación a Carbon 2.0.
+El método `Blade::component` ha sido renombrado a `Blade::aliasComponent`. Por favor, actualice sus llamadas a este método en consecuencia.
 
-### Configuración
+<a name="blade-components-and-blade-x"></a>
+#### Blade Components y "Blade X"
 
-#### La variable de entorno `AWS_REGION`
+**Probabilidad de impacto: Medio**
+
+Laravel 7 incluye sorpote propio para los "componentes de etiqueta" de Blade. Si desea desactivar la funcionalidad integrada del componente de etiquetas de Blade, puede llamar al método `withoutComponentTags` desde el método `boot` de su `AppServiceProvider`:
+
+```php
+use Illuminate\Support\Facades\Blade;
+
+Blade::withoutComponentTags();
+```
+
+### Eloquent
+
+#### Los métodos `addHidden` / `addVisible` 
+
+**Probabilidad de impacto: Bajo**
+
+Se han eliminado los métodos no documentados `addHidden` y `addVisible`. En su lugar, utilice los métodos `makeHidden` y `makeVisible`. 
+
+#### Los métodos `booting` / `booted` 
+
+**Probabilidad de impacto: Bajo**
+
+Los métodos `booting` y `booted` se han agregado a Eloquent para proporcionar un lugar para definir convenientemente cualquier lógica que deba ejecutarse durante el proceso "boot" del modelo. Si ya tiene métodos del modelo con estos nombres, tendrá que cambiar el nombre de sus métodos para que no entren en conflicto con los métodos recién agregados.
+
+<a name="date-serialization"></a>
+#### Serialización de fechas
+
+**Probabilidad de impacto: Alto**
+
+Laravel 7 usa un nuevo formato de serialización de fecha cuando se utiliza el método `toArray` o `toJson` en modelos Eloquent. Para dar formato a las fechas de serialización, el marco de trabajo ahora utiliza el método `toJSON` de Carbon, el cual produce una fecha compatible con ISO-8601 incluyendo información de la zona horaria y los segundos fraccionarios. Además, este cambio proporciona un mejor soporte e integración con las bibliotecas de análisis de fechas del lado del cliente.
+
+Anteriormente, las fechas se serializaban en un formato como el siguiente: `2019-12-02 20:01:00`. Las fechas serializadas con el nuevo formato aparecerán como: `2019-12-02T20:01:00.283041Z`. 
+
+Si deseas seguir usando el comportamiento anterior puedes anular el método `serializeDate` en tu modelo:
+
+```php
+/**
+* Prepare a date for array / JSON serialization.
+*
+* @param  \DateTimeInterface  $date
+* @return string
+*/
+protected function serializeDate(DateTimeInterface $date)
+{
+    return $date->format('Y-m-d H:i:s');
+}
+```
+
+::: tip TIP
+Este cambio solo afecta la serialización de modelos y colecciones de modelos para arreglos y JSON. Este cambio no tiene efecto sobre cómo se almacenan las fechas en su base de datos.
+:::
+
+<a name="factory-types"></a>
+#### Tipos de Factory 
+
+**Probabilidad de impacto: Medio**
+
+Laravel 7 elimina la característica de los "tipos de factory". Esta característica no ha sido documentada desde octubre de 2016. Si todavía usa esta característica, debería actualizar a [factory states](/docs/{{version}}/database-testing#factory-states), que proporcionan más flexibilidad.
+
+#### El método `getOriginal` 
+
+**Probabilidad d eimpacto: Bajo**
+
+El método `$model->getOriginal()` ahora respetará las conversiones definidas en el modelo. Anteriormente, este método devolvía los atributos sin procesar. Si desea continuar recuperando los valores sin procesar, puede usar el método `getRawOriginal` en su lugar.
+
+#### Enlace de Ruta
+
+**Probabilidad de impacto: Bajo**
+
+El método `resolveRouteBinding` de la interfaz `Illuminate\Contracts\Routing\UrlRoutable` ahora acepta un argumento `$field`. Si estaba implementando esta interfaz a mano, debería actualizar su implementación.
+
+Además, el método `resolveRouteBinding` de la clase `Illuminate\Database\Eloquent\Model` ahora también acepta un parámetro `$field`. Si estaba reemplazando este método, debe actualizar su método para aceptar este argumento. 
+
+Finalmente, el método `resolveRouteBinding` del trait `Illuminate\Http\Resources\DelegatesToResources` ahora también acepta el parámetro `$field`. Si estaba reemplazando este método, debe actualizar su método para aceptar este argumento. 
+
+### HTTP
+
+#### Compatibilidad con PSR-7
+
+**Probabilidad de impacto: Bajo**
+
+La biblioteca Zend Diactoros para generar respuestas PSR-7 ha quedado en desuso. Si está usando este paquete para la compatibilidad con PSR-7, por favor, instale en su lugar el paquete de Composer `nyholm/psr7`. Además, por favor, instale la versión `^2.0` del paquete de Composer `symfony/psr-http-message-bridge`.
+
+### Correo
+
+#### Cambios en el archivo de configuración
 
 **Probabilidad de impacto: Opcional**
 
-Si planeas usar [Laravel Vapor](https://vapor.laravel.com), debes actualizar todas las apariciones de `AWS_REGION` dentro de tu directorio `config` a `AWS_DEFAULT_REGION`. Además, debes actualizar el nombre de esta variable de entorno en tu archivo `.env`.
+Para poder soportar múltiples correos, el archivo de configuración por defecto de `mail` ha cambiado en Laravel 7.x para incluir un array de `mailers`.  Sin embargo, para preservar la compatibilidad con versiones anteriores, el formato Laravel 6.x de este archivo de configuración todavía se admite. Por lo tanto, no hay cambios **requeridos** cuando se actualiza a Laravel 7.x; sin embargo, es posible que desee [examinar la nueva estructura del archivo de configuración de `mail`](https://github.com/laravel/laravel/blob/develop/config/mail.php) y actualizar su archivo para reflejar los cambios.
 
-<a name="redis-default-client"></a>
-#### Cliente por defecto de Redis
-
-**Probabilidad de impacto: Medio**
-
-El cliente por defecto de Redis ha cambiado de `predis` a `phpredis`. Para seguir usando `predis`, asegúrate que la opción de configuración `redis.client` está establecida como `predis` en tu archivo de configuración `config/database.php`.
-
-### Base de datos
-
-<a name="capsule-table"></a>
-#### El método `table` de Capsule
-
-**Probabilidad de impacto: Medio**
-
-::: danger NOTA
-Este cambio solo aplica para aplicaciones no Laravel que están usando a `illuminate/database` como una dependencia.
-:::
-
-La firma del método `table` de la clase `Illuminate\Database\Capsule\Manager` se ha actualizado para aceptar un alias de tabla como segundo argumento. Si estás usando  `illuminate/database` fuera de una aplicacion de Laravel, debes actualizar cualquier llamado a este método de acuerdo con:
-
-```php
-/**
-* Get a fluent query builder instance.
-*
-* @param  \Closure|\Illuminate\Database\Query\Builder|string  $table
-* @param  string|null  $as
-* @param  string|null  $connection
-* @return \Illuminate\Database\Query\Builder
-*/
-public static function table($table, $as = null, $connection = null)
-```
-
-#### El método `cursor`
+#### Actualizaciones de la plantilla de correo de Markdown 
 
 **Probabilidad de impacto: Bajo**
 
-El método `cursor` ahora retorna una instancia de `Illuminate\Support\LazyCollection` en vez de un `Generator`.  `LazyCollection` puede ser iterada como un generador:
+Las plantillas de correo de Markdown predeterminadas se han actualizado con un diseño más profesional y atractivo. Además, se ha eliminado el componente de correo de Markdown `promotion` no documentado.
 
-```php
-$users = App\User::cursor();
+### Queue
 
-foreach ($users as $user) {
-   //
-}
-```
-
-<a name="eloquent"></a>
-### Eloquent
-
-<a name="belongs-to-update"></a>
-#### El método `BelongsTo::update`
-
-**Probabilidad de impacto: Medio**
-
-Por coherencia, el método `update` de la relación `BelongsTo` ahora funciona como una consulta de actualización ad-hoc, lo que significa que no proporciona protección de asignación masiva ni dispara eventos Eloquent. Esto hace que la relación sea consistente con los métodos `update` de todos los demás tipos de relaciones.
-
-Si deseas actualizar un modelo asociado a través de una relación `BelongsTo` recibiendo protección y eventos de actualización de asignación masiva, debes llamar al método `update` en el mismo modelo:
-
-```php
-// Consulta Ad-hoc... sin protección o eventos de asignación masiva...
-$post->user()->update(['foo' => 'bar']);
-
-// Actualización del modelo... proporciona protección y eventos de asignación masiva...
-$post->user->update(['foo' => 'bar']);
-```
-
-<a name="eloquent-to-array"></a>
-#### Arrayable y `toArray`
-
-**Probabilidad de impacto: Medio**
-
-El método `toArray` del modelo Eloquent ahora convertirá cualquier atributo que implemente `Illuminate\Contracts\Support\Arrayable` a un arreglo.
-
-<a name="eloquent-primary-key-type"></a>
-#### Declaración del tipo de clave primaria
-
-**Probabilidad de impacto: Medio**
-
-Laravel 6.0 ha recibido [optimizaciones de rendimiento](https://github.com/laravel/framework/pull/28153) para tipos de clave que usa entero. Si estás utilizando una cadena (string) como clave primaria de tu modelo, debes declarar el tipo de clave utilizando la propiedad `$keyType` en tu modelo:
-
-```php
-/**
-* The "type" of the primary key ID.
-*
-* @var string
-*/
-protected $keyType = 'string';
-```
-
-### Verificación de correo electrónico
-
-<a name="email-verification-route"></a>
-#### Reenviar ruta de verificación de correo electrónico
-
-**Probabilidad de impacto: Medio**
-
-Para evitar posibles ataques de CSRF, la ruta `email/resend` registrada por el enrutador cuando se utiliza la verificación de correo electrónico incorporada en Laravel se ha actualizado de una ruta `GET` a una ruta `POST`. Por lo tanto, deberás actualizar tu frontend para enviar el tipo de solicitud adecuado a esta ruta. Por ejemplo, si estás utilizando la plantilla de verificación de correo electrónico por defecto de Laravel sería:
-
-```php
-{{ __('Before proceeding, please check your email for a verification link.') }}
-{{ __('If you did not receive the email') }},
-
-<form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-    @csrf
-
-    <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-        {{ __('click here to request another') }}
-    </button>.
-</form>
-```
-
-<a name="mustverifyemail-contract"></a>
-
-#### La interfaz `MustVerifyEmail`
+#### Se ha eliminado la bandera `--daemon` en desuso
 
 **Probabilidad de impacto: Bajo**
 
-Se ha agregado un nuevo método `getEmailForVerification` a la interfaz `Illuminate\Contracts\Auth\MustVerifyEmail`. Si estás implementando manualmente esta interfaz, debes implementar este método, el cual debe devolver la dirección de correo electrónico asociada del objeto. Si tu modelo `App\User` está utilizando el trait `Illuminate\Auth\MustVerifyEmail`, no se requieren cambios, ya que este trait implementa este método por ti.
+Se ha eliminado la bandera `--daemon` en desuso en el comando `queue:work`. Esta bandera ya no es necesaria ya que el trabajo se ejecuta como un demonio por defecto.
 
-<a name="helpers"></a>
-### Helpers
+### Recursos
 
-#### Paquete para helpers String y Array
+#### La clase `Illuminate\Http\Resources\Json\Resource` 
 
-**Probabilidad de impacto: Alto**
+**Probabilidad de impacto: Bajo**
 
-Todos los helpers `str_` y `array_` se han movido al nuevo paquete de Composer `laravel/helpers` y se han eliminado del framework. Si lo deseas, puedes actualizar todas las llamadas a estos helpers para usar las clases `Illuminate\Support\Str` y `Illuminate\Support\Arr`. Alternativamente, puede agregar el nuevo paquete `laravel/helpers` a tu aplicación para continuar usando estos helpers:
+Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En su lugar, los recursos deben extender la clase `Illuminate\Http\Resources\Json\JsonResource`.
 
-```sh
-composer require laravel/helpers
-```
+### Rutas
 
-### Configuración regional
+#### El método de rutas `getRoutes` 
 
-<a name="trans-and-trans-choice"></a>
-#### Los métodos `Lang::trans` y `Lang::transChoice`
+**Probabilidad de impacto: Bajo**
+
+El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routing\RouteCollectionInterface` en lugar de `Illuminate\Routing\RouteCollection`. 
+
+### Sesión
+
+#### El controlador de sesión `array`
+
+**Probabilidad d eimpacto: Bajo**
+
+Los datos del controlador de sesión `array` ahora son persistentes para la solicitud actual. Anteriormente, los datos almacenados en la sesión `array` no podían ser recuperados ni siquiera durante la solicitud actual.
+
+### Pruebas
+
+<a name="assert-see"></a>
+#### La aserción `assertSee`
 
 **Probabilidad de impacto: Medio**
 
-Los métodos `Lang::trans` y `Lang::transChoice` del traductor han sido renombrados a `Lang::get` y `Lang::choice` respectivamente.
+Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo.
 
-Además, si estás manualmente implementando la interfaz  `Illuminate\Contracts\Translation\Translator`, debes actualizar tus implementaciones de los métodos `trans` y `transChoice` a `get` y `choice`.
+### Validación
 
-<a name="get-from-json"></a>
-#### El método `Lang::getFromJson`
-
-**Probabilidad de impacto: Medio**
-
-Los métodos `Lang::get` y `Lang::getFromJson` se han consolidado. Las llamadas al método `Lang::getFromJson` debe ser actualizado para llamar a `Lang::get`.
-
-::: danger NOTA
-Debes ejecutar el comando Artisan `php artisan view:clear` para evitar errores de Blade relacionados a la eliminación de `Lang::transChoice`, `Lang::trans`, y `Lang::getFromJson`.
-:::
-
-### Correo Electrónico
-
-#### Los controladores Mandrill y SparkPost se eliminaron
-
-**Probabilidad de impacto: Bajo**
-
-Los controladores de correo electrónico `mandrill` y `sparkpost` se han eliminado. Si te gustaría continuar usando uno de estos controladores, te animamos a adoptar un paquete mantenido por la comunidad que proporcione el controlador.
-
-### Notificaciones
-
-#### Rutas de Nexmo eliminadas
-
-**Probabilidad de impacto: Bajo**
-
-Una parte persistente del canal de notificación de Nexmo fue eliminada del núcleo del framework. Si estás confiando en las rutas de notificaciones de Nexmo debes manualmente implementar el método `routeNotificationForNexmo` tu entidad notificable  [como se describe en la documentación](/docs/{{version}}/notifications#routing-sms-notifications).
-
-### Restablecimiento de contraseña
-
-#### Validación de contraseña
-
-**Probabilidad de impacto: Bajo**
-
-El `PasswordBroker` ya no restringe ni valida las contraseñas. La validación de la contraseña ya estaba siendo manejada por la clase `ResetPasswordController`, haciendo que las validaciones del broker fueran redundantes e imposibles de personalizar. Si estás utilizando manualmente el `PasswordBroker` (o la facade de` Password`) fuera del `ResetPasswordController` incorporado, debes validar todas las contraseñas antes de pasarlas al broker.
-
-### Colas
-
-<a name="queue-retry-limit"></a>
-#### Límite de reintento de cola
+<a name="the-different-rule"></a>
+#### La regla `different` 
 
 **Probabilidad de impacto: Medio**
 
-En versiones anteriores de Laravel, el comando `php artisan queue:work` reintenta los trabajos indefinidamente. A partir de Laravel 6.0, este comando ahora intentará un trabajo una vez por defecto. Si deseas forzar que los trabajos se intenten indefinidamente, puedes pasar `0` a la opción `--tries`:
-
-```sh
-php artisan queue:work --tries=0
-```
-
-Además, por favor garantiza que la base de datos de tu aplicación contiene un tabla  `failed_jobs`. Puedes generar una migración para esta tabla usando el comando de Artisan `queue:failed-table`:
-
-```sh
-php artisan queue:failed-table
-```
-
-### Solicitudes HTTP
-
-<a name="the-input-facade"></a>
-#### El facade `Input`
-
-**Probabilidad de impacto: Medio**
-
-El facade `Input` que era principalmente un duplicado de la facade `Request` se ha eliminado. Si estás usando el método `Input::get` debes ahora llamar al método `Request::input`. Todas las demás llamadas a la facade `Input` pueden simplemente actualizarse para usar la facade `Request`.
-
-### Programación de tareas
-
-#### El método `between`
-
-**Probabilidad de impacto: Bajo**
-
-En versiones anteriores de Laravel, el método `between` del programador de tareas mostraba un comportamiento confuso a través de los límites de la fecha. Por ejemplo:
-
-```php
-$schedule->command('list')->between('23:00', '4:00');
-```
-
-Para la mayoría de los usuarios, el comportamiento esperado de este método sería ejecutar el comando `list` cada minuto durante todos los minutos entre las 23:00 y las 4:00. Sin embargo, en versiones anteriores de Laravel, el programador ejecuta el comando `list` cada minuto entre las 4:00 y las 23:00, esencialmente intercambiando los umbrales de tiempo. En Laravel 6.0, este comportamiento se ha corregido.
-
-### Almacenamiento
-
-<a name="rackspace-storage-driver"></a>
-#### Controlador de almacenamiento Rackspace eliminado
-
-**Probabilidad de impacto: Bajo**
-
-Se ha eliminado el controlador de almacenamiento `rackspace`. Si deseas continuar usando Rackspace como proveedor de almacenamiento, te recomendamos que adoptes un paquete de tu elección mantenido por la comunidad que proporcione este controlador.
-
-### Generación de URL
-
-#### Generación de rutas URL y parámetros extras
-
-En versiones previas de Laravel, pasar parámetros de arreglos asociativos al helper `route` o al método `URL::route` podía ocasionar el uso de estos parámetros como valores de URI cuando generabas URLs para rutas con parámetros opcionales, incluso si el valor del parámetro no tenía una llave que coincidiera con las llaves esperadas. A partir de Laravel 6.0, estos valores se usará como parte del "query string". Por ejemplo, considera la siguiente ruta:
-
-```php
- Route::get('/profile/{location?}', function ($location = null) {
-     //
- })->name('profile');
-
- // Laravel 5.8: http://example.com/profile/active
- echo route('profile', ['status' => 'active']);
-
- // Laravel 6.0: http://example.com/profile?status=active
- echo route('profile', ['status' => 'active']);    
-```
-
-La función helper `action` y el método `URL::action` también fueron afectados por este cambio:
-
-```php
-Route::get('/profile/{id}', 'ProfileController@show');
-
-// Laravel 5.8: http://example.com/profile/1
-echo action('ProfileController@show', ['profile' => 1]);
-
-// Laravel 6.0: http://example.com/profile?profile=1
-echo action('ProfileController@show', ['profile' => 1]);
-```
-
-### Validación 
-
-<a name="validation_data_method"></a>
-#### El Método `validationData` de FormRequest 
-
-**Probabilidad de impacto: Bajo**
-
-El Método `validationData` de FormRequest ha sido cambiado de `protected` a `public`. Si estás sobrescribiendo este método en tu implementación, debes cambiar la visibilidad a `public`.
+La regla `different` ahora fallará si falta uno de los parámetros especificados en la solicitud.
 
 <a name="miscellaneous"></a>
 ### Misceláneos
 
-También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/5.8...master) y elegir qué actualizaciones son importantes para ti.
+También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/6.0...master) y elegir qué actualizaciones son importantes para ti.
 :::
