@@ -265,8 +265,6 @@ Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora es
 
 La regla `different` ahora fallará si falta uno de los parámetros especificados en la solicitud.
 
-
-
 <a name="miscellaneous"></a>
 ### Misceláneos
 
