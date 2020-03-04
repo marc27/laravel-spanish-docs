@@ -13,6 +13,7 @@
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
+- [Soporte de CORS](#cors-support)
 - [El método `Blade::component`](#the-blade-component-method)
 - [Blade Components y "Blade X"](#blade-components-and-blade-x)
 - [Tipos de Factory](#factory-types)
@@ -241,11 +242,12 @@ El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routi
 
 Aunque nunca se documentó oficialmente, antes de Laravel 7 se podían definir técnicamente dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos para tus rutas.
 
-#### CORS
+<a name="cors-support"></a>
+#### Soporte de CORS
 
-**Probabilidad de impacto: Bajo**
+**Probabilidad de impacto: Medio**
 
-El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php) y agregar el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares `App\Http\Kernel`. Esto es especialmente cierto si está usando el paquete `barryvdh/laravel-cors`, ya que entraría en conflicto con la versión de `illuminate/support` usada ahora por Laravel.
+El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php) y agregar el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares global `App\Http\Kernel`.
 
 ### Sesión
 
