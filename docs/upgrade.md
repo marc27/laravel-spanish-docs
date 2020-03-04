@@ -44,7 +44,7 @@ La nueva versión mínima de PHP es ahora 7.2.5.
 <a name="updating-dependencies"></a>
 ### Actualizando Dependencias
 
-Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`, la de`phpunit/phpunit` a `^8.5`, y la de `facade/ignition` a `^2.0`.
+Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`, la de`phpunit/phpunit` a `^8.5`, la de `laravel/tinker` a `^2.0` y `facade/ignition` a `^2.0`.
 
 Los siguientes paquetes de origen tienen nuevas versiones principales para admitir Laravel 7. Si hay alguno, lea sus guías de actualización individuales antes de actualizar:
 
