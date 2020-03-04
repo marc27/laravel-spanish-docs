@@ -18,6 +18,7 @@
 - [Tipos de Factory](#factory-types)
 - [La regla de validación `different`](#the-different-rule)
 - [La aserción `assertSee`](#assert-see)
+- [Nombres de rutas únicos](#unique-route-names)
 
 <a name="upgrade-7.0"></a>
 
@@ -232,6 +233,13 @@ Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En
 **Probabilidad de impacto: Bajo**
 
 El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routing\RouteCollectionInterface` en lugar de `Illuminate\Routing\RouteCollection`. 
+
+<a name="unique-route-names"></a>
+#### Nombres de rutas únicos
+
+**Probabilidad de impacto: Medio**
+
+Aunque nunca se documentó oficialmente, antes de Laravel 7 se podían definir técnicamente dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos para tus rutas.
 
 #### CORS
 
