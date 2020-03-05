@@ -27,6 +27,7 @@ Sin embargo, si no estás utilizando Homestead, deberás asegurarte de que tu se
 - PHP >= 7.2.5
 - BCMath PHP Extension
 - Ctype PHP Extension
+- Fileinfo PHP extension
 - JSON PHP Extension
 - Mbstring PHP Extension
 - Extensión OpenSSL de PHP 
