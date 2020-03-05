@@ -10,7 +10,7 @@ Para revisarlas solo verifica que los commits hechos no tengan errores (ortográ
 
 ## Estado por archivo
 
-- [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/installation.md) Última actualización el día 04/03/2020 hasta "[7.x] Add fileinfo to system requirements. (03/03/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/installation.md) - Revisado [&#9989;]
+- [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/installation.md) Última actualización el día 04/03/2020 hasta "[7.x] Add fileinfo to system requirements. (03/03/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/installation.md) - Revisado [&#10060;]
 - [configuration.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/configuration.md) Última actualización el día 10/01/2020 hasta "unify placeholder spelling (27/11/2018)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/configuration.md) - Revisado [&#9989;]
 - [homestead.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/homestead.md) Última actualización el día 10/01/2020 hasta "Add PHP 7.4 to included software (03/01/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/homestead.md) - Revisado [&#9989;]
 - [valet.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/valet.md) Última actualización el día 30/01/2020 hasta "Update valet.md (27/01/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/valet.md) - Revisado [&#9989;]
