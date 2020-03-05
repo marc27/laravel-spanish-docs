@@ -247,7 +247,15 @@ Aunque nunca se documentó oficialmente, las versiones anteriores de Laravel per
 
 **Probabilidad de impacto: Medio**
 
-El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php) y agregar el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares global `App\Http\Kernel`, agregue `"fruitcake/laravel-cors": "^1.0",` en su composer.json.
+El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php).
+
+A continuación, instale la librería CORS subyacente como una dependencia de su aplicación:
+
+```shell
+composer require fruitcake/laravel-cors
+```
+
+Finalmente, agregue el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares global `App\Http\Kernel`.
 
 ### Sesión
 
