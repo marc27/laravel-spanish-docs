@@ -386,9 +386,33 @@ Route::get('api/users/{user}', function (App\User $user) {
 
 Debido a que la variable `$user` está declarada como el modelo de Eloquent `App\User` y el nombre de variable coincide con el segmento de URI `{user}`, Laravel inyectará automáticamente la instancia del modelo que tenga un ID coincidiendo con el valor correspondiente en la URI de la solicitud. Si una instancia del modelo que coincida no es encontrada en la base de datos, una respuesta HTTP 400 será generada automáticamente.
 
-#### Personalizando el nombre de clave
+#### Personalizando la clave
 
-Si prefieres que el enlazamiento del modelo use una columna de base de datos distinta del `id` cuando estás obteniendo una clase de modelo dada, puedes sobreescribir el método `getRouteKeyName` en el módelo de Eloquent:
+A veces es posible que desee resolver modelos Eloquent utilizando una columna que no sea `id`. Para hacerlo, puede especificar la columna en la definición del parámetro de ruta: 
+
+```php
+Route::get('api/posts/{post:slug}', function (App\Post $post) {
+    return $post;
+});
+```
+
+#### Claves personalizadas & Scoping 
+
+A veces, al vincular implícitamente varios modelos Eloquent en una sola definición de ruta, es posible que se desee ampliar el alcance del segundo modelo Eloquent de manera que sea un hijo del primer modelo Eloquent. Por ejemplo, considere esta situación que recupera una entrada de blog por slug para un usuario específico:
+
+```php
+use App\Post;
+use App\User;
+Route::get('api/users/{user}/posts/{post:slug}', function (User $user, Post $post) {
+    return $post;
+});
+```
+
+Cuando se utiliza un enlace implícito con clave personalizada como parámetro de ruta anidada, Laravel automáticamente ampliará la consulta para recuperar el modelo anidado por su padre utilizando convenciones para adivinar el nombre de la relación en el padre. En este caso, se asumirá que el modelo `User` tiene una relación llamada `posts` (el plural del nombre del parámetro de ruta) que puede utilizarse para recuperar el modelo `Post`.
+
+#### Personalizando el nombre de clave por defecto
+
+Si prefieres que el enlazamiento del modelo use una columna de base de datos por defecto distinta del `id` cuando estás obteniendo una clase de modelo dada, puedes sobreescribir el método `getRouteKeyName` en el modelo de Eloquent:
 
 ```php
 /**
