@@ -267,6 +267,8 @@ $url = route('profile', ['id' => 1, 'photos' => 'yes']);
 // /user/1/profile?photos=yes
 ```
 
+Para algunas aplicaciones, puede que desee especificar valores predeterminados de solicitud para ciertos parámetros de URL (locale, slug de usuario actual, ...). Para ello, puede [utilizar el método `URL::defaults`](/docs/7.x/urls#default-values).
+
 #### Inspeccionando la ruta actual
 
 Si requieres determinar si la solicitud actual fue enrutada por una ruta nombrada dada, puedes usar el método `named` en una instancia de Ruta. Por ejemplo, puedes verficar el nombre de ruta actual desde el middleware de una ruta.
