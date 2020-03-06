@@ -13,7 +13,7 @@
 - [Los grupos de ruta](#route-groups)
     - [Los middleware](#route-group-middleware)
     - [Los espacios de nombres](#route-group-namespaces)
-    - [Enrutamiento de subdominios](#route-group-sub-domain-routing)
+    - [Enrutamiento de subdominios](#route-group-subdomain-routing)
     - [Los prefijos de ruta](#route-group-prefixes)
     - [Los prefijos por nombre de ruta](#route-group-name-prefixes)
 - [Enlazamiento de modelo de ruta (route model binding)](#route-model-binding)
@@ -326,10 +326,10 @@ Route::namespace('Admin')->group(function () {
 
 Recuerda que por defecto, el `RouteServiceProvider` incluye tus archivos de ruta dentro de un grupo de espacio de nombre, permitiéndote que registres rutas de controlador sin especificar el prefijo de espacio de nombre `App\Http\Controllers` completo. Así, puedes necesitar especificar solamente la porción del espacio de nombre que viene después del espacio de nombre `App\Http\Controllers` base.
 
-<a name="route-group-sub-domain-routing"></a>
+<a name="route-group-subdomain-routing"></a>
 ### El enrutamiento de subdominio
 
-Los grupos de ruta también pueden ser usados para manejar enrutamiento de sub-dominio.  Los Sub-dominios pueden ser asignados a parámetros de ruta justamente como URIs de ruta, permitiendote que captures una porción del sub-dominio para uso en tu ruta o controlador. El sub-dominio puede ser especificado al ejecutar el método `domain` antes de definir el grupo.
+Los grupos de ruta también pueden ser usados para manejar enrutamiento de subdominio.  Los Subdominios pueden ser asignados a parámetros de ruta justamente como URIs de ruta, permitiendote que captures una porción del subdominio para uso en tu ruta o controlador. El subdominio puede ser especificado al ejecutar el método `domain` antes de definir el grupo.
 
 ```php
 Route::domain('{account}.myapp.com')->group(function () {
@@ -559,6 +559,7 @@ Route::middleware('auth:api')->group(function () {
             //
         });
     });
+    
     Route::middleware('throttle:60,1,deletes')->group(function () {
         Route::delete('/servers/{id}', function () {
             //
