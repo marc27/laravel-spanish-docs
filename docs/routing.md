@@ -23,6 +23,7 @@
 - [Límite de rango](#rate-limiting)
 - [La suplantación del método del formulario](#form-method-spoofing)
 - [Accediendo la ruta actual](#accessing-the-current-route)
+- [Intercambio de recursos de origen cruzado (CORS)](#cors)
 
 <a name="basic-routing"></a>
 ## Rutas básicas
@@ -601,3 +602,8 @@ $action = Route::currentRouteAction();
 ```
 
 Consulta la documentación de la API sobre la [clase subyacente de la clase facade `Route`](https://laravel.com/api/5.8/Illuminate/Routing/Router.html) y la [instancia de ruta](https://laravel.com/api/5.8/Illuminate/Routing/Route.html) para revisar todos los métodos disponibles.
+
+<a name="cors"></a>
+## Intercambio de recursos de origen cruzado (CORS)
+
+Laravel puede responder automáticamente las peticiones de CORS OPTIONS con los valores que usted configure. Todos los ajustes de CORS se pueden configurar en el archivo de configuración `cors` y las peticiones OPTIONS serán manejadas automáticamente por el middleware `HandleCors` que está incluido por defecto en su stack de middleware global.
