@@ -233,6 +233,10 @@ También puedes especificar los nombes de ruta para acciones de controlador:
 Route::get('user/profile', 'UserController@showProfile')->name('profile');
 ```
 
+::: danger NOTA
+Los nombres de las rutas siempre deben ser únicos.
+:::
+
 #### Generación de URLs para las rutas nombradas
 
 Una vez que has asignado un nombre a una ruta dada, puedes usar el nombre de la ruta cuando estás generando URLs o redireccionas por medio de la función `route` global:
