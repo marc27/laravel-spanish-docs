@@ -393,7 +393,7 @@ Route::get('api/users/{user}', function (App\User $user) {
 });
 ```
 
-Debido a que la variable `$user` está declarada como el modelo de Eloquent `App\User` y el nombre de variable coincide con el segmento de URI `{user}`, Laravel inyectará automáticamente la instancia del modelo que tenga un ID coincidiendo con el valor correspondiente en la URI de la solicitud. Si una instancia del modelo que coincida no es encontrada en la base de datos, una respuesta HTTP 400 será generada automáticamente.
+Debido a que la variable `$user` está declarada como el modelo de Eloquent `App\User` y el nombre de variable coincide con el segmento de URI `{user}`, Laravel inyectará automáticamente la instancia del modelo que tenga un ID coincidiendo con el valor correspondiente en la URI de la solicitud. Si una instancia del modelo que coincida no es encontrada en la base de datos, una respuesta HTTP 404 será generada automáticamente.
 
 #### Personalizando la clave
 
