@@ -268,7 +268,7 @@ $url = route('profile', ['id' => 1, 'photos' => 'yes']);
 ```
 
 ::: tip TIP
-A veces, es posible que desee especificar valores predeterminados de solicitud para parámetros de URL, como la configuración regional actual. Para lograr esto, puede utilizar el [método `URL::defaults`](/docs/7.x/urls#default-values).
+A veces, es posible que desee especificar valores predeterminados de solicitud para parámetros de la URL, como la configuración regional actual. Para lograr esto, puede utilizar el [método `URL::defaults`](/docs/7.x/urls#default-values).
 :::
 
 #### Inspeccionando la ruta actual
