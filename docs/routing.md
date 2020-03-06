@@ -610,7 +610,7 @@ $name = Route::currentRouteName();
 $action = Route::currentRouteAction();
 ```
 
-Consulta la documentación de la API sobre la [clase subyacente de la clase facade `Route`](https://laravel.com/api/5.8/Illuminate/Routing/Router.html) y la [instancia de ruta](https://laravel.com/api/5.8/Illuminate/Routing/Route.html) para revisar todos los métodos disponibles.
+Consulta la documentación de la API sobre la [clase subyacente de la clase facade `Route`](https://laravel.com/api/7.x/Illuminate/Routing/Router.html) y la [instancia de ruta](https://laravel.com/api/7.x/Illuminate/Routing/Route.html) para revisar todos los métodos disponibles.
 
 <a name="cors"></a>
 ## Intercambio de recursos de origen cruzado (CORS)
