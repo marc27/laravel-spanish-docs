@@ -559,7 +559,7 @@ Route::middleware('auth:api')->group(function () {
             //
         });
     });
-    
+
     Route::middleware('throttle:60,1,deletes')->group(function () {
         Route::delete('/servers/{id}', function () {
             //
@@ -608,3 +608,7 @@ Consulta la documentación de la API sobre la [clase subyacente de la clase faca
 ## Intercambio de recursos de origen cruzado (CORS)
 
 Laravel puede responder automáticamente las peticiones de CORS OPTIONS con los valores que usted configure. Todos los ajustes de CORS se pueden configurar en el archivo de configuración `cors` y las peticiones OPTIONS serán manejadas automáticamente por el middleware `HandleCors` que está incluido por defecto en su stack de middleware global.
+
+::: tip TIP
+Para más información sobre CORS y CORS headers, por favor consulte la [documentación web de MDN en CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#The_HTTP_response_headers).
+:::
