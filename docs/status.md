@@ -8,6 +8,28 @@ Otra forma en la que puedes contribuir a la traducción es revisar si hay errore
 
 Para revisarlas solo verifica que los commits hechos no tengan errores (ortográficos por ejemplo) y de tenerlos solo debes hacer un PR con la corrección.
 
+## Archivos con actualizaciones pendientes
+
+- [middleware.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/middleware.md)
+- [controllers.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/controllers.md)
+- [requests.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/requests.md)
+- [views.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/views.md)
+- [session.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/session.md)
+- [blade.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/blade.md)
+- [frontend.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/frontend.md)
+- [formatting.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/formatting.md)
+- [authentication.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/authentication.md)
+- [broadcasting.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/broadcasting.md)
+- [collections.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/collections.md)
+- [filesystem.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/filesystem.md)
+- [helpers.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/helpers.md)
+- [mail.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/mail.md)
+- [notifications.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/notifications.md)
+- [packages.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/packages.md)
+- [queues.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/queues.md)
+- [queries.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/queries.md)
+- [migrations.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/migrations.md)
+
 ## Estado por archivo
 
 - [installation.md](https://github.com/StydeNet/laravel-spanish-docs/blob/7.0_press/docs/installation.md) Última actualización el día 04/03/2020 hasta "[7.x] Add fileinfo to system requirements. (03/03/2020)" en [laravel/docs](https://github.com/laravel/docs/commits/7.x/installation.md) - Revisado [&#10060;]
