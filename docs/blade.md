@@ -30,6 +30,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Blade es un motor de plantillas simple y a la vez poderoso proporcionado por Laravel. A diferencia de otros motores de plantillas populares de PHP, Blade no te impide utilizar código PHP plano en sus vistas. De hecho, todas las vistas de Blade son compiladas en código PHP plano y almacenadas en caché hasta que sean modificadas, lo que significa que Blade no añade sobrecarga a tu aplicación. Los archivos de las vistas de Blade tienen la extensión `.blade.php` y son usualmente almacenados en el directorio `resources/views`.
 
 ::: tip TIP
