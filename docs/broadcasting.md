@@ -33,6 +33,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 En muchas aplicaciones web modernas, los WebSockets son usados para implementar interfaces de usuarios actualizadas en tiempo real. Cuando algún dato es actualizado en el servidor, un mensaje es típicamente enviado a través de una conexión WebSocket para ser manejado por el cliente. Esto proporciona una alternativa más robusta y eficiente para monitorear continuamente tu aplicación en busca de cambios.
 
 Para asistirte en la construcción de ese tipo de aplicaciones, Laravel hace fácil "emitir" tus [eventos](/events.html) a través de una conexión WebSocket. Emitir tus eventos te permite compartir los mismos nombres de eventos entre tu código del lado del servidor y tu aplicación JavaScript del lado de cliente.
