@@ -8,6 +8,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Laravel incluye una variedad de funciones "helpers" globales de PHP. Muchas de esas funciones son usadas por el mismo framework; sin embargo, eres libre de usarlas en tus aplicaciones si lo encuentras conveniente.
 
 <a name="available-methods"></a>
