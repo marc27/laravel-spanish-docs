@@ -17,6 +17,10 @@
 <a name="accessing-the-request"></a>
 ## Accediendo a la solicitud
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Para obtener una instancia de la solicitud HTTP actual por medio de una inyección de dependencia, deberías poner la referencia de la clase `Illuminate\Http\Request` en tu método de controlador. La instancia de la solicitud entrante automáticamente será inyectada por el [contenedor de servicio](/container.html):
 
 ```php
