@@ -15,6 +15,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Los Middleware proporcionan un mecanismo conveniente para filtrar consultas HTTP en toda tu aplicación. Por ejemplo, Laravel incluye un middleware que verifica si el usuario de tu aplicación está autenticado. Si el usuario no está autenticado, el middleware redireccionará al usuario a la pantalla de inicio de sesión. Sin embargo, si el usuario es autenticado, el middleware permitirá que la consulta proceda dentro de la aplicación.
 
 Middleware adicionales pueden ser escritos para realizar una variedad de tareas además de autenticar. Un núcleo de un middleware podría ser responsable de agregar los encabezados apropiados para todas las respuestas que va dejando tu aplicación. Un middleware de registro podría registrar todas las consultas entrantes en tu aplicación.
