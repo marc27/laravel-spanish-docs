@@ -13,6 +13,8 @@
 <a name="medium-impact-changes"></a>
 ## Cambios de mediano impacto
 
+- [Nombres de rutas únicos](#unique-route-names)
+- [Soporte de CORS](#cors-support)
 - [El método `Blade::component`](#the-blade-component-method)
 - [Blade Components y "Blade X"](#blade-components-and-blade-x)
 - [Tipos de Factory](#factory-types)
@@ -44,7 +46,7 @@ La nueva versión mínima de PHP es ahora 7.2.5.
 <a name="updating-dependencies"></a>
 ### Actualizando Dependencias
 
-Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`.
+Actualice su dependencia de `laravel/framework` a `^7.0` en su archivo `composer.json`. Además, actualice su dependencia `nunomaduro/collision` a `^4.1`, la de`phpunit/phpunit` a `^8.5`, la de `laravel/tinker` a `^2.0`, y `facade/ignition` a `^2.0`.
 
 Los siguientes paquetes de origen tienen nuevas versiones principales para admitir Laravel 7. Si hay alguno, lea sus guías de actualización individuales antes de actualizar:
 
@@ -88,7 +90,7 @@ A continuación, por favor, actualice la opción `secure` de su archivo de confi
 
 **Probabilidad de impacto: Alto**
 
-Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete:
+Todas las autenticaciones scaffolding han sido movidas al repositorio  `laravel/ui`.  Si está usando la autenticación scaffolding de Laravel, debe instalar la versión `^2.0` de este paquete y el paquete debe instalarse en todos los entornos. Si anteriormente incluía este paquete en la porción `require-dev` del archivo` composer.json` de su aplicación, debe moverlo a la sección `require`:
 
 ```shell
 composer require laravel/ui "^2.0"
@@ -233,6 +235,28 @@ Se ha eliminado la clase en desuso `Illuminate\Http\Resources\Json\Resource`. En
 
 El método de rutas `getRoutes`ahora devuelve una instancia de `Illuminate\Routing\RouteCollectionInterface` en lugar de `Illuminate\Routing\RouteCollection`. 
 
+<a name="unique-route-names"></a>
+#### Nombres de rutas únicos
+
+**Probabilidad de impacto: Medio**
+
+Aunque nunca se documentó oficialmente, las versiones anteriores de Laravel permiten definir dos rutas diferentes con el mismo nombre. En Laravel 7 esto ya no es posible y siempre debes proporcionar nombres únicos para tus rutas. Las rutas con nombres duplicados pueden causar un comportamiento inesperado en múltiples áreas del framework.
+
+<a name="cors-support"></a>
+#### Soporte de CORS
+
+**Probabilidad de impacto: Medio**
+
+El soporte para el intercambio de recursos de origen cruzado (CORS) ahora está integrado por defecto. Si está usando alguna librería de terceros para CORS, ahora se le recomienda usar el [nuevo archivo de configuración `cors`](https://github.com/laravel/laravel/blob/develop/config/cors.php).
+
+A continuación, instale la librería CORS subyacente como una dependencia de su aplicación:
+
+```shell
+composer require fruitcake/laravel-cors
+```
+
+Finalmente, agregue el middleware `\Fruitcake\Cors\HandleCors::class` a su lista de middlewares global `App\Http\Kernel`.
+
 ### Sesión
 
 #### El controlador de sesión `array`
@@ -248,7 +272,7 @@ Los datos del controlador de sesión `array` ahora son persistentes para la soli
 
 **Probabilidad de impacto: Medio**
 
-Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo.
+Las aserciones `assertSee` y `assertDontSee` en la clase `TestResponse` ahora escaparán automáticamente los valores. Si está escapando manualmente cualquier valor pasado a estas aserciones, ya no debería hacerlo. Si necesita assert sin valores escapados, puede pasar 'false' como segundo argumento del método. 
 
 ### Validación
 
@@ -262,5 +286,5 @@ La regla `different` ahora fallará si falta uno de los parámetros especificado
 <a name="miscellaneous"></a>
 ### Misceláneos
 
-También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/6.0...master) y elegir qué actualizaciones son importantes para ti.
+También te recomendamos que veas los cambios en el [repositorio de Github](https://github.com/laravel/laravel) `laravel/laravel`.  Si bien muchos de estos cambios no son necesarios, es posible que desees mantener estos archivos sincronizados con tu aplicación. Algunos de estos cambios se tratarán en esta guía de actualización, pero otros, como los cambios en los archivos de configuración o los comentarios, no lo estarán. Puedes ver fácilmente los cambios con la [herramienta de comparación GitHub](https://github.com/laravel/laravel/compare/6.x...master) y elegir qué actualizaciones son importantes para ti.
 :::

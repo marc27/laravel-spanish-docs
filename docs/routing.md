@@ -13,7 +13,7 @@
 - [Los grupos de ruta](#route-groups)
     - [Los middleware](#route-group-middleware)
     - [Los espacios de nombres](#route-group-namespaces)
-    - [Enrutamiento de subdominios](#route-group-sub-domain-routing)
+    - [Enrutamiento de subdominios](#route-group-subdomain-routing)
     - [Los prefijos de ruta](#route-group-prefixes)
     - [Los prefijos por nombre de ruta](#route-group-name-prefixes)
 - [Enlazamiento de modelo de ruta (route model binding)](#route-model-binding)
@@ -23,6 +23,7 @@
 - [Límite de rango](#rate-limiting)
 - [La suplantación del método del formulario](#form-method-spoofing)
 - [Accediendo la ruta actual](#accessing-the-current-route)
+- [Intercambio de recursos de origen cruzado (CORS)](#cors)
 
 <a name="basic-routing"></a>
 ## Rutas básicas
@@ -232,6 +233,10 @@ También puedes especificar los nombes de ruta para acciones de controlador:
 Route::get('user/profile', 'UserController@showProfile')->name('profile');
 ```
 
+::: danger NOTA
+Los nombres de las rutas siempre deben ser únicos.
+:::
+
 #### Generación de URLs para las rutas nombradas
 
 Una vez que has asignado un nombre a una ruta dada, puedes usar el nombre de la ruta cuando estás generando URLs o redireccionas por medio de la función `route` global:
@@ -265,6 +270,10 @@ $url = route('profile', ['id' => 1, 'photos' => 'yes']);
 
 // /user/1/profile?photos=yes
 ```
+
+::: tip TIP
+A veces, es posible que desee especificar valores predeterminados de solicitud para parámetros de la URL, como la configuración regional actual. Para lograr esto, puede utilizar el [método `URL::defaults`](/docs/7.x/urls#default-values).
+:::
 
 #### Inspeccionando la ruta actual
 
@@ -325,10 +334,10 @@ Route::namespace('Admin')->group(function () {
 
 Recuerda que por defecto, el `RouteServiceProvider` incluye tus archivos de ruta dentro de un grupo de espacio de nombre, permitiéndote que registres rutas de controlador sin especificar el prefijo de espacio de nombre `App\Http\Controllers` completo. Así, puedes necesitar especificar solamente la porción del espacio de nombre que viene después del espacio de nombre `App\Http\Controllers` base.
 
-<a name="route-group-sub-domain-routing"></a>
+<a name="route-group-subdomain-routing"></a>
 ### El enrutamiento de subdominio
 
-Los grupos de ruta también pueden ser usados para manejar enrutamiento de sub-dominio.  Los Sub-dominios pueden ser asignados a parámetros de ruta justamente como URIs de ruta, permitiendote que captures una porción del sub-dominio para uso en tu ruta o controlador. El sub-dominio puede ser especificado al ejecutar el método `domain` antes de definir el grupo.
+Los grupos de ruta también pueden ser usados para manejar enrutamiento de subdominio.  Los Subdominios pueden ser asignados a parámetros de ruta justamente como URIs de ruta, permitiendote que captures una porción del subdominio para uso en tu ruta o controlador. El subdominio puede ser especificado al ejecutar el método `domain` antes de definir el grupo.
 
 ```php
 Route::domain('{account}.myapp.com')->group(function () {
@@ -384,11 +393,35 @@ Route::get('api/users/{user}', function (App\User $user) {
 });
 ```
 
-Debido a que la variable `$user` está declarada como el modelo de Eloquent `App\User` y el nombre de variable coincide con el segmento de URI `{user}`, Laravel inyectará automáticamente la instancia del modelo que tenga un ID coincidiendo con el valor correspondiente en la URI de la solicitud. Si una instancia del modelo que coincida no es encontrada en la base de datos, una respuesta HTTP 400 será generada automáticamente.
+Debido a que la variable `$user` está declarada como el modelo de Eloquent `App\User` y el nombre de variable coincide con el segmento de URI `{user}`, Laravel inyectará automáticamente la instancia del modelo que tenga un ID coincidiendo con el valor correspondiente en la URI de la solicitud. Si una instancia del modelo que coincida no es encontrada en la base de datos, una respuesta HTTP 404 será generada automáticamente.
 
-#### Personalizando el nombre de clave
+#### Personalizando la clave
 
-Si prefieres que el enlazamiento del modelo use una columna de base de datos distinta del `id` cuando estás obteniendo una clase de modelo dada, puedes sobreescribir el método `getRouteKeyName` en el módelo de Eloquent:
+A veces es posible que desee resolver modelos Eloquent utilizando una columna que no sea `id`. Para hacerlo, puede especificar la columna en la definición del parámetro de ruta: 
+
+```php
+Route::get('api/posts/{post:slug}', function (App\Post $post) {
+    return $post;
+});
+```
+
+#### Claves personalizadas & Scoping 
+
+A veces, al vincular implícitamente varios modelos Eloquent en una sola definición de ruta, es posible que se desee ampliar el alcance del segundo modelo Eloquent de manera que sea un hijo del primer modelo Eloquent. Por ejemplo, considere esta situación que recupera una entrada de blog por slug para un usuario específico:
+
+```php
+use App\Post;
+use App\User;
+Route::get('api/users/{user}/posts/{post:slug}', function (User $user, Post $post) {
+    return $post;
+});
+```
+
+Cuando se utiliza un enlace implícito con clave personalizada como parámetro de ruta anidada, Laravel automáticamente ampliará la consulta para recuperar el modelo anidado por su padre utilizando convenciones para adivinar el nombre de la relación en el padre. En este caso, se asumirá que el modelo `User` tiene una relación llamada `posts` (el plural del nombre del parámetro de ruta) que puede utilizarse para recuperar el modelo `Post`.
+
+#### Personalizando el nombre de clave por defecto
+
+Si prefieres que el enlazamiento del modelo use una columna de base de datos por defecto distinta del `id` cuando estás obteniendo una clase de modelo dada, puedes sobreescribir el método `getRouteKeyName` en el modelo de Eloquent:
 
 ```php
 /**
@@ -534,6 +567,7 @@ Route::middleware('auth:api')->group(function () {
             //
         });
     });
+
     Route::middleware('throttle:60,1,deletes')->group(function () {
         Route::delete('/servers/{id}', function () {
             //
@@ -576,4 +610,13 @@ $name = Route::currentRouteName();
 $action = Route::currentRouteAction();
 ```
 
-Consulta la documentación de la API sobre la [clase subyacente de la clase facade `Route`](https://laravel.com/api/5.8/Illuminate/Routing/Router.html) y la [instancia de ruta](https://laravel.com/api/5.8/Illuminate/Routing/Route.html) para revisar todos los métodos disponibles.
+Consulta la documentación de la API sobre la [clase subyacente de la clase facade `Route`](https://laravel.com/api/7.x/Illuminate/Routing/Router.html) y la [instancia de ruta](https://laravel.com/api/7.x/Illuminate/Routing/Route.html) para revisar todos los métodos disponibles.
+
+<a name="cors"></a>
+## Intercambio de recursos de origen cruzado (CORS)
+
+Laravel puede responder automáticamente las peticiones de CORS OPTIONS con los valores que usted configure. Todos los ajustes de CORS se pueden configurar en el archivo de configuración `cors` y las peticiones OPTIONS serán manejadas automáticamente por el middleware `HandleCors` que está incluido por defecto en su stack de middleware global.
+
+::: tip TIP
+Para más información sobre CORS y CORS headers, por favor consulte la [documentación web de MDN en CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#The_HTTP_response_headers).
+:::
