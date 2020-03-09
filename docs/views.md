@@ -10,6 +10,10 @@
 <a name="creating-views"></a>
 ## Creando vistas
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 ::: tip TIP
 Para buscar más información sobre ¿Cómo escribir plantillas de Blade? Revisa la [documentación de Blade](/blade.html) completa para comenzar.
 :::
