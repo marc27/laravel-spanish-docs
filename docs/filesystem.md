@@ -23,6 +23,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Laravel proporciona una podera abstracción del sistema de archivos gracias al genial paquete de PHP [Flysystem](https://github.com/thephpleague/flysystem) de Frank de Jonge. La integración de Flysystem de Laravel proporciona drivers simples de usar para trabajar con sistemas de archivos locales, Amazon S3 y Rackspace Cloud Storage.
 
 <a name="configuration"></a>
