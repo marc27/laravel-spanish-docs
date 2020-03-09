@@ -12,6 +12,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Mientras Laravel no dicta la pauta sobre que pre-procesadores de JavaScript o CSS usar, si proporciona un punto de inicio básico usando [Bootstrap](https://getbootstrap.com/), [React](https://reactjs.org/) y / o [Vue](https://vuejs.org/) que será de utilidad para muchas aplicaciones. De forma predeterminada, Laravel usa [NPM](https://www.npmjs.org) para instalar ambos paquetes de frontend.
 
 La estructura de Boostrap y Vue proporcinada por Laravel se encuentra en el paquete de Composer `laravel/ui`, que se puede instalar usando Composer:
