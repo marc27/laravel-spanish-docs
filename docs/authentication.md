@@ -30,6 +30,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 ::: tip TIP
 **¿Quieres comenzar rápido?** Instala el paquete de Composer `laravel/ui` y ejecuta `php artisan ui vue --auth` en una nueva aplicación de Laravel. Luego de migrar tu base de datos, dirígete en tu navegador a `http://tu-app.test/register` o cualquier otra URL asignada a tu aplicación. ¡Estos dos comandos se encargarán de generar todo el sistema de autenticación!
 :::
