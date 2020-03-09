@@ -18,6 +18,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Ya que las aplicaciones manejadas por HTTP son sin estado, las sesiones proporcionan una forma de almacenar información sobre el usuario a través de múltiples solicitudes. Laravel viene con una variedad de backends de sesión que son accedidos a través de una expresiva API unificada. El soporte para los backends populares tales como [Memcached](https://memcached.org), [Redis](https://redis.io) y bases de datos es incluido de forma predeterminada.
 
 <a name="configuration"></a>
