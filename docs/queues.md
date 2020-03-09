@@ -33,6 +33,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 ::: tip TIP
 Laravel ahora ofrece Horizon, un hermoso tablero y sistema de configuración para las colas motorizadas por Redis. Entra en [Horizon documentation](/horizon.html) para más inormación.
 :::
