@@ -27,6 +27,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 El constructor de consultas (query builder) de Base de datos de Laravel, proporciona una interface fluida y conveniente para la creación y ejecución de consultas de bases de datos. Puede ser usado para ejecutar las principales operaciones de bases de datos en tu aplicación y funciona en todos los sistemas de bases de datos soportados.
 
 El constructor de consultas de Laravel usa enlazamiento de parámetros PDO para proteger tu aplicación contra ataques de inyección SQL. No hay necesidad de limpiar cadenas que están siendo pasadas como enlaces.
