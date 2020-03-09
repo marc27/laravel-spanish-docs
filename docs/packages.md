@@ -20,6 +20,10 @@
 <a name="introduction"></a>
 ## Introducción
 
+::: danger Nota
+Este archivo tiene actualizaciones pendientes, puedes comprobarlas en la [página de status](https://v7.documentacion-laravel.com/status.html).
+:::
+
 Los paquetes son la forma principal de agregar funcionalidad a Laravel. Los paquetes pueden ser cualquier cosa, desde una estupenda manera de trabajar con fechas como [Carbon](https://github.com/briannesbitt/Carbon), o un framework completo de pruebas BDD como [Behat](https://github.com/Behat/Behat).
 
 Hay diferentes tipos de paquetes. Algunos paquetes son independientes, lo que significa que funcionan con cualquier framework de PHP. Carbon y Behat son ejemplos de paquetes independientes. Cualquiera de estos paquetes se puede usar con Laravel simplemente solicitándolos en el archivo `composer.json`.
