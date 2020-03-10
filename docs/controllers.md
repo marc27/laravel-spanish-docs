@@ -268,7 +268,7 @@ Algunas veces necesitarás definir rutas a un recurso "anidado". Por ejemplo, un
 Route::resource('photos.comments', 'PhotoCommentController');
 ```
 
-Esta ruta registrará un recurso "anidado" al cual se puede acceder mediante URLs como la siguiente: photos/{photos}/comments/{comments}.
+Esta ruta registrará un recurso "anidado" al cual se puede acceder mediante URLs como la siguiente: photos/{photo}/comments/{comment}.
 
 #### Anidación superficial
 
