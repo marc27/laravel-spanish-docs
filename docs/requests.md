@@ -504,7 +504,7 @@ class TrustProxies extends Middleware
     /**
     * The trusted proxies for this application.
     *
-    * @var array
+    * @var string|array
     */
     protected $proxies = [
         '192.168.1.1',
@@ -532,7 +532,7 @@ Si estás usando Amazon AWS u otro proveedor de balanceador de carga de la "nube
 /**
 * The trusted proxies for this application.
 *
-* @var array
+* @var string|array
 */
 protected $proxies = '**';
 ```
