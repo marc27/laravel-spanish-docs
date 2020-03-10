@@ -121,6 +121,10 @@ Puedes generar un controlador invocable usando la opción `--invokable` del coma
 php artisan make:controller ShowProfile --invokable
 ```
 
+::: tip TIP
+Los stubs del controlador se pueden personalizar usando la [publicación de stub](/artisan.html#stub-customization)
+:::
+
 <a name="controller-middleware"></a>
 ## Middleware de controlador
 
