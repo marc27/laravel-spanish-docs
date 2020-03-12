@@ -39,10 +39,10 @@ Por ejemplo, si necesitas reportar distintos tipos de excepciones en diferentes 
 *
 * This is a great spot to send exceptions to Flare, Sentry, Bugsnag, etc.
 *
-* @param  \Exception  $exception
+* @param  \Throwable  $exception
 * @return void
 */
-public function report(Exception $exception)
+public function report(Throwable $exception)
 {
     if ($exception instanceof CustomException) {
         //
@@ -83,7 +83,7 @@ public function isValid($value)
 {
     try {
         // Validate the value...
-    } catch (Exception $e) {
+    } catch (Throwable $e) {
         report($e);
 
         return false;
@@ -120,10 +120,10 @@ El método `render` es responsable de convertir una excepción dada en una respu
 * Render an exception into an HTTP response.
 *
 * @param  \Illuminate\Http\Request  $request
-* @param  \Exception  $exception
+* @param  \Throwable  $exception
 * @return \Illuminate\Http\Response
 */
-public function render($request, Exception $exception)
+public function render($request, Throwable $exception)
 {
     if ($exception instanceof CustomException) {
         return response()->view('errors.custom', [], 500);
