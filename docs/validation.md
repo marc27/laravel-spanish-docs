@@ -118,6 +118,24 @@ public function store(Request $request)
 
 Como puedes ver, pasamos las reglas de validación deseadas dentro del método `validate`. Otra vez, si la validación falla, se generará la respuesta apropiada. Si la validación pasa, nuestro controlador continuará la ejecución normalmente.
 
+Alternativamente, las reglas de validación se pueden especificar como matrices de reglas en lugar de una sola cadena delimitada `|`:
+
+```php
+$validatedData = $request->validate([
+    'title' => ['required', 'unique:posts', 'max:255'],
+    'body' => ['required'],
+]);
+```
+
+Puede usar el método `validateWithBag` para validar una petición y almacenar cualquier mensaje de error dentro de un [paquete de error con nombre](#named-error-bags):
+
+```php
+$validatedData = $request->validateWithBag('post', [
+    'title' => ['required', 'unique:posts', 'max:255'],
+    'body' => ['required'],
+]);
+```
+
 #### Deteniendo en la primera falla de validación
 
 Algunas veces puede que desees detener la ejecución de las reglas de validación sobre un atributo después de la primera falla de validación. Para hacer eso, asigna la regla `bail` al atributo:
