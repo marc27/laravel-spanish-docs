@@ -1283,6 +1283,18 @@ El campo bajo validación debe ser un identificador único universal (UUID) RFC 
 <a name="conditionally-adding-rules"></a>
 ## Agregando reglas condicionalmente
 
+#### Omitir validación cuando los campos tienen ciertos valores 
+
+Ocasionalmente, es posible que no desee validar un campo dado si otro campo tiene un valor dado. Puede lograr esto usando la regla de validación `exclude_if`. En este ejemplo, los campos `appointment_date` y `doctor_name` no se validarán si el campo `has_appointment` tiene un valor de `false`: 
+
+```php 
+$v = Validator::make($data, [
+    'has_appointment' => 'required|bool',
+    'appointment_date' => 'exclude_if:has_appointment,false|required|date',
+    'doctor_name' => 'exclude_if:has_appointment,false|required|string',
+]);
+```
+
 #### Validando sólo cuando un campo esté presente
 
 En algunas situaciones, puedes desear ejecutar la verificación contra un campo **solamente** si ese campo está presente en el arreglo de campos. Para conseguir esto rápidamente, agrega la regla `sometimes` en tu lista:
