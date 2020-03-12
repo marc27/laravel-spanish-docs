@@ -444,6 +444,15 @@ Validator::make($request->all(), [
 ])->validate();
 ```
 
+Puedes usar el método `validateWithBag` para almacenar los mensajes de error en un [paquete de error con nombre](#named-error-bags) si la validación falla:
+
+```php
+Validator::make($request->all(), [
+    'title' => 'required|unique:posts|max:255',
+    'body' => 'required',
+])->validateWithBag('post');
+```
+
 <a name="named-error-bags"></a>
 ### Paquetes de errores con nombres
 
