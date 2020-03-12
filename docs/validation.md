@@ -33,7 +33,7 @@
 <a name="introduction"></a>
 ## Introducción
 
-Laravel proporciona varios enfoques diferentes para validar los datos entrantes de tu aplicación. De forma predeterminada, la clase base del controlador de Laravel usa una característica `ValidatesRequests` la cual proporciona un método conveniente para validar la solicitud HTTP entrante con una variedad de poderosas reglas de validación.
+Laravel proporciona varios enfoques diferentes para validar los datos entrantes de tu aplicación. De forma predeterminada, la clase base del controlador de Laravel usa una característica `ValidatesRequests` la cual proporciona un método conveniente para validar la solicitudes HTTP entrantes con una variedad de poderosas reglas de validación.
 
 <a name="validation-quickstart"></a>
 ## Inicio rápido de validación
