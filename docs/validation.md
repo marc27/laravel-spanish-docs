@@ -1204,24 +1204,20 @@ El campo _field_ dado debe coincidir con el campo bajo validación.
 <a name="rule-size"></a>
 #### size:_value_
 
-El campo bajo validación debe tener un tamaño que coincida con el _value_ dado. Para datos de cadena, el _value_ corresponde al número de caracteres. Para datos numéricos, el _value_ corresponde a un valor entero dado (requiere la combinación de las reglas `numeric` o `integer`). Para un arreglo, el valor _size_ corresponde con el número de elementos del arreglo. Para archivos, el valor de _size_ corresponde al tamaño del archivo en kilobytes. Veamos algunos ejemplos:
+El campo bajo validación debe tener un tamaño que coincida con el _value_ dado. Para datos de cadena, el _value_ corresponde al número de caracteres. Para datos numéricos, el _value_ corresponde a un valor entero dado (el atributo también debe tener la regla `numeric` o `integer`). Para un arreglo, el valor _size_ corresponde con el número de elementos del arreglo. Para archivos, el valor de _size_ corresponde al tamaño del archivo en kilobytes. Veamos algunos ejemplos:
 
 ```php
-// A continuación, un valor entero de 12 fallará porque 
-// no tiene una longitud de cadena de exactamente 12.
-// El título "Laravel Nova" pasará.
+// Validar que una cadena tenga más de 12 caracteres de longitud ...
 'title' => 'size:12';
 
-// Con la regla `integer` o `numeric`,
-// un valor entero de 10 tendrá éxito.
+// Validar que un entero proporcionado es mayor que 10 ...
 'seats' => 'integer|size:10';
 
-// Un arreglo con exactamente 5 elementos pasará.
-'tags' => 'size:5';
+// Validar que un arreglo tiene exactamente 5 elementos ...
+'tags' => 'array|size:5';
 
-// Una imagen cargada con un tamaño
-// de exactamente 512 kilobytes pasará.
-'image' => 'size:512';
+// Validar que un archivo cargado es de exactamente 512 kilobytes ...
+'image' => 'file|size:512';
 ```
 
 <a name="rule-starts-with"></a>
