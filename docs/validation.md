@@ -33,7 +33,7 @@
 <a name="introduction"></a>
 ## Introducción
 
-Laravel proporciona varios enfoques diferentes para validar los datos entrantes de tu aplicación. De forma predeterminada, la clase base del controlador de Laravel usa una característica `ValidatesRequests` la cual proporciona un método conveniente para validar la solicitud HTTP entrante con una variedad de poderosas reglas de validación.
+Laravel proporciona varios enfoques diferentes para validar los datos entrantes de tu aplicación. De forma predeterminada, la clase base del controlador de Laravel usa una característica `ValidatesRequests` la cual proporciona un método conveniente para validar la solicitudes HTTP entrantes con una variedad de poderosas reglas de validación.
 
 <a name="validation-quickstart"></a>
 ## Inicio rápido de validación
@@ -117,6 +117,24 @@ public function store(Request $request)
 ```
 
 Como puedes ver, pasamos las reglas de validación deseadas dentro del método `validate`. Otra vez, si la validación falla, se generará la respuesta apropiada. Si la validación pasa, nuestro controlador continuará la ejecución normalmente.
+
+Alternativamente, las reglas de validación se pueden especificar como matrices de reglas en lugar de una sola cadena delimitada `|`:
+
+```php
+$validatedData = $request->validate([
+    'title' => ['required', 'unique:posts', 'max:255'],
+    'body' => ['required'],
+]);
+```
+
+Puede usar el método `validateWithBag` para validar una petición y almacenar cualquier mensaje de error dentro de un [paquete de error con nombre](#named-error-bags):
+
+```php
+$validatedData = $request->validateWithBag('post', [
+    'title' => ['required', 'unique:posts', 'max:255'],
+    'body' => ['required'],
+]);
+```
 
 #### Deteniendo en la primera falla de validación
 
@@ -442,6 +460,15 @@ Validator::make($request->all(), [
     'title' => 'required|unique:posts|max:255',
     'body' => 'required',
 ])->validate();
+```
+
+Puedes usar el método `validateWithBag` para almacenar los mensajes de error en un [paquete de error con nombre](#named-error-bags) si la validación falla:
+
+```php
+Validator::make($request->all(), [
+    'title' => 'required|unique:posts|max:255',
+    'body' => 'required',
+])->validateWithBag('post');
 ```
 
 <a name="named-error-bags"></a>
@@ -1177,7 +1204,21 @@ El campo _field_ dado debe coincidir con el campo bajo validación.
 <a name="rule-size"></a>
 #### size:_value_
 
-El campo bajo validación debe tener un tamaño que coincida con el _valor_ dado. Para datos de cadena, el _valor_ corresponde al número de caracteres. Para datos numéricos, el _valor_ corresponde a un valor entero dado. Para un arreglo, el valor _size_ corresponde con el número de elementos del arreglo. Para archivos, el valor de _size_ corresponde al tamaño del archivo en kilobytes.
+El campo bajo validación debe tener un tamaño que coincida con el _value_ dado. Para datos de cadena, el _value_ corresponde al número de caracteres. Para datos numéricos, el _value_ corresponde a un valor entero dado (el atributo también debe tener la regla `numeric` o `integer`). Para un arreglo, el valor _size_ corresponde con el número de elementos del arreglo. Para archivos, el valor de _size_ corresponde al tamaño del archivo en kilobytes. Veamos algunos ejemplos:
+
+```php
+// Validar que una cadena tiene exactamente 12 caracteres de longitud ...
+'title' => 'size:12';
+
+// Validar que un entero proporcionado es igual a 10 ...
+'seats' => 'integer|size:10';
+
+// Validar que un arreglo tiene exactamente 5 elementos ...
+'tags' => 'array|size:5';
+
+// Validar que un archivo cargado es de exactamente 512 kilobytes ...
+'image' => 'file|size:512';
+```
 
 <a name="rule-starts-with"></a>
 #### starts_with:_foo_,_bar_,...
@@ -1282,6 +1323,28 @@ El campo bajo validación debe ser un identificador único universal (UUID) RFC 
 
 <a name="conditionally-adding-rules"></a>
 ## Agregando reglas condicionalmente
+
+#### Omitir validación cuando los campos tienen ciertos valores 
+
+Ocasionalmente, es posible que desee no validar un campo dado si otro campo tiene un valor dado. Puede lograr esto usando la regla de validación `exclude_if`. En este ejemplo, los campos `appointment_date` y `doctor_name` no se validarán si el campo `has_appointment` tiene un valor de `false`: 
+
+```php 
+$v = Validator::make($data, [
+    'has_appointment' => 'required|bool',
+    'appointment_date' => 'exclude_if:has_appointment,false|required|date',
+    'doctor_name' => 'exclude_if:has_appointment,false|required|string',
+]);
+```
+
+Alternativamente, puede usar la regla `exclude_unless` para no validar un campo dado a menos que otro campo tenga un valor dado:
+
+```php
+$v = Validator::make($data, [
+    'has_appointment' => 'required|bool',
+    'appointment_date' => 'exclude_unless:has_appointment,true|required|date',
+    'doctor_name' => 'exclude_unless:has_appointment,true|required|string',
+]);
+```
 
 #### Validando sólo cuando un campo esté presente
 

@@ -121,6 +121,10 @@ Puedes generar un controlador invocable usando la opción `--invokable` del coma
 php artisan make:controller ShowProfile --invokable
 ```
 
+::: tip TIP
+Los stubs del controlador se pueden personalizar usando la [publicación de stub](/artisan.html#stub-customization)
+:::
+
 <a name="controller-middleware"></a>
 ## Middleware de controlador
 
@@ -262,13 +266,17 @@ php artisan make:controller API/PhotoController --api
 <a name="restful-nested-resources"></a>
 ### Recursos anidados
 
-Algunas veces necesitarás definir rutas a un recurso "anidado". Por ejemplo, una imagen puede tener múltiples "comentarios" que podrían estar atados a ésta. Para "anidar" controladores de recursos, usa la notación de "punto" en la declaración de tu ruta:
+Algunas veces necesitarás definir rutas a un recurso anidado. Por ejemplo, una imagen puede tener múltiples comentarios que podrían estar atados a ésta. Para anidar los controladores de recursos, usa la notación de "punto" en la declaración de tu ruta:
 
 ```php
 Route::resource('photos.comments', 'PhotoCommentController');
 ```
 
-Esta ruta registrará un recurso "anidado" al cual se puede acceder mediante URLs como la siguiente: photos/{photos}/comments/{comments}.
+Esta ruta registrará un recurso anidado al cual se puede acceder mediante URIs como la siguiente: 
+
+```php
+/photos/{photo}/comments/{comment}
+```
 
 #### Anidación superficial
 
